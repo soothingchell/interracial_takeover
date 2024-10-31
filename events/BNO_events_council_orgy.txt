@@ -1,5 +1,7 @@
 namespace = bno_council_orgy
 
+#council event courtesy of @aobn
+
 # Council Meeting Orgy - Setup
 bno_council_orgy.0001 = {
 	type = character_event
