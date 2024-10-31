@@ -1,0 +1,37 @@
+bno_maa = {
+	type = skirmishers
+
+	damage = 20
+	toughness = 20
+	pursuit = 15
+	screen = 20
+	
+	counters = {
+		skirmishers = 1
+		heavy_infantry = 1
+	}
+
+	terrain_bonus = {
+		taiga = { damage = 8 }
+		forest = { damage = 8 }
+		jungle = {damage = 8}
+	}
+
+	can_recruit = {
+		OR = {
+			has_trait = bno_bbc
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 100
+			}
+		}
+	}
+	
+	buy_cost = {gold = 100}
+	low_maintenance_cost = { gold = 0.5 }
+	high_maintenance_cost = { gold = 0.8 }
+	
+	stack = 250
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = zupin_spearmen
+}

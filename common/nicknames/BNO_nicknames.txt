@@ -1,0 +1,19 @@
+# nickname file designating nick variables
+
+nick_qos = {} #Queen of Spades
+nick_beta = {} #Beta
+nick_cuck = {} #Cucked
+nick_yt = {} #Whiteboy
+nick_goon = {} #Gooner
+nick_sq = {} #Size Queen
+nick_blacked = {} #Blacked
+nick_bos = {} #Black Only Slut
+nick_bw = {} #Whore for Black
+nick_sfa = {} # Slut for Africans
+nick_rt = {} #Race Traitor
+nick_wb = {} #White Bitch
+nick_ps = {} #snowbunny
+nick_conq = {} #Conquered
+nick_bk = {} #Black King
+nick_bb = {} #Black Bull
+nick_wq = {} #White Conquerer

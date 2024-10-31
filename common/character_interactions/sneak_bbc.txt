@@ -1,0 +1,143 @@
+# character interaction for sneaking a BBC into a foriegn court
+
+sneak_bbc = {
+    category = interaction_category_vassal
+    common_interaction = yes
+    force_notification = yes
+	greeting = negative
+	desc = sneak_bbc_desc
+
+    populate_actor_list = {
+        scope:actor = {
+            every_courtier = {
+                add_to_list = characters
+            }
+        }
+    }
+
+	is_shown = {
+	  NOT = { scope:recipient = scope:actor }
+	  scope:recipient = { is_ruler = yes }
+	  scope:actor = {
+		OR = {
+			has_trait = bno_bbc
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 75
+			}
+		}
+	  }
+	}
+	
+	can_be_picked = {
+	  NOT = { scope:recipient = root }
+	  has_trait = bno_bbc
+	}
+	
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				title = sneak_bbc
+				right_icon = scope:recipient
+				left_icon = scope:secondary_actor
+				
+	      scope:recipient = {
+		      add_courtier = scope:secondary_actor
+		    }
+			}
+		}
+	}
+	
+	ai_accept = {
+		base = -30
+		opinion_modifier = { # Opinion Factor
+			who = scope:recipient
+			opinion_target = scope:actor
+			multiplier = 1.0
+			desc = AI_OPINION_REASON
+		}
+		modifier = {
+			add = 5
+			desc = BBC_cg_spy_reason
+			trigger = {
+				scope:recipient = {
+					any_courtier_or_guest = {
+						OR = {
+							has_trait = bno_lifestyle_whitegirl
+						}
+					}
+				}
+			}
+		}
+
+		modifier = {
+			add = {value = 10}
+			desc = BBC_family_spy_reason
+			trigger = {
+				scope:recipient = {
+					any_close_family_member = {
+						OR = {
+							has_trait = bno_lifestyle_whitegirl
+						}
+					}
+				}
+			}
+		}
+
+		modifier = {
+			add = {value = 10}
+			desc = BBC_curious_reason
+			trigger = {
+				scope:recipient = {
+					has_trait = bno_lifestyle_whitegirl
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value < 25
+					}
+				}
+			}
+		}
+
+		modifier = {
+			add = {value = 25}
+			desc = BBC_fucked_reason
+			trigger = {
+				scope:recipient = {
+					AND = {
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 25
+					}
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value < 100
+					}
+					}
+				}
+			}
+		}
+
+		modifier = {
+			add = {value = 50}
+			desc = BBC_slut_reason
+			trigger = {
+				scope:recipient = {
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 100
+					}
+				}
+			}
+		}
+
+		modifier = {
+			add = {value = 50}
+			desc = BBC_welcome_reason
+			trigger = {
+				scope:recipient = {
+					has_trait = bno_bbc
+				}
+			}
+		}
+	}
+}

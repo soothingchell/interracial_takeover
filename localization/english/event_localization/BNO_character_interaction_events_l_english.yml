@@ -1,0 +1,10 @@
+﻿l_english:
+ #Influence Child
+ #success
+ bno_character_interaction_0001.title:0 "The Birds and the Bees"
+ bno_character_interaction_0001.desc:0 "Adoration of a superior race doesn't come naturally. Though, thanks to your 'involvement' with the African peoples flooding your realm, you've been able to convince your daugther that it is perfectly okay to be interested in whoever she wants. While you've voiced your desire for them to marry someone of higher status, you've encouraged the thought of unlanded serfs and, particularly, the darker skinned. Walking out of the garden with her, you can't help but hope that your dynasty's new motto is that of promoting a mixed future."
+ bno_character_interaction_0001.a:0 "Let's get something to drink."
+ #failure
+ bno_character_interaction_0002.title:0 "The Birds and the Bees"
+ bno_character_interaction_0002.desc:0 "Your own kin seems to be lost in thought, daydreaming of other things as you explain the role of landed and unlanded peoples, arranged marriages, lineage, and the like. None of it seems to stick, even with your daughter's budding maturity. Growing frustrated with your child's lack of understanding, you decide to change the subject - hoping that is for the better."
+ bno_character_interaction_0002.a:0 "Let's get something to drink, I guess."

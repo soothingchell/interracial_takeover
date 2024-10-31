@@ -1,0 +1,40 @@
+slut = {
+	slut = {
+		traits = {
+			bno_mindless_bbc_slut
+		}
+		dna_modifiers = {
+				morph = {
+					mode = replace
+					gene = complexion
+					template = complexion_beauty_1
+					value = 4.0
+				}
+#			color = { #changes hair color
+#				gene = hair_color
+#				mode = replace
+#					
+#				x = 0.1
+#				y = 0
+#			}
+		}
+	}
+}
+
+#slut2 = {
+#	slut2 = {
+#		traits = {
+#			bno_mindless_bbc_slut
+#		}
+#		dna_modifiers = {
+#			morph = {
+#				mode = replace
+#				gene = cosmetics_norse_tattoo
+#				template = norse_face_tattoo
+#				range = { 0 1 } # For the randomness to work correctly
+#			}
+#		}
+#	}
+#}
+
+

@@ -1,0 +1,30 @@
+﻿l_english: 
+
+# Religious Descriptors
+ bnonr:0 "Church of the Black Cock"
+ bnonr_adj:0 "Black Supremacist"
+ bnonr_religion:0 "Church of the Black Cock"
+ bnonr_religion_adj:0 "Black Supremacist"
+ bnonr_religion_adherent:0 "Black Supremacist"
+ bnonr_religion_adherent_plural:0 "Black Supremacists"
+ bnonr_religion_desc:0 "Supremacists' believe that everyone should bow down to the superior race."
+
+ bbcs:0 "Church of the Black Cock"
+ bbcs_adj:0 "Black Supremacist"
+ bbcs_adherent:0 "Black Supremacist"
+ bbcs_adherent_plural:0 "Black Supremacists"
+ bbcs_desc:0 "Supremacists' believe that everyone should bow down to the superior race."
+
+# Holy Order Names
+ bnoho1:0 "Order of the Black Gods"
+ bnoho2:0 "The Black Plague"
+ bnoho3:0 "Knights of Ghana"
+ bnoho4:0 "Malian Invaders"
+ bnoho5:0 "The Conversion Troupe"
+
+# Conversion Decision
+ convert:0 "Convert to Worshipping Darker Men"
+ convert_desc:0 "Black cocks are all you can think of, sweetie. Why wouldn't you give in to a superior race, and make them your gods?"
+ convert_tooltip:0 "You ponder about meaty, black dick..."
+ convert_confirm:0 "You dedicate yourself to praise BBC"
+ convert_effect_1:0 "You will convert to the Church of Black Cock"

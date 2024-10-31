@@ -1,0 +1,261 @@
+﻿bnonr_religion = {
+	family = rf_abrahamic
+
+	doctrine_background_icon = core_tenet_banner_islam.dds
+	doctrine = abrahamic_hostility_doctrine
+
+	#Main Group
+	doctrine = doctrine_temporal_head
+	doctrine = doctrine_gender_male_dominated
+	# doctrine = doctrine_gender_female_dominated #activate if you'd rather have a female dominated religion
+	doctrine = doctrine_pluralism_righteous
+	doctrine = doctrine_theocracy_lay_clergy
+
+	#Marriage
+	doctrine = doctrine_polygamy
+	doctrine = doctrine_divorce_allowed
+	doctrine = doctrine_bastardry_none
+	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
+
+	#Crimes
+	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_adultery_men_accepted
+	doctrine = doctrine_adultery_women_accepted
+	doctrine = doctrine_kinslaying_close_kin_accepted
+	doctrine = doctrine_deviancy_crime
+	doctrine = doctrine_witchcraft_accepted
+
+	#Clerical Functions
+	doctrine = doctrine_clerical_function_taxation
+	doctrine = doctrine_clerical_gender_male_only
+	doctrine = doctrine_clerical_marriage_disallowed
+	doctrine = doctrine_clerical_succession_temporal_appointment
+
+	#Carnalitas
+	doctrine = carn_doctrine_same_slavery_accepted
+	doctrine = carn_doctrine_other_slavery_accepted
+	doctrine = carn_doctrine_prostitution_accepted
+
+	#Carnalitas Mundi
+	doctrine = carnd_doctrine_lust_exalted
+
+	#Allow pilgrimages
+	doctrine = doctrine_pilgrimage_encouraged
+	
+	traits = {
+		virtues = { bno_bbc dick_big_good_1 dick_big_good_2 dick_big_good_3 lustful sadistic}
+		sins = { dick_small_good_1 dick_small_good_2 dick_small_good_3 dick_small_bad_1 dick_small_bad_2 dick_small_bad_3 chaste}
+	}
+
+	reserved_male_names = {
+		Abbas Abdul Abdullah Abolhassan Abu-Bakr Ahmad Akbar Allahyar Ali Ali-Fay Ali-Kolon Ali-Zalil Hasan Hossein Hussayn Ismail Mahmud Mohammed Muammar Muhammad
+	}
+
+	custom_faith_icons = {
+		carnd_madeleinist_2 custom_faith_1 custom_faith_2 custom_faith_3 custom_faith_4 custom_faith_5 custom_faith_6 custom_faith_7 custom_faith_8 custom_faith_9 custom_faith_10 dualism_custom_1 zoroastrian_custom_1 zoroastrian_custom_2 buddhism_custom_1 buddhism_custom_2 buddhism_custom_3 buddhism_custom_4 taoism_custom_1 yazidi_custom_1 sunni_custom_2 sunni_custom_3 sunni_custom_4 muhakkima_1 muhakkima_2 muhakkima_4 muhakkima_5 muhakkima_6 judaism_custom_1 custom_faith_fp1_fenrir custom_faith_fp1_irminsul custom_faith_fp1_jormungandr custom_faith_fp1_odins_ravens custom_faith_fp1_runestone_moon custom_faith_fp1_thors_hammer custom_faith_fp1_valknut custom_faith_fp1_yggdrasil custom_faith_boromian_circles custom_faith_lotus custom_faith_aum_tibetan custom_faith_pentagram custom_faith_pentagram_inverted custom_faith_burning_bush custom_faith_allah custom_faith_gankyil custom_faith_eye_of_providence custom_faith_dove custom_faith_ichthys custom_faith_lamb custom_faith_black_sheep custom_faith_ankh custom_faith_chi_rho custom_faith_hamsa custom_faith_cool_s
+	}
+
+	holy_order_names = {
+		{ name = "bnoho1" }
+		{ name = "bnoho2" }
+		{ name = "bnoho3" }
+		{ name = "bnoho4" }
+		{ name = "bnoho5" }
+	}
+
+	holy_order_maa = { cataphracts } # Islamic MAA
+
+	localization = {
+		#HighGod
+		HighGodName = islam_high_god_name
+		HighGodName2 = islam_high_god_name_2
+		HighGodNamePossessive = islam_high_god_name_possessive
+		HighGodNameSheHe = CHARACTER_SHEHE_HE
+		HighGodHerselfHimself = CHARACTER_HIMSELF
+		HighGodHerHis = CHARACTER_HERHIS_HIS
+		HighGodNameAlternate = islam_high_god_name_alternate
+		HighGodNameAlternatePossessive = islam_high_god_name_alternate_possessive
+
+		#Creator
+		CreatorName = islam_creator_god_name
+		CreatorNamePossessive = islam_creator_god_name_possessive
+		CreatorSheHe = CHARACTER_SHEHE_HE
+		CreatorHerHis = CHARACTER_HERHIS_HIS
+		CreatorHerHim = CHARACTER_HERHIM_HIM
+
+		#HealthGod
+		HealthGodName = islam_health_god_name
+		HealthGodNamePossessive = islam_health_god_name_possessive
+		HealthGodSheHe = CHARACTER_SHEHE_HE
+		HealthGodHerHis = CHARACTER_HERHIS_HIS
+		HealthGodHerHim = CHARACTER_HERHIM_HIM
+		
+		#FertilityGod
+		FertilityGodName = islam_fertility_god_name
+		FertilityGodNamePossessive = islam_fertility_god_name_possessive
+		FertilityGodSheHe = CHARACTER_SHEHE_HE
+		FertilityGodHerHis = CHARACTER_HERHIS_HIS
+		FertilityGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WealthGod
+		WealthGodName = islam_wealth_god_name
+		WealthGodNamePossessive = islam_wealth_god_name_possessive
+		WealthGodSheHe = CHARACTER_SHEHE_HE
+		WealthGodHerHis = CHARACTER_HERHIS_HIS
+		WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+		#HouseholdGod
+		HouseholdGodName = islam_household_god_name
+		HouseholdGodNamePossessive = islam_household_god_name_possessive
+		HouseholdGodSheHe = CHARACTER_SHEHE_HE
+		HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+		HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+
+		#FateGod
+		FateGodName = islam_fate_god_name
+		FateGodNamePossessive = islam_fate_god_name_possessive
+		FateGodSheHe = CHARACTER_SHEHE_HE
+		FateGodHerHis = CHARACTER_HERHIS_HIS
+		FateGodHerHim = CHARACTER_HERHIM_HIM
+
+		#KnowledgeGod
+		KnowledgeGodName = islam_knowledge_god_name
+		KnowledgeGodNamePossessive = islam_knowledge_god_name_possessive
+		KnowledgeGodSheHe = CHARACTER_SHEHE_HE
+		KnowledgeGodHerHis = CHARACTER_HERHIS_HIS
+		KnowledgeGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WarGod
+		WarGodName = islam_war_god_name
+		WarGodNamePossessive = islam_war_god_name_possessive
+		WarGodSheHe = CHARACTER_SHEHE_HE
+		WarGodHerHis = CHARACTER_HERHIS_HIS
+		WarGodHerHim = CHARACTER_HERHIM_HIM
+
+		#TricksterGod
+		TricksterGodName = islam_trickster_god_name
+		TricksterGodNamePossessive = islam_trickster_god_name_possessive
+		TricksterGodSheHe = CHARACTER_SHEHE_HE
+		TricksterGodHerHis = CHARACTER_HERHIS_HIS
+		TricksterGodHerHim = CHARACTER_HERHIM_HIM
+
+		#NightGod
+		NightGodName = islam_night_god_name
+		NightGodNamePossessive = islam_night_god_name_possessive
+		NightGodSheHe = CHARACTER_SHEHE_HE
+		NightGodHerHis = CHARACTER_HERHIS_HIS
+		NightGodHerHim = CHARACTER_HERHIM_HIM
+
+		#WaterGod
+		WaterGodName = islam_water_god_name
+		WaterGodNamePossessive = islam_water_god_name_possessive
+		WaterGodSheHe = CHARACTER_SHEHE_HE
+		WaterGodHerHis = CHARACTER_HERHIS_HIS
+		WaterGodHerHim = CHARACTER_HERHIM_HIM
+
+
+
+		PantheonTerm = islam_high_god_name
+		PantheonTerm2 = islam_high_god_name_2
+		PantheonTerm3 = islam_high_god_name_3
+		PantheonTermHasHave = pantheon_term_has
+		GoodGodNames = {
+			islam_high_god_name
+			islam_good_god_rahim
+			islam_good_god_the_most_gracious
+			islam_good_god_the_giver_of_peace
+			islam_good_god_the_one
+			islam_good_god_the_prophet
+			islam_good_god_muhammad
+		}
+		DevilName = islam_devil_name
+		DevilNamePossessive = islam_devil_name_possessive
+		DevilSheHe = CHARACTER_SHEHE_HE
+		DevilHerHis = CHARACTER_HERHIS_HIS
+		DevilHerselfHimself = CHARACTER_HIMSELF
+		EvilGodNames = {
+			islam_evil_god_iblis
+		}
+		HouseOfWorship = islam_house_of_worship
+		HouseOfWorship2 = islam_house_of_worship_2
+		HouseOfWorship3 = islam_house_of_worship_3
+		HouseOfWorshipPlural = islam_house_of_worship_plural
+		ReligiousSymbol = islam_religious_symbol
+		ReligiousSymbol2 = islam_religious_symbol_2
+		ReligiousSymbol3 = islam_religious_symbol_3
+		ReligiousText = islam_religious_text
+		ReligiousText2 = islam_religious_text_2
+		ReligiousText3 = islam_religious_text_3
+		ReligiousHeadName = islam_religious_head_title
+		ReligiousHeadTitleName = islam_religious_head_title_name
+		DevoteeMale = islam_devotee
+		DevoteeMalePlural = islam_devotee_plural
+		DevoteeFemale = islam_devotee
+		DevoteeFemalePlural = islam_devotee_plural
+		DevoteeNeuter = islam_devotee
+		DevoteeNeuterPlural = islam_devotee_plural
+		PriestMale = islam_priest
+		PriestMalePlural = islam_priest_plural
+		PriestFemale = islam_priest
+		PriestFemalePlural = islam_priest_plural
+		PriestNeuter = islam_priest
+		PriestNeuterPlural = islam_priest_plural
+		AltPriestTermPlural = islam_priest_alternate_plural
+		BishopMale = islam_bishop
+		BishopMalePlural = islam_bishop_plural
+		BishopFemale = islam_bishop
+		BishopFemalePlural = islam_bishop_plural
+		BishopNeuter = islam_bishop
+		BishopNeuterPlural = islam_bishop_plural
+		DivineRealm = islam_positive_afterlife
+		DivineRealm2 = islam_positive_afterlife_2
+		DivineRealm3 = islam_positive_afterlife_3
+		PositiveAfterLife = islam_positive_afterlife
+		PositiveAfterLife2 = islam_positive_afterlife_2
+		PositiveAfterLife3 = islam_positive_afterlife_3
+		NegativeAfterLife = islam_negative_afterlife
+		NegativeAfterLife2 = islam_negative_afterlife_2
+		NegativeAfterLife3 = islam_negative_afterlife_3
+		DeathDeityName = islam_death_deity_name
+		DeathDeityNamePossessive = islam_death_deity_name_possessive
+		DeathDeitySheHe = CHARACTER_SHEHE_HE
+		DeathDeityHerHis = CHARACTER_HERHIS_HIS
+		WitchGodName = christianity_witchgodname_iblis
+		WitchGodNamePossessive = christianity_witchgodname_iblis_possessive
+		WitchGodHerHis = CHARACTER_HERHIS_HIS
+		WitchGodSheHe = CHARACTER_SHEHE_HE
+		WitchGodHerHim = CHARACTER_HERHIM_HIM
+		WitchGodMistressMaster = master
+		WitchGodMotherFather = father
+
+
+		GHWName = ghw_jihad
+		GHWNamePlural = ghw_jihads
+	}
+	
+	piety_icon_group = "islam"
+	
+	faiths = {
+		bbcs = {
+			color = { 0 0 0 }
+			icon = bnobbc
+			holy_site = alexandria
+			holy_site = jerusalem
+			holy_site = antioch
+			holy_site = aksum
+			holy_site = napata
+			holy_site = mecca
+			holy_site = medina
+			holy_site = cordoba
+			holy_site = fes
+			holy_site = constantinople
+			
+			#Tenets
+			doctrine = carnd_tenet_fertility_idols
+			#doctrine = tenet_religious_legal_pronouncements #OG tenent
+			doctrine = carnd_tenet_sacred_prostitution
+			doctrine = tenet_struggle_submission
+
+		}
+	}
+}

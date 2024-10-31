@@ -1,0 +1,142 @@
+on_birth_child = {
+	on_actions = {
+		bno_blood_inheritance
+	}
+}
+
+bno_blood_inheritance = {
+	effect = {
+		if = {
+			limit = {
+				exists = scope:mother
+				exists = scope:real_father
+				OR = {
+					AND = {
+						scope:mother = { has_trait = bno_full_black }
+						scope:real_father = { has_trait = bno_full_black }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_full_black }
+						scope:real_father = { has_trait = bno_mostly_black }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_mostly_black }
+						scope:real_father = { has_trait = bno_full_black }
+					}
+				}
+			}
+			add_trait = bno_full_black
+		}
+		else_if = {
+			limit = {
+				exists = scope:mother
+				exists = scope:real_father
+				OR = {
+					AND = {
+						scope:mother = { has_trait = bno_mostly_black }
+						scope:real_father = { has_trait = bno_mostly_black }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_mixed }
+						scope:real_father = { has_trait = bno_full_black }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_full_black }
+						scope:real_father = { has_trait = bno_mixed }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_mostly_black }
+						scope:real_father = { has_trait = bno_mixed }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_mixed }
+						scope:real_father = { has_trait = bno_mostly_black }
+					}
+				}
+			}
+			add_trait = bno_mostly_black
+		}
+		else_if = {
+			limit = {
+				exists = scope:mother
+				exists = scope:real_father
+				OR = {
+					AND = {
+						scope:mother = { has_trait = bno_mixed }
+						scope:real_father = { has_trait = bno_mixed }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_full_black }
+						scope:real_father = { has_trait = bno_barely_mixed }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_barely_mixed }
+						scope:real_father = { has_trait = bno_full_black }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_mostly_black }
+						scope:real_father = { has_trait = bno_barely_mixed }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_barely_mixed }
+						scope:real_father = { has_trait = bno_mostly_black }
+					}
+					AND = {
+						NOT = { scope:mother = { has_trait = bno_blood } }
+						scope:real_father = { has_trait = bno_full_black }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_full_black }
+						NOT = { scope:real_father = { has_trait = bno_blood } }
+					}
+				}
+			}
+			add_trait = bno_mixed
+		}
+		else_if = {
+			limit = {
+				exists = scope:mother
+				exists = scope:real_father
+				OR = {
+					AND = {
+						scope:mother = { has_trait = bno_barely_mixed }
+						scope:real_father = { has_trait = bno_barely_mixed }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_mixed }
+						scope:real_father = { has_trait = bno_barely_mixed }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_barely_mixed }
+						scope:real_father = { has_trait = bno_mixed }
+					}
+					AND = {
+						NOT = { scope:mother = { has_trait = bno_blood } }
+						scope:real_father = { has_trait = bno_mostly_black }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_mostly_black }
+						NOT = { scope:real_father = { has_trait = bno_blood } }
+					}
+					AND = {
+						NOT = { scope:mother = { has_trait = bno_blood } }
+						scope:real_father = { has_trait = bno_mixed }
+					}
+					AND = {
+						scope:mother = { has_trait = bno_mixed }
+						NOT = { scope:real_father = { has_trait = bno_blood } }
+					}
+				}
+			}
+			add_trait = bno_barely_mixed
+		}
+		else = {
+			limit = {
+				exists = scope:mother
+				exists = scope:real_father
+				scope:real_father = { has_trait = bno_bbc }
+			}
+			#remove_trait = bno_bbc
+		}
+	}
+}

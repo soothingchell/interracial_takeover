@@ -1,0 +1,75 @@
+#on actions for travel, triggering travel based events
+
+on_travel_plan_movement = {
+	trigger = {
+		is_landed = yes
+		is_adult = yes 
+	}
+	on_actions = {
+		bno_travel_events_on_action
+		delay = { days = 1 }
+#		bno_travel_danger_events_on_action
+	}
+}
+
+
+bno_travel_events_on_action = {
+	trigger = {
+		NOT = { has_character_flag = in_pilgrimage_event_chain }
+		#Barons don't need travel events - to avoid them bloating their court when getting add_courtier events
+		highest_held_title_tier >= tier_county
+	}
+	
+	effect = {
+		# Invalidate travelling hostages
+		hostage_travel_invalidation_effect = yes
+		# Invalidate travelling wards
+		ward_travel_invalidation_effect = yes
+		# Invalidate travelling guardians
+		guardian_travel_invalidation_effect = yes
+	}
+	
+	random_events = {
+		chance_of_no_event = {
+			if = {
+				limit = { 
+					is_ai = no
+				}
+				value = 80
+			}
+			else = { value = 98 }
+		}
+		
+		chance_to_happen = 25 #up for debate
+		
+		100 = 0
+		100 = bno_travel_events.0001
+		100 = bno_travel_events.0002
+		100 = bno_travel_events.0003
+		
+	}
+}
+
+bno_travel_danger_events_on_action = {
+	random_events = {
+		chance_of_no_event = {
+			value = {
+				add = 100
+				if = {
+					limit = {
+						exists = root.current_travel_plan
+						exists = root.location
+					}
+					subtract = root.current_travel_plan.current_danger_value
+					add = root.current_travel_plan.travel_safety
+				}
+			}
+			max = {
+				value = 100
+				subtract = define:NTravel|TRAVEL_DANGER_MINIMUM
+			}
+		}
+		
+		10 = 0
+	}
+}

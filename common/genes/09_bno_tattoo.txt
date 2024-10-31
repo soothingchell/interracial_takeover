@@ -1,0 +1,134 @@
+special_genes = {
+	morph_genes = {
+		cosmetics_bno_body_tattoo = {
+			inheritable = no
+			bno_no_body_tattoo = {
+				index = 0
+				male = {}
+				female = {}
+				boy = male
+				girl = male
+			}		
+			bno_body_tattoo_1 = {
+				index = 1
+				male = {}
+				female = {				
+					decal = {
+						body_part = torso
+						textures = {
+							diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_01.dds"
+							properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_01_properties.dds"
+						}
+						blend_modes = {
+							diffuse = replace
+						}
+						priority = 1
+						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
+					}		
+				}
+				boy = male
+				girl = male
+			}
+			bno_body_tattoo_2 = {
+				index = 2
+				male = {}
+				female = {				
+					decal = {
+						body_part = torso
+						textures = {
+							diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_02.dds"
+							properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_02_properties.dds"
+						}
+						blend_modes = {
+							diffuse = replace
+						}
+						priority = 1
+						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
+					}		
+				}
+				boy = male
+				girl = male
+			}	
+			bno_body_tattoo_3 = {
+				index = 3
+				male = {}
+				female = {				
+					decal = {
+						body_part = torso
+						textures = {
+							diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_03.dds"
+							properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_03_properties.dds"
+						}
+						blend_modes = {
+							diffuse = replace
+						}
+						priority = 1
+						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
+					}		
+				}
+				boy = male
+				girl = male
+			}	
+			bno_body_tattoo_4 = {
+				index = 4
+				male = {}
+				female = {				
+					decal = {
+						body_part = torso
+						textures = {
+							diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_04.dds"
+							properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_04_properties.dds"
+						}
+						blend_modes = {
+							diffuse = replace
+						}
+						priority = 1
+						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
+					}		
+				}
+				boy = male
+				girl = male
+			}	
+			bno_body_tattoo_5 = {
+				index = 5
+				male = {}
+				female = {				
+					decal = {
+						body_part = torso
+						textures = {
+							diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_05.dds"
+							properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_05_properties.dds"
+						}
+						blend_modes = {
+							diffuse = replace
+						}
+						priority = 1
+						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
+					}		
+				}
+				boy = male
+				girl = male
+			}	
+			bno_body_tattoo_6 = {
+				index = 6
+				male = {}
+				female = {				
+					decal = {
+						body_part = torso
+						textures = {
+							diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_06.dds"
+							properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_06_properties.dds"
+						}
+						blend_modes = {
+							diffuse = replace
+						}
+						priority = 1
+						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
+					}		
+				}
+				boy = male
+				girl = male
+			}	
+		}	
+	}
+}

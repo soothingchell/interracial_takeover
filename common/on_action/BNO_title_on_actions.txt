@@ -1,0 +1,29 @@
+on_title_gain = {
+	on_actions = {
+		bno_king_title_gain
+		bno_emp_title_gain
+	}
+}
+
+bno_king_title_gain = {
+	effect = {
+		if = {
+			limit = {
+				scope:title.tier = tier_kingdom
+			}
+			trigger_event = bno_events.0002
+		}
+	}
+}
+
+bno_emp_title_gain = {
+	effect = {
+		if = {
+			limit = {
+				scope:title.tier = tier_empire
+			}
+			
+			trigger_event = bno_events.0003
+		}
+	}
+}

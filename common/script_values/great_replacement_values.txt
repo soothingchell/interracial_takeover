@@ -1,0 +1,38 @@
+# gives effect to 'Great Replacement' councillor task
+
+culture_replacement_acceptance_impact = { #The smaller a culture is, the more upset it will be.
+	subtract = {
+		value = 100
+		subtract = {
+			value = 10
+			multiply = scope:county.culture.culture_number_of_counties
+		}
+		min = 10
+		max = 100
+	}
+}
+
+replacement_tyranny_increase = {
+	value = 5
+	add = {
+		value = scope:county.development_level
+	}
+}
+
+replacement_stress = {
+	value = 0
+	scope:councillor_liege = {
+		if = {
+			limit = { has_trait = just }
+			add = 40
+		}
+		if = {
+			limit = { has_trait = compassionate }
+			add = 60
+		}
+		if = {
+			limit = { has_trait = forgiving }
+			add = 20
+		}
+	}
+}

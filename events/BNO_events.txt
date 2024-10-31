@@ -1,0 +1,406 @@
+# regular events description file
+
+namespace = bno_events
+
+#choose 1 of 3 BBC
+bno_events.0001 = {
+	type = character_event
+	title = bno_events01.title
+	desc = bno_events01.desc
+	theme = realm
+
+	override_background = {
+		event_background = tavern
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = personality_content
+	}
+	lower_center_portrait = {
+		character = scope:target3
+		animation = personality_content
+	}
+	immediate = {
+		create_character = {
+			gender = male
+			save_scope_as = target1
+			age = 18
+				location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+			prowess = {
+				min_template_decent_skill
+				max_template_decent_skill
+			}
+			martial = {
+				min_template_decent_skill
+				max_template_decent_skill
+			}
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target2
+			age = 18
+				location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+			prowess = {
+				min_template_decent_skill
+				max_template_decent_skill
+			}
+			stewardship = {
+				min_template_decent_skill
+				max_template_decent_skill
+			}
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target3
+			age = 18
+				location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+			prowess = {
+				min_template_decent_skill
+				max_template_decent_skill
+			}
+			intrigue = {
+				min_template_decent_skill
+				max_template_decent_skill
+			}
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+                    			flag = no_headgear
+                   			years = 1
+               			}
+				dynasty = {
+					add_dynasty_prestige = 2000
+				}
+			}
+			scope:target2 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+                    			flag = no_headgear
+                     			years = 1
+                		}
+				dynasty = {
+					add_dynasty_prestige = 2000
+				}
+			}
+			scope:target3 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+                    			flag = no_headgear
+                     			years = 1
+                		}
+				dynasty = {
+					add_dynasty_prestige = 2000
+				}
+			}
+		}
+	}
+	option = {
+		name = bno_events01.a
+		add_courtier = scope:target1
+		hidden_effect = {
+			scope:target2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:target3 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+	option = {
+		name = bno_events01.c
+		add_courtier = scope:target3
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:target2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+	option = {
+		name = bno_events01.b
+		add_courtier = scope:target2
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:target3 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_trait = bno_bbc
+		}
+		name = bno_events01.d
+		add_courtier = scope:target1
+		add_courtier = scope:target2
+		add_courtier = scope:target3
+	}
+}
+
+# when a kingdom title is created or otherwise gained, and the player char is female and married to a 'bbc,' her spouse is given an appropriate title
+bno_events.0002 = { 
+    type = character_event
+    title = bno_events02.title
+    desc = bno_events02.desc
+    theme = realm
+	
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	trigger = {
+		root = {
+			is_female = yes
+			primary_spouse = {
+				is_male = yes
+				has_trait = bno_bbc
+				has_any_nickname = no
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			primary_spouse = {
+				give_nickname = nick_bk
+				save_scope_as = target1
+			}
+			if = {
+				limit = {
+					has_any_nickname = no
+				}
+				give_nickname = nick_qos
+			}
+		}
+	}
+
+    option = {
+        name = bno_events02.a
+	}
+}
+
+# when an empire title is created or otherwise gained, and the player char is female and married to a 'bbc,' her spouse is given an appropriate title
+bno_events.0003 = {
+	type = character_event
+	title = bno_events03.title
+	desc = bno_events03.desc
+	theme = realm
+	
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	trigger = {
+		root = {
+		is_female = yes
+			primary_spouse = {
+				is_male = yes
+				has_trait = bno_bbc
+				OR {
+					has_any_nickname = no
+					has_nickname = nick_bk
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			primary_spouse = {
+				give_nickname = nick_wq
+				save_scope_as = target1
+			}
+			if = {
+				limit = {
+					has_any_nickname = no
+				}
+				give_nickname = nick_qos
+			}
+		}
+	}
+	
+	option = {
+		name = bno_events03.a
+	}
+}
+
+
+# conversion event for 'convert to bbc' decision
+bbcconversion = {
+	type = character_event
+	title = bbcconversion.title
+	desc = bbcconversion.desc
+	theme = realm
+	override_background = {
+		event_background = tavern
+	}
+	trigger = {
+		has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+		NOT = {faith = faith:bbcs}
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	option = {
+		name = bbcconversion.a
+		set_character_faith = faith:bbcs
+		add_piety = medium_piety_loss
+	}
+}
+
+

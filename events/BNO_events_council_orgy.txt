@@ -1,0 +1,1324 @@
+namespace = bno_council_orgy
+
+# Council Meeting Orgy - Setup
+bno_council_orgy.0001 = {
+	type = character_event
+	title = bno_council_orgy_0001.title
+	desc = bno_council_orgy_0001.desc
+    theme = realm
+	override_background = {
+		reference = council_chamber
+	}
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:target_bbc_1
+		animation = personality_bold
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target_bbc_1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target_female_2
+		animation = idle
+	}
+	lower_center_portrait = {
+		character = scope:target_female_1
+		animation = shock
+	}
+	lower_right_portrait = {
+		character = scope:target_female_3
+		animation = idle
+	}
+
+    trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+
+			any_councillor = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+            any_councillor = {
+                is_female = yes
+                is_adult = yes
+                is_ai = yes
+            }
+		}
+	}
+
+	immediate = {
+		clear_saved_scope = target_female_1
+		clear_saved_scope = target_female_2
+		clear_saved_scope = target_female_3
+		clear_saved_scope = target_bbc_1
+		every_councillor = {
+			limit = {
+				is_female = yes
+			}
+			add_to_temporary_list = bno_council_orgy_female_list
+		}
+		random_in_list = {
+			list = bno_council_orgy_female_list
+			save_scope_as = target_female_1
+		}
+		random_in_list = {
+			list = bno_council_orgy_female_list
+			limit = {
+				NOT = { this = scope:target_female_1 }
+			}
+			save_scope_as = target_female_2
+		}
+		random_in_list = {
+			list = bno_council_orgy_female_list
+			limit = {
+				AND = {
+					NOT = { this = scope:target_female_1 }
+					NOT = { this = scope:target_female_2 }
+				}
+			}
+			save_scope_as = target_female_3
+		}
+
+		every_councillor = {
+			limit = {
+				is_male = yes
+				has_trait = bno_bbc
+			}
+			add_to_temporary_list = bno_council_orgy_bbc_list
+		}
+		random_in_list = {
+			list = bno_council_orgy_bbc_list
+			add_character_flag = bno_council_orgy_leader
+			save_scope_as = target_bbc_1
+		}
+	}
+	# Accept
+	option = {
+		trigger = {
+			NOT = { has_trait = bno_lifestyle_whitegirl }
+		}
+		name = bno_council_orgy_0001.a
+		root = {
+			add_trait = bno_lifestyle_whitegirl
+		}
+		trigger_event = bno_council_orgy.0002
+        ai_chance = {
+            base = 50
+            modifier = {
+                has_trait = lustful
+                factor = 2
+            }
+            modifier = {
+                opinion = {
+                    target = scope:target_bbc_1
+                    value >= medium_positive_opinion
+                }
+                add = 10
+            }
+        }
+	}
+	option = {
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+		}
+		fallback = yes
+		name = bno_council_orgy_0001.b
+        set_variable = {
+            name = bno_council_orgy_rounds
+            value = -1
+        }
+		trigger_event = bno_council_orgy.0002
+        ai_chance = {
+            base = 50
+            modifier = {
+                has_trait = lustful
+                factor = 2
+            }
+            modifier = {
+                opinion = {
+                    target = scope:target_bbc_1
+                    value >= medium_positive_opinion
+                }
+                add = 10
+            }
+            modifier = {
+                has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+                factor = 2
+            }
+            modifier = {
+                has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+                factor = 2
+            }
+        }
+	}
+	# Decline
+	option = {
+		trigger = {
+			NOT = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+			}
+		}
+		name = bno_council_orgy_0001.c
+		show_as_unavailable = {
+			always = yes
+		}
+		stress_impact = {
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+		fire_councillor = scope:target_bbc_1
+        ai_chance = {
+            base = 50
+            modifier = {
+                has_trait = chaste
+                factor = 2
+            }
+            modifier = {
+                has_trait = celibate
+                factor = 5
+            }
+        }
+	}
+}
+
+# Council Meeting Orgy - Orgy Repeatable
+bno_council_orgy.0002 = {
+	type = character_event
+	title = bno_council_orgy_0002.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+                    exists = scope:target_last_character
+					root = scope:target_last_character
+				}
+				desc = bno_council_orgy_0002.desc.root
+			}
+            triggered_desc = {
+				trigger = {
+					exists = scope:target_last_character
+                    scope:target_last_character = {
+                        has_character_flag = bno_council_orgy_left
+                    }
+				}
+				desc = bno_council_orgy_0002.desc.left
+			}
+            triggered_desc = {
+                trigger = {
+                    exists = scope:target_last_character
+                    scope:target_last_character = {
+                        has_character_flag = bno_council_orgy_masturbated
+                        has_character_flag = bno_council_orgy_participated
+                    }
+                }
+                desc = bno_council_orgy_0002.desc.stayed_fucked
+            }
+			triggered_desc = {
+				trigger = {
+					exists = scope:target_last_character
+                    scope:target_last_character = {
+                        has_character_flag = bno_council_orgy_participated
+                    }
+				}
+				desc = bno_council_orgy_0002.desc.fucked
+			}
+            triggered_desc = {
+                trigger = {
+                    exists = scope:target_last_character
+                }
+                desc = bno_council_orgy_0002.desc.watched
+            }
+			desc = bno_council_orgy_0002.desc.c
+		}
+	}
+	theme = realm
+	override_background = {
+		reference = council_chamber
+	}
+	left_portrait = {
+		character = root
+		animation = flirtation
+        triggered_animation = {
+			trigger = {
+				has_character_flag = bno_council_orgy_participated
+			}
+			animation = ecstasy
+		}
+		triggered_outfit = {
+			trigger = {
+				has_character_flag = bno_council_orgy_participated
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target_bbc_1
+		animation = personality_bold
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target_bbc_1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target_female_2
+		animation = shock
+		triggered_animation = {
+			trigger = {
+				scope:target_female_2 = {
+					has_trait = bno_curious
+				}
+			}
+			animation = admiration
+		}
+		triggered_animation = {
+			trigger = {
+				scope:target_female_2 = {
+					OR = {
+						has_trait = bno_blacked
+						has_trait = bno_snowbunny
+					}
+				}
+			}
+			animation = love
+		}
+		triggered_animation = {
+			trigger = {
+				scope:target_female_2 = {
+					OR = {
+						has_trait = bno_qos
+						has_trait = bno_mindless_bbc_slut
+					}
+				}
+			}
+			animation = ecstasy
+		}
+		triggered_outfit = {
+			trigger = {
+				scope:target_female_2 = {
+					has_character_flag = bno_council_orgy_participated
+				}
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target_female_1
+		animation = shock
+		triggered_animation = {
+			trigger = {
+				scope:target_female_1 = {
+					has_trait = bno_curious
+				}
+			}
+			animation = admiration
+		}
+		triggered_animation = {
+			trigger = {
+				scope:target_female_1 = {
+					OR = {
+						has_trait = bno_blacked
+						has_trait = bno_snowbunny
+					}
+				}
+			}
+			animation = love
+		}
+		triggered_animation = {
+			trigger = {
+				scope:target_female_1 = {
+					OR = {
+						has_trait = bno_qos
+						has_trait = bno_mindless_bbc_slut
+					}
+				}
+			}
+			animation = ecstasy
+		}
+		triggered_outfit = {
+			trigger = {
+				scope:target_female_1 = {
+					has_character_flag = bno_council_orgy_participated
+				}
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target_female_3
+		animation = shock
+		triggered_animation = {
+			trigger = {
+				scope:target_female_3 = {
+					has_trait = bno_curious
+				}
+			}
+			animation = admiration
+		}
+		triggered_animation = {
+			trigger = {
+				scope:target_female_3 = {
+					OR = {
+						has_trait = bno_blacked
+						has_trait = bno_snowbunny
+					}
+				}
+			}
+			animation = love
+		}
+		triggered_animation = {
+			trigger = {
+				scope:target_female_3 = {
+					OR = {
+						has_trait = bno_qos
+						has_trait = bno_mindless_bbc_slut
+					}
+				}
+			}
+			animation = ecstasy
+		}
+		triggered_outfit = {
+			trigger = {
+				scope:target_female_3 = {
+					has_character_flag = bno_council_orgy_participated
+				}
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	immediate = {
+		clear_saved_scope = target_female_1
+		clear_saved_scope = target_female_2
+		clear_saved_scope = target_female_3
+		clear_saved_scope = target_bbc_1
+		every_councillor = {
+			limit = {
+				is_female = yes
+			}
+			add_to_temporary_list = bno_council_orgy_female_list
+		}
+		random_in_list = {
+			list = bno_council_orgy_female_list
+			save_scope_as = target_female_1
+		}
+		random_in_list = {
+			list = bno_council_orgy_female_list
+			limit = {
+				NOT = { this = scope:target_female_1 }
+			}
+			save_scope_as = target_female_2
+		}
+		random_in_list = {
+			list = bno_council_orgy_female_list
+			limit = {
+				AND = {
+					NOT = { this = scope:target_female_1 }
+					NOT = { this = scope:target_female_2 }
+				}
+			}
+			save_scope_as = target_female_3
+		}
+
+		any_councillor = {
+			limit = {
+				is_male = yes
+				has_trait = bno_bbc
+				has_character_flag = bno_council_orgy_leader
+			}
+			save_scope_as = target_bbc_1
+		}
+
+        change_variable = {
+            name = bno_council_orgy_rounds
+            add = 1
+        }
+	}
+
+    # Female 1
+    option = {
+        trigger = {
+            exists = scope:target_female_1
+            scope:target_female_1 = {
+                NOT = {
+                    has_character_flag = bno_council_orgy_participated
+                    has_character_flag = bno_council_orgy_left
+                    this = scope:target_last_character
+                }
+            }
+        }
+
+        name = {
+            trigger = {
+                scope:target_female_1 = {
+                    NOT = {
+                        has_trait = bno_lifestyle_whitegirl
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f1a
+        }
+        name = {
+            trigger = {
+                scope:target_female_1 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value < 25
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f1b
+        }
+        name = {
+            trigger = {
+                scope:target_female_1 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value >= 25
+                    }
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value < 75
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f1c
+        }
+        name = {
+            trigger = {
+                scope:target_female_1 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value >= 75
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f1d
+        }
+
+        scope:target_female_1 = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_trait = bno_lifestyle_whitegirl
+                    }
+                }
+
+                add_opinion = {
+                    modifier = gratefulness_opinion
+                    target = root
+                    opinion = 5
+                }
+                random_list = {
+                    # Stay
+                    50 = {
+                        modifier = {
+                            has_trait = lustful
+                            factor = 2
+                        }
+                        modifier = {
+                            opinion = {
+                                target = root
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            opinion = {
+                                target = scope:target_bbc_1
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        desc = bno_council_orgy_0002.stays_to_watch
+                        add_trait = bno_lifestyle_whitegirl
+                        add_character_flag = bno_council_orgy_masturbated
+                    }
+                    # Leave
+                    50 = {
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        desc = bno_council_orgy_0002.leaves
+                        add_character_flag = bno_council_orgy_left
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -10
+                        }
+                    }
+                }
+            }
+            else = {
+                random_list = {
+                    # Join
+                    50 = {
+                        modifier = {
+                            has_trait = lustful
+                            factor = 2
+                        }
+                        modifier = {
+                            opinion = {
+                                target = root
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            opinion = {
+                                target = scope:target_bbc_1
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            has_trait = bno_lifestyle_whitegirl
+                            has_trait_xp = {
+                                trait = bno_lifestyle_whitegirl
+                                value >= 25
+                            }
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = bno_lifestyle_whitegirl
+                            has_trait_xp = {
+                                trait = bno_lifestyle_whitegirl
+                                value >= 75
+                            }
+                            factor = 2
+                        }
+                        modifier = {
+                            add = {
+                                value = var:bno_council_orgy_rounds
+                                factor = 5
+                            }
+                        }
+                        desc = bno_council_orgy_0002.joins
+                        carn_sex_scene_is_orgy = yes
+                        carn_had_sex_with_effect = {
+                            CHARACTER_1 = scope:target_female_1
+                            CHARACTER_2 = scope:target_bbc_1
+                            C1_PREGNANCY_CHANCE = pregnancy_chance
+                            C2_PREGNANCY_CHANCE = pregnancy_chance
+                            STRESS_EFFECTS = scope:carn_sex_stress_effects
+                            DRAMA = scope:carn_sex_drama
+                        }
+                        hidden_effect = {
+                            add_character_flag = bno_council_orgy_participated
+                        }
+                    }
+                    # Stay
+                    50 = {
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        modifier = {
+                            has_trait = bno_lifestyle_whitegirl
+                            factor = 2
+                        }
+                        desc = bno_council_orgy_0002.only_watch
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -5
+                        }
+                        add_character_flag = bno_council_orgy_masturbated
+                    }
+                    # Leave
+                    50 = {
+                        trigger = {
+                            NOT = {
+                                has_trait = bno_lifestyle_whitegirl
+                                has_trait_xp = {
+                                    trait = bno_lifestyle_whitegirl
+                                    value >= 75
+                                }
+                            }
+                        }
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        desc = bno_council_orgy_0002.leaves
+                        add_character_flag = bno_council_orgy_left
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -10
+                        }
+                    }
+                }
+            }
+            save_scope_as = target_last_character
+        }
+        
+        trigger_event = bno_council_orgy.0002
+
+        ai_chance = {
+            base = 50
+            modifier = {
+                has_trait = bno_lifestyle_whitegirl
+                has_trait_xp = {
+                    trait = bno_lifestyle_whitegirl
+                    value >= 25
+                }
+                factor = 2
+            }
+            modifier = {
+                opinion = {
+                    target = scope:target_female_1
+                    value >= medium_positive_opinion
+                }
+                add = 10
+            }
+            modifier = {
+                var:bno_council_orgy_rounds >= 5
+                factor = 0
+            }
+        }
+    }
+
+    # Female 2
+    option = {
+        trigger = {
+            exists = scope:target_female_2
+            scope:target_female_2 = {
+                NOT = {
+                    has_character_flag = bno_council_orgy_participated
+                    has_character_flag = bno_council_orgy_left
+                    this = scope:target_last_character
+                }
+            }
+        }
+
+        name = {
+            trigger = {
+                scope:target_female_2 = {
+                    NOT = {
+                        has_trait = bno_lifestyle_whitegirl
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f2a
+        }
+        name = {
+            trigger = {
+                scope:target_female_2 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value < 25
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f2b
+        }
+        name = {
+            trigger = {
+                scope:target_female_2 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value >= 25
+                    }
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value < 75
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f2c
+        }
+        name = {
+            trigger = {
+                scope:target_female_2 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value >= 75
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f2d
+        }
+
+        scope:target_female_2 = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_trait = bno_lifestyle_whitegirl
+                    }
+                }
+
+                add_opinion = {
+                    modifier = gratefulness_opinion
+                    target = root
+                    opinion = 5
+                }
+                random_list = {
+                    # Stay
+                    50 = {
+                        modifier = {
+                            has_trait = lustful
+                            factor = 2
+                        }
+                        modifier = {
+                            opinion = {
+                                target = root
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            opinion = {
+                                target = scope:target_bbc_1
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        desc = bno_council_orgy_0002.stays_to_watch
+                        add_trait = bno_lifestyle_whitegirl
+                        add_character_flag = bno_council_orgy_masturbated
+                    }
+                    # Leave
+                    50 = {
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        desc = bno_council_orgy_0002.leaves
+                        add_character_flag = bno_council_orgy_left
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -10
+                        }
+                    }
+                }
+            }
+            else = {
+                random_list = {
+                    # Join
+                    50 = {
+                        modifier = {
+                            has_trait = lustful
+                            factor = 2
+                        }
+                        modifier = {
+                            opinion = {
+                                target = root
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            opinion = {
+                                target = scope:target_bbc_1
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            has_trait = bno_lifestyle_whitegirl
+                            has_trait_xp = {
+                                trait = bno_lifestyle_whitegirl
+                                value >= 25
+                            }
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = bno_lifestyle_whitegirl
+                            has_trait_xp = {
+                                trait = bno_lifestyle_whitegirl
+                                value >= 75
+                            }
+                            factor = 2
+                        }
+                        modifier = {
+                            add = {
+                                value = var:bno_council_orgy_rounds
+                                factor = 5
+                            }
+                        }
+                        desc = bno_council_orgy_0002.joins
+                        carn_sex_scene_is_orgy = yes
+                        carn_had_sex_with_effect = {
+                            CHARACTER_1 = scope:target_female_2
+                            CHARACTER_2 = scope:target_bbc_1
+                            C1_PREGNANCY_CHANCE = pregnancy_chance
+                            C2_PREGNANCY_CHANCE = pregnancy_chance
+                            STRESS_EFFECTS = scope:carn_sex_stress_effects
+                            DRAMA = scope:carn_sex_drama
+                        }
+                        hidden_effect = {
+                            add_character_flag = bno_council_orgy_participated
+                        }
+                    }
+                    # Stay
+                    50 = {
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        modifier = {
+                            has_trait = bno_curious
+                            factor = 2
+                        }
+                        desc = bno_council_orgy_0002.only_watch
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -5
+                        }
+                        add_character_flag = bno_council_orgy_masturbated
+                    }
+                    # Leave
+                    50 = {
+                        trigger = {
+                            NOT = { has_trait = bno_mindless_bbc_slut }
+                        }
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        desc = bno_council_orgy_0002.leaves
+                        add_character_flag = bno_council_orgy_left
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -10
+                        }
+                    }
+                }
+            }
+            save_scope_as = target_last_character
+        }
+        trigger_event = bno_council_orgy.0002
+
+        ai_chance = {
+            base = 50
+            modifier = {
+                has_trait = bno_lifestyle_whitegirl
+                has_trait_xp = {
+                    trait = bno_lifestyle_whitegirl
+                    value >= 25
+                }
+                factor = 2
+            }
+            modifier = {
+                opinion = {
+                    target = scope:target_female_1
+                    value >= medium_positive_opinion
+                }
+                add = 10
+            }
+            modifier = {
+                var:bno_council_orgy_rounds >= 5
+                factor = 0
+            }
+        }
+    }
+
+    # Female 3
+    option = {
+        trigger = {
+            exists = scope:target_female_3
+            scope:target_female_3 = {
+                NOT = {
+                    has_character_flag = bno_council_orgy_participated
+                    has_character_flag = bno_council_orgy_left
+                    this = scope:target_last_character
+                }
+            }
+        }
+
+        name = {
+            trigger = {
+                scope:target_female_3 = {
+                    NOT = {
+                        has_trait = bno_lifestyle_whitegirl
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f3a
+        }
+        name = {
+            trigger = {
+                scope:target_female_3 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value < 25
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f3b
+        }
+        name = {
+            trigger = {
+                scope:target_female_3 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value >= 25
+                    }
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value < 75
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f3c
+        }
+        name = {
+            trigger = {
+                scope:target_female_3 = {
+                    has_trait = bno_lifestyle_whitegirl
+                    has_trait_xp = {
+                        trait = bno_lifestyle_whitegirl
+                        value >= 75
+                    }
+                }
+            }
+            text = bno_council_orgy_0002.f3d
+        }
+
+        scope:target_female_3 = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_trait = bno_lifestyle_whitegirl
+                    }
+                }
+
+                add_opinion = {
+                    modifier = gratefulness_opinion
+                    target = root
+                    opinion = 5
+                }
+                random_list = {
+                    # Stay
+                    50 = {
+                        modifier = {
+                            has_trait = lustful
+                            factor = 2
+                        }
+                        modifier = {
+                            opinion = {
+                                target = root
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            opinion = {
+                                target = scope:target_bbc_1
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        desc = bno_council_orgy_0002.stays_to_watch
+                        add_trait = bno_lifestyle_whitegirl
+                        add_character_flag = bno_council_orgy_masturbated
+                    }
+                    # Leave
+                    50 = {
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        desc = bno_council_orgy_0002.leaves
+                        add_character_flag = bno_council_orgy_left
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -10
+                        }
+                    }
+                }
+            }
+            else = {
+                random_list = {
+                    # Join
+                    50 = {
+                        modifier = {
+                            has_trait = lustful
+                            factor = 2
+                        }
+                        modifier = {
+                            opinion = {
+                                target = root
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            opinion = {
+                                target = scope:target_bbc_1
+                                value >= medium_positive_opinion
+                            }
+                            add = 10
+                        }
+                        modifier = {
+                            has_trait = bno_lifestyle_whitegirl
+                            has_trait_xp = {
+                                trait = bno_lifestyle_whitegirl
+                                value >= 25
+                            }
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = bno_lifestyle_whitegirl
+                            has_trait_xp = {
+                                trait = bno_lifestyle_whitegirl
+                                value >= 75
+                            }
+                            factor = 2
+                        }
+                        modifier = {
+                            add = {
+                                value = var:bno_council_orgy_rounds
+                                factor = 5
+                            }
+                        }
+                        desc = bno_council_orgy_0002.joins
+                        carn_sex_scene_is_orgy = yes
+                        carn_had_sex_with_effect = {
+                            CHARACTER_1 = scope:target_female_3
+                            CHARACTER_2 = scope:target_bbc_1
+                            C1_PREGNANCY_CHANCE = pregnancy_chance
+                            C2_PREGNANCY_CHANCE = pregnancy_chance
+                            STRESS_EFFECTS = scope:carn_sex_stress_effects
+                            DRAMA = scope:carn_sex_drama
+                        }
+                        hidden_effect = {
+                            add_character_flag = bno_council_orgy_participated
+                        }
+                    }
+                    # Stay
+                    50 = {
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        modifier = {
+                            has_trait = bno_curious
+                            factor = 2
+                        }
+                        desc = bno_council_orgy_0002.only_watch
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -5
+                        }
+                        add_character_flag = bno_council_orgy_masturbated
+                    }
+                    # Leave
+                    50 = {
+                        trigger = {
+                            NOT = { has_trait = bno_mindless_bbc_slut }
+                        }
+                        modifier = {
+                            has_trait = chaste
+                            factor = 2
+                        }
+                        modifier = {
+                            has_trait = celibate
+                            factor = 5
+                        }
+                        desc = bno_council_orgy_0002.leaves
+                        add_character_flag = bno_council_orgy_left
+                        add_opinion = {
+                            modifier = abused_position_of_trust_opinion
+                            target = root
+                            opinion = -10
+                        }
+                    }
+                }
+            }
+            save_scope_as = target_last_character
+        }
+        trigger_event = bno_council_orgy.0002
+
+        ai_chance = {
+            base = 50
+            modifier = {
+                has_trait = bno_lifestyle_whitegirl
+                has_trait_xp = {
+                    trait = bno_lifestyle_whitegirl
+                    value >= 25
+                }
+                factor = 2
+            }
+            modifier = {
+                opinion = {
+                    target = scope:target_female_1
+                    value >= medium_positive_opinion
+                }
+                add = 10
+            }
+            modifier = {
+                var:bno_council_orgy_rounds >= 5
+                factor = 0
+            }
+        }
+    }
+
+	# Target the root character
+	option = {
+		trigger = {
+			NOT = { has_character_flag = bno_council_orgy_participated }
+		}
+		name = bno_council_orgy_0002.r
+		carn_sex_scene_is_orgy = yes
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target_bbc_1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		hidden_effect = {
+			add_character_flag = bno_council_orgy_participated
+			save_scope_as = target_last_character
+		}
+		trigger_event = bno_council_orgy.0002
+
+        ai_chance = {
+            modifier = {
+                has_trait = lustful
+                factor = 2
+            }
+            modifier = {
+                opinion = {
+                    target = scope:target_bbc_1
+                    value >= medium_positive_opinion
+                }
+                add = 10
+            }
+            modifier = {
+                has_trait = bno_lifestyle_whitegirl
+                has_trait_xp = {
+                    trait = bno_lifestyle_whitegirl
+                    value >= 25
+                }
+                factor = 2
+            }
+            modifier = {
+                has_trait = bno_lifestyle_whitegirl
+                has_trait_xp = {
+                    trait = bno_lifestyle_whitegirl
+                    value >= 75
+                }
+                factor = 2
+            }
+            modifier = {
+                add = {
+                    value = var:bno_council_orgy_rounds
+                    factor = 5
+                }
+            }
+            modifier = {
+                var:bno_council_orgy_rounds >= 5
+                factor = 0
+            }
+        }
+	}
+
+    # End the orgy
+	option = {
+		name = bno_council_orgy_0002.finish
+        fallback = yes
+		hidden_effect = {
+			every_councillor = {
+				remove_character_flag = bno_council_orgy_participated
+                remove_character_flag = bno_council_orgy_masturbated
+                remove_character_flag = bno_council_orgy_left
+			}
+			root = {
+				remove_character_flag = bno_council_orgy_participated
+			}
+		}
+		clear_saved_scope = target_female_1
+		clear_saved_scope = target_female_2
+		clear_saved_scope = target_female_3
+		clear_saved_scope = target_bbc_1
+		clear_saved_scope = target_last_character
+        remove_variable = bno_council_orgy_rounds
+
+        ai_chance = {
+            base = 50
+            modifier = {
+                var:bno_council_orgy_rounds >= 5
+                factor = 10
+            }
+        }
+	}
+}

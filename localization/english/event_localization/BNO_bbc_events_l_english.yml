@@ -1,0 +1,36 @@
+﻿l_english:
+# bno_events00 - invite influence decision
+ bno_events00:0 "Host an African Refugee in your Court"
+ bno_events00.desc:0 "Strange, charcoal colored men fleeing lands from far away have been reported in your realm. Whether they are here under hostile circumstances is unknown. However, their strength is visible, just from a glance.\n\nOnly a few have been sighted among your people. Perhaps they carry foreign culture that may be beneficial? Gifts and insight?\n\nMaybe you should see what they are up to?"
+ bno_events00_decision_tooltip:0 "Foreigners have been summoned to visit your highness"
+ bno_events00_confirm:0 "Send out the heralds"
+ refugee_effect_1:0 "You will be presented with a group of foreigners and can choose one to join your court."
+
+#bno_events01 - receiving influence
+ bno_events01.title:0 "Foreigners Have Arrived!"
+ bno_events01.desc:0 "The few that have been seen within your realm have been gathered before you, in your court. They call themselves various names, hailing from numerous tribes. Nubian, Ghanian, Somalian, Malian. Maybe their foreign influence could help with warfare and diplomacy?\n\nThe surveyors only found few, out of the current refugees, who fit the bill. Each of them, unique in their own way, but equally as dark skinned. Your mind can't help but to wander, recanting tales of land south of the Mediterranean.\n\nThough, now, the decision lies before you. [target1.GetFirstName], [target3.GetFirstName], or [target2.GetFirstName].\n\nWho shall join your court?"
+ bno_events01.a:0 "[target1.GetFirstName] is the most worthy."
+ bno_events01.b:0 "[target2.GetFirstName] is the best candidate."
+ bno_events01.c:0 "[target3.GetFirstName] shall join my court."
+ bno_events01.d:0 "Bless us with your influence..."
+ 
+ #bno_events02 - when receiving a kingdom title and being married to a BBC
+ bno_events02.title:0 "An African King"
+ bno_events02.desc:0 "'My love, you mean to share this? Your lordship of this land?'\n\nYour heart flutters, hands crossed before you submissvely, wholly dedicated to your scheme to end your nation.\n\nYour offspring will bear the strength, color, and intelligence of your beloved.\n\nThe man who was a lion in war, and in the bed.\n\nYour king."
+ bno_events02.a:0 "Let's... head to our bedchambers."
+ 
+ #bno_events03 - when receiving an empire title and being married to a BBC
+ bno_events03.title:0 "The Beginning of the End"
+ bno_events03.desc:0 "With your succession and claim of the highest throne in your realm, your spouse has donned a fitting title. \n\nComing from a far away land, scarecely known by 'white folk,' your lover has not only captivated your heart, but your lands. \n\nThis is only just the beginning, however, as his culture, faith, and complexion invades the native population."
+ bno_events03.a:0 "My race's end is nigh."
+
+#bbcconversion - decision
+ bbcconversion.title:0 "African Supremacy"
+ bbcconversion.desc:0 "You decided to convert to the Church of Black Cock, worshipping black gods only. You have the sudden desire to spread the influence of BBC worldwide"
+ bbcconversion.a:0 "Soon, the world shall bow to black men"
+ 
+ #test
+ bno_election:0 "Adopt a New Succession"
+ bno_election_decision_desc:0 "After scouring documents and fumbling with lines of succession, you've been enlightened by a courtier to don a new type of hierarchy - a hierarchy centered around race, rather than gender."
+ bno_election_decision_tooltip:0 "Give in?"
+ bno_election_decision.a:0 "Yippee!!! Head first!"

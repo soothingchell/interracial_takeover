@@ -1,0 +1,63 @@
+# on_action assigning availability (ors and if/else's) to RANDOM events
+
+#yearly pulse for bno events
+random_yearly_everyone_pulse = {
+    on_actions = {
+        bno_yearly_random_pulse
+    }
+}
+
+# effect trigger_event = { on_action = bno_yearly_random_pulse } use this in console
+
+bno_yearly_random_pulse = {
+    random_events = {
+        chance_to_happen = 95
+		chance_of_no_event = {
+			if = {
+				limit = { is_ai = yes }
+				value = 50
+			}
+		}
+		25 = 0
+		50 = bno_random.0001 #spying on a courtier in the hallway
+        135 = bno_random.0002 #spotting mother
+        135 = bno_random.0003 #spotting sister
+        135 = bno_random.0004 #spotting liege
+        150 = bno_random.0005 #C event
+        150 = bno_random.0006 #C event
+        150 = bno_random.0007 #B event
+        150 = bno_random.0008 #B event
+        150 = bno_random.0009 #S event
+        150 = bno_random.0010 #S event
+        150 = bno_random.0011 #Q event
+        150 = bno_random.0012 #Q event
+        120 = bno_random.0013 #Q+ orgy
+        150 = bno_random.0014 #Married to bbc
+        125 = bno_random.0015 #Player + Family = Q/M+
+		100 = bno_random.0016 #Stumbling upon a courtier changing armor
+		125 = bno_random.0017 #bodyguard consensual. lured court position
+		100 = bno_random.0018 #bodyguard dubcon.
+		125 = bno_random.0019 #champion sex consensual, 
+		100 = bno_random.0020 #liege dinner party, gives curious, can have sex
+		100 = bno_random.0021 #chastity/castrated event for snowbunny+
+		150 = bno_random.0022 #C event
+		150 = bno_random.0023 #C event
+		150 = bno_random.0024 #C event
+		50 = bno_random.0025 #B event
+		100 = bno_random.0026 #find your daughter, can join
+		150 = bno_random.0027 #B event
+		150 = bno_random.0028 #B event
+		145 = bno_random.0029 #B+ pregnant event
+		125 = bno_random.0030 #physician event
+		150 = bno_random.0031 #B event
+		150 = bno_random.0032 #S event
+		150 = bno_random.0033 #S event
+		150 = bno_random.0034 #S event
+		125 = bno_random.0035 #S+ spymaster event
+		150 = bno_random.0036 #Q+ event
+		150 = bno_random.0037 #Q+ event
+		150 = bno_random.0038 #Q+ event
+		50 = bno_random.0039 #guard on guard fight
+		50 = bno_random.0040 #spymaster treachery
+    }
+}

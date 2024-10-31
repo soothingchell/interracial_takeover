@@ -1,0 +1,106 @@
+﻿
+#########################################################################################################################
+#########################################################################################################################
+
+## BARBERSHOP ##
+
+## FACE ##
+
+cosmetics_bno_body_tattoo = {
+	usage = customization
+	
+	no_body_tattoo = { # empty
+		dna_modifiers = {
+			morph = {
+				mode = replace
+				gene = cosmetics_bno_body_tattoo
+				template = bno_no_body_tattoo
+			
+				value = 1.0
+			}
+		}
+	} 
+
+	bno_tattoo_1 = { # CELTIC1
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_body_tattoo
+				template = bno_body_tattoo_1
+				value = 0.10
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+	bno_tattoo_2 = { # CELTIC1
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_body_tattoo
+				template = bno_body_tattoo_2
+				value = 0.15
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+	
+	bno_tattoo_3 = { # CELTIC1
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_body_tattoo
+				template = bno_body_tattoo_3
+				value = 0.20
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+	
+	bno_tattoo_4 = { # CELTIC1
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_body_tattoo
+				template = bno_body_tattoo_4
+				value = 0.25
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+	
+	bno_tattoo_5 = { # CELTIC1
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_body_tattoo
+				template = bno_body_tattoo_5
+				value = 0.30
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+	
+	bno_tattoo_6 = { # CELTIC1
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_body_tattoo
+				template = bno_body_tattoo_6
+				value = 0.35
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}
+}

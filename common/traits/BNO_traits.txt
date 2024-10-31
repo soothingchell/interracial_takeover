@@ -1,0 +1,827 @@
+# trait descriptor file
+
+#WHITEBOY TRAITS
+
+# Level 1 Sissy: Cuck Tendencies
+bno_cuckish = {
+	group = bno_whiteboi
+	level = 1
+	
+	prowess = -2
+
+	ruler_designer_cost = 0
+
+	# child_inheritance_sex = male
+	#fertility = -0.10
+	valid_sex = male
+
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	#ai_sociability = high_negative_ai_value
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_cuckish
+			}
+			desc = trait_bno_cuckish_desc
+		}
+	}
+}
+
+
+# Level 2 Sissy: Cuck
+bno_cuck = {
+	group = bno_whiteboi
+	level = 2
+	
+	martial = -2
+	prowess = -3
+	#max_personal_schemes_add = -1
+
+	ruler_designer_cost = -10
+
+	# child_inheritance_sex = male
+	#fertility = -0.10
+	valid_sex = male
+
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	ai_sociability = high_negative_ai_value
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_cuck
+			}
+			desc = trait_bno_cuck_desc
+		}
+	}
+}
+
+#Level 3 Sissy: Beta
+bno_beta = {
+	group = bno_whiteboi
+	level = 3
+	
+	martial = -4
+	prowess = -4
+	intrigue = -1
+	seduce_scheme_power_mult = -0.20
+	#max_personal_schemes_add = -1
+
+	ruler_designer_cost = -30
+
+	# child_inheritance_sex = male
+	fertility = -0.20
+	valid_sex = male
+	
+	#flag = can_not_marry
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	ai_sociability = high_negative_ai_value
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_beta
+			}
+			desc = trait_bno_beta_desc
+		}
+	}
+}
+
+#Level 4 Sissy: JoS
+bno_jos = {
+	group = bno_whiteboi
+	level = 4
+	
+	martial = -5
+	prowess = -5
+	intrigue = -3
+	stewardship = 2
+	diplomacy = 2
+	seduce_scheme_power_mult = -0.40
+	#max_personal_schemes_add = -1
+
+	ruler_designer_cost = -40
+
+	fertility = -0.20
+	valid_sex = male
+	
+	#flag = can_not_marry
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	ai_sociability = high_negative_ai_value
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_jos
+			}
+			desc = trait_bno_jos_desc
+		}
+	}
+}
+
+#Level 1 Chastity: Caged
+bno_caged = {
+	group = bno_chastity
+	level = 1
+	
+	physical = yes
+	attraction_opinion = -5
+	
+	martial = -2
+	prowess = -5
+	intrigue = -2
+	diplomacy = 3
+	
+	fertility = -0.30
+	
+	valid_sex = male
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_caged
+			}
+			desc = trait_bno_caged_desc
+		}
+	}
+	
+}
+
+#Level 2 Chastity: Castrated
+bno_castrated = {
+	group = bno_chastity
+	level = 2
+	
+	physical = yes
+	
+	attraction_opinion = -20
+	
+	martial = -5
+	prowess = -8
+	intrigue = -3
+	stewardship = 3
+	diplomacy = 5
+	
+	fertility = -1
+	
+	valid_sex = male
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_castrated
+			}
+			desc = trait_bno_castrated_desc
+		}
+	}
+	
+}
+
+#BBC TRAITS
+
+# Fame trait applied to religious converters
+bno_camp_leader = {
+
+	category = fame
+	
+	martial = 3
+	prowess = 3
+	diplomacy = 3
+	intrigue = 3
+	stewardship = 3
+	#monthly_martial_lifestyle_xp_gain_mult = 0.2
+	dread_baseline_add = 10
+	dread_decay_mult = -0.2
+	owned_personal_scheme_success_chance_max_add = 10
+	owned_hostile_scheme_success_chance_max_add = 10
+	#seduce_scheme_power_add = 50
+	max_hostile_schemes_add = 2
+	#owned_personal_scheme_success_chance_add = 50
+	ruler_designer_cost = 30
+	good = yes
+
+	#fertility = 1.0
+	valid_sex = male
+	number_of_spouses = 3
+	number_of_consorts = 10
+
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+
+	ai_honor = very_low_negative_ai_value
+	ai_greed = low_positive_ai_value
+	ai_energy = very_low_positive_ai_value
+	ai_zeal = very_low_negative_ai_value
+	ai_sociability = high_positive_ai_value
+	ai_amenity_target_baseline = 0.3
+	ai_amenity_spending = 0.15
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_camp_leader
+			}
+			desc = trait_bno_camp_leader_desc
+		}
+	}	
+}
+
+bno_bbc = {
+	opposites = {
+		bno_lifestyle_whitegirl
+	}
+
+	same_opinion = 25
+	opposite_opinion = 15
+	attraction_opinion = 15
+
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	different_culture_opinion = 10
+	
+	martial = 3
+	prowess = 5
+	intrigue = 3
+	monthly_martial_lifestyle_xp_gain_mult = 0.1
+	dread_baseline_add = 15
+	dread_decay_mult = -0.2
+	owned_personal_scheme_success_chance_max_add = 10
+	owned_hostile_scheme_success_chance_max_add = 10
+	max_personal_schemes_add = 1
+	max_murder_schemes_add = 1
+	#owned_personal_scheme_success_chance_add = 125
+	diplomatic_range_mult = 1.5
+
+	ruler_designer_cost = 30
+
+	inherit_chance = 100
+	parent_inheritance_sex = male
+	child_inheritance_sex = male
+	inherit_from_real_father = yes
+	valid_sex = male
+	
+	fertility = .5
+	number_of_spouses = 1
+	number_of_consorts = 3
+	
+	good = yes
+	physical = yes
+
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+
+	ai_honor = very_low_negative_ai_value
+	ai_greed = low_positive_ai_value
+	ai_energy = very_low_positive_ai_value
+	ai_zeal = very_low_negative_ai_value
+	ai_sociability = high_positive_ai_value
+	ai_amenity_target_baseline = 0.3
+	ai_amenity_spending = 0.15
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_bbc
+			}
+			desc = trait_bno_bbc_desc
+		}
+	}
+}
+
+# black nationalist trait? bonus to murder schemes.
+# bno_nationalist = {
+# }
+
+#WHITEGIRL TRAITS
+
+bno_curious = {
+	opposites = {
+		bno_black
+	}
+	group = bno_whitegirl
+	level = 1
+
+	inherit_chance = 10 #need to check if it needs to be fraction or not
+	child_inheritance_sex = female
+	birth = .10
+	random_creation = .05
+
+	opposite_opinion = 20
+	seduce_scheme_resistance_add = -20
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	good = yes
+
+	ai_boldness = low_negative_ai_value
+	ai_sociability = low_positive_ai_value
+
+	ruler_designer_cost = 10
+
+	valid_sex = female
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_curious
+			}
+			desc = trait_bno_curious_desc
+		}
+	}
+}
+
+bno_blacked = {
+	opposites = {
+		bno_black
+	}
+	group = bno_whitegirl
+	level = 2
+
+	opposite_opinion = 30
+	
+	martial = -1
+	prowess = -1
+	diplomacy = 2
+	intrigue = 2
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+	dread_baseline_add = -5
+	dread_decay_mult = 0.2
+	seduce_scheme_resistance_add = -20
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	good = yes
+
+	ai_boldness = low_negative_ai_value
+	ai_sociability = low_positive_ai_value
+
+	ruler_designer_cost = 20
+
+	valid_sex = female
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_blacked
+			}
+			desc = trait_bno_blacked_desc
+		}
+	}
+}
+
+bno_snowbunny = {
+	opposites = {
+		bno_bbc
+	}
+	group = bno_whitegirl
+	level = 3
+
+	opposite_opinion = 50
+	
+	martial = -2
+	prowess = -2
+	diplomacy = 3
+	intrigue = 3
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+	dread_baseline_add = -10
+	dread_decay_mult = 0.3
+	seduce_scheme_resistance_add = -20
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	good = yes
+
+	ai_boldness = medium_negative_ai_value
+	ai_sociability = medium_positive_ai_value
+
+	ruler_designer_cost = 40
+
+	valid_sex = female
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_snowbunny
+			}
+			desc = trait_bno_snowbunny_desc
+		}
+	}
+}
+
+bno_qos = {
+	opposites = {
+		bno_black
+	}
+	group = bno_whitegirl
+	level = 4
+
+	opposite_opinion = 100
+
+	martial = -3
+	prowess = -3
+	diplomacy = 5
+	intrigue = 5
+	fertility = 0.25
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.2
+	dread_baseline_add = -15
+	dread_decay_mult = 0.5
+	seduce_scheme_resistance_add = -20
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	good = yes
+
+	ai_boldness = high_negative_ai_value
+	ai_sociability = high_positive_ai_value
+
+	ruler_designer_cost = 50
+
+	valid_sex = female
+	#flag = can_not_marry
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_qos
+			}
+			desc = trait_bno_qos_desc
+		}
+	}
+}
+
+bno_mindless_bbc_slut = { #need to make optional, and instead acquirable through an event
+	opposites = {
+		bno_black
+	}
+	group = bno_whitegirl
+	level = 5
+
+	opposite_opinion = 100
+	
+	martial = -6
+	prowess = -6
+	diplomacy = -6
+	intrigue = -6
+	stewardship = -6
+	learning = -6
+	fertility = .5
+	dread_baseline_add = -10
+	dread_decay_mult = 1.0
+	seduce_scheme_resistance_add = -20
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	good = yes
+
+	ai_boldness = high_negative_ai_value
+	ai_sociability = high_positive_ai_value
+
+	ruler_designer_cost = 10
+
+	valid_sex = female
+	#flag = can_not_marry
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	divorce_allowed = no
+	disables_combat_leadership = yes
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bno_mindless_bbc_slut
+			}
+			desc = trait_bno_mindless_bbc_slut_desc
+		}
+	}
+}
+
+
+
+bno_full_black = {
+	physical = yes
+	good = yes
+	
+	group = bno_blood
+	level = 4
+	
+}
+
+bno_mostly_black = {
+	physical = yes
+	good = yes
+	
+	group = bno_blood
+	level = 3
+}
+
+bno_mixed ={
+	physical = yes
+	good = yes
+	
+	group = bno_blood
+	level = 2
+}
+
+bno_barely_mixed = {
+	physical = yes
+	good = yes
+	
+	group = bno_blood
+	level = 1
+	
+}
+
+
+
+
+bno_lifestyle_whitegirl = {
+	category = lifestyle
+	group = bno_whitegirl
+	valid_sex = female
+	
+	opposites = {
+		bno_bbc
+	}
+
+	good = yes
+
+	ai_boldness = low_negative_ai_value
+	ai_sociability = low_positive_ai_value
+
+	# Modifiers
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+	flag = carn_no_consequences_for_extramarital_sex_with_others
+	
+	same_opinion = 20
+	opposite_opinion = 20
+	
+	seduce_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
+	
+	track = {
+		0 = {
+			opposite_opinion = 20
+			seduce_scheme_resistance_add = -20
+			
+		}
+		25 = {
+			opposite_opinion = 40
+	
+			martial = -1
+			prowess = -1
+			diplomacy = 2
+			intrigue = 2
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.1
+			dread_baseline_add = -5
+			dread_decay_mult = 0.2
+			seduce_scheme_resistance_add = -5
+		}
+		50 = {
+			opposite_opinion = 60
+	
+			martial = -1
+			prowess = -1
+			diplomacy = 1
+			intrigue = 1
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.1
+			dread_baseline_add = -10
+			seduce_scheme_resistance_add = -5
+		}
+		75 = {
+			opposite_opinion = 80
+	
+			martial = -2
+			prowess = -2
+			diplomacy = 2
+			intrigue = 2
+			fertility = 0.25
+			dread_baseline_add = -10
+			dread_decay_mult = 0.3
+			seduce_scheme_resistance_add = -10
+		}
+		100 = {
+			opposite_opinion = 100
+	
+			martial = -3
+			prowess = -6
+			diplomacy = -7
+			intrigue = -7
+			stewardship = -5
+			learning = -5
+			fertility = .25
+			dread_baseline_add = -10
+			dread_decay_mult = 0.5
+			seduce_scheme_resistance_add = -20
+		}
+	}
+
+	ruler_designer_cost = 30
+	
+	icon = {
+		first_valid = {
+			triggered_desc = {
+			trigger = {
+				exists = this
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+			}
+			desc = bno_mindless_bbc_slut.dds
+			}
+			triggered_desc = {
+			trigger = {
+				exists = this
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+			}
+			desc = bno_qos.dds
+			}
+			triggered_desc = {
+			trigger = {
+				exists = this
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 50
+				}
+			}
+			desc = bno_snowbunny.dds
+			}
+			triggered_desc = {
+			trigger = {
+				exists = this
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+			}
+			desc = bno_blacked.dds
+			}
+			triggered_desc = {
+			trigger = {
+				exists = this
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 25
+				}
+			}
+			desc = bno_curious.dds
+			}
+		}
+	}
+
+	# Loc
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 100
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_5
+			}
+			#Famous Reveler
+			triggered_desc = {
+				trigger = { 
+					exists = this
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 75
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_4
+			}
+			triggered_desc = {
+				trigger = { 
+					exists = this
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 50
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_3
+			}
+			triggered_desc = {
+				trigger = { 
+					exists = this
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 25
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_2
+			}
+			triggered_desc = {
+				trigger = { 
+					exists = this
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value < 25
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_1
+			}
+			
+			desc = trait_bno_lifestyle_whitegirl
+		}
+	}
+
+	# Loc
+	desc = {
+		first_valid = {
+			#The trait can never go higher than the first level if it's not assigned to a character
+			triggered_desc = {
+				trigger = { 
+					NOT = { exists = this } 
+				}
+				desc = trait_bno_lifestyle_whitegirl_1_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 100
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_5_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 75
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_4_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 50
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_3_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 25
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_2_desc
+			}
+			triggered_desc = {
+				trigger = { 
+					exists = this
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value < 25
+					}
+				}
+				desc = trait_bno_lifestyle_whitegirl_1_desc
+			}
+			desc = trait_bno_lifestyle_whitegirl_desc
+		}
+	}
+	
+}

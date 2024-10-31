@@ -1,0 +1,713 @@
+#Event details for travelling events
+
+namespace = bno_travel_events
+
+#astray from your group of travelers, run into a foriegner. bestow alms or arouse
+bno_travel_events.0001 = { #charity for a wandering african
+	type = character_event
+	title = bno_travel_events_0001.title
+	desc = bno_travel_events_0001.desc
+	theme = travel
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		outfit_tags = { beggar_rags }
+	}
+	
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	
+	cooldown = { years = 2s	} #used for spacing out the event triggering if we include a lot of events for travelling. might do
+	trigger = {
+		is_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		root = {
+			is_female = yes
+			is_adult = yes
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			create_character = {
+			gender = male
+			save_scope_as = target1
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+			}
+		}
+	}
+	
+	option = { #help the man as charity
+		name = bno_travel_events_0001.a
+		
+		remove_short_term_gold = tiny_gold_value
+		add_piety = minor_piety_value
+		
+		stress_impact = {
+			greedy = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			avaricious = minor_stress_impact_gain
+			callous = minor_stress_impact_gain
+			bno_lifestyle_whitegirl = minor_stress_impact_loss
+		}
+	}
+	
+	option = { #if blacked or above, give him a few hints
+		name = bno_travel_events_0001.b
+		
+		trigger = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 3
+		}
+		stress_impact = {
+			bno_lifestyle_whitegirl = minor_stress_impact_loss
+		}
+	}
+	
+	option = { #scoff the peasant off
+		name = bno_travel_events_0001.c
+		
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -5
+		}
+		
+		add_piety = miniscule_piety_loss
+		add_stress = 10	
+	}
+}
+
+#refugee seeking to join the troupe
+bno_travel_events.0002 = { #courtier asks to join
+	
+	type = character_event
+	title = bno_travel_events_0002.title
+	desc = bno_travel_events_0002.desc
+	theme = travel
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	
+	cooldown = { years = 2 } #used for spacing out the event triggering if we include a lot of events for travelling. might do
+	trigger = {
+		is_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		root = {
+			is_female = yes
+			is_adult = yes
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			create_character = {
+			gender = male
+			save_scope_as = target1
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+			}
+		}
+	}
+	
+	option = { #make him a courtier
+		name = bno_travel_events_0002.a
+		add_courtier = scope:target1
+	}
+	
+	option = { #if blacked or above, promise a little hookup + room in court
+		name = bno_travel_events_0002.b
+		
+		trigger = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 1
+		}
+		add_courtier = scope:target1
+		trigger_event = bno_travel_events.2002
+	}
+	
+	option = { #deny access
+		name = bno_travel_events_0002.c
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -3
+		}
+		stress_impact = {
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+#sneaking away later for a hookup
+bno_travel_events.2002 = { 
+	type = character_event
+	title = bno_travel_events_2002.title
+	desc = bno_travel_events_2002.desc
+	theme = travel
+	
+	override_background = {
+		reference = army_camp
+	}
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	
+	option = {
+		name = bno_travel_events_2002.a
+	}
+}
+
+#foriegner sneaks into your camp, has heard of your sexual grandeur, prepares to do the deed
+bno_travel_events.0003 = {
+	
+	type = character_event
+	title = bno_travel_events_0003.title
+	desc = bno_travel_events_0003.desc
+	theme = travel
+	
+	override_background = {
+		reference = army_camp
+	}
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { years = 2 } #used for spacing out the event triggering if we include a lot of events for travelling. might do
+	trigger = {
+		is_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			create_character = {
+			gender = male
+			save_scope_as = target1
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+			}
+		}
+	}
+	
+	option = { #no! im not into noncon!
+		name = bno_travel_events_0003.a
+		imprison = {
+			target = scope:target1
+		}
+	}
+	option = { #eep
+		name = bno_travel_events_0003.b
+		trigger_event = bno_travel_events.2003
+	}
+}
+
+bno_travel_events.2003 = { #accepting of the stranger
+	type = character_event
+	title = bno_travel_events_2003.title
+	desc = bno_travel_events_2003.desc
+	theme = travel
+	
+	override_background = {
+		reference = army_camp
+	}
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	
+	option = {
+		name = bno_travel_events_2003.a
+		add_gold = 5 #left his coin purse
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+#if you have a black courtier, sleep with him outside of the tents
+bno_travel_events.0004 = {
+	type = character_event
+	title = bno_travel_events_0004.title
+	desc = bno_travel_events_0004.desc
+	theme = travel
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { years = 2 }
+	
+	trigger = {
+		is_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+		current_travel_plan = {
+			any_entourage_character = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		current_travel_plan = {
+			random_entourage_character = {
+				limit = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+		}
+	}
+	
+	option = { #sex
+		name = bno_travel_events_0004.a
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		trigger_event = bno_travel_events.1004
+	}
+	
+	option = { #sex +
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+			}
+		}
+		name = bno_travel_events_0004.b
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		trigger_event = bno_travel_events.2004
+	}
+}
+
+bno_travel_events.1004 = {
+	type = character_event
+	title = bno_travel_events_1004.title
+	desc = bno_travel_events_1004.desc
+	theme = travel
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_travel_events_0004.a
+	}
+}
+
+bno_travel_events.2004 = {
+	type = character_event
+	title = bno_travel_events_2004.title
+	desc = bno_travel_events_2004.desc
+	theme = travel
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_travel_events_0004.a
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+	}
+}
+
+#if you are blacked, get horny and be forced to make due with what you have
+bno_travel_events.0005 = {
+	type = character_event
+	title = bno_travel_events_0005.title
+	desc = bno_travel_events_0005.desc
+	theme = travel
+	
+	override_background = {
+		reference = army_camp
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { years = 2 }
+	
+	trigger = {
+		is_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+		}
+	}
+	
+	option = { #fingers
+		name = bno_travel_events_0005.a
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 2
+		}
+		add_stress = -5
+		trigger_event = bno_travel_events.1005
+	}
+	
+	option = { #dubious dildo 
+		name = bno_travel_events_0005.b
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		add_stress = -15
+		
+		if = {
+			limit = {
+				has_trait = lustful
+			}
+			add_stress = -15
+		}
+		
+		trigger_event = bno_travel_events.2005
+	}
+	
+	option = { #suppress desires
+		name = bno_travel_events_0005.c
+		add_stress = 15
+	}
+}
+
+bno_travel_events.1005 = {
+	type = character_event
+	title = bno_travel_events_1005.title
+	desc = bno_travel_events_1005.desc
+	theme = travel
+	
+	override_background = {
+		reference = army_camp
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_travel_events_1005.a
+	}
+}
+
+bno_travel_events.2005 = {
+	type = character_event
+	title = bno_travel_events_2005.title
+	desc = bno_travel_events_2005.desc
+	theme = travel
+	
+	override_background = {
+		reference = army_camp
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_lustful
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_travel_events_2005.a
+	}
+}
+
+#if you have decent fame and are qos+, you are clearly renowned. spitroast in a local town
+bno_travel_events.0006 = {
+}
+
+#if you have decent fame and are qos+, you are clearly renowned. a cucked male spawns, grovels at your feet
+bno_travel_events.0007 = {
+}
+
+#if you have decent fame and are qos+, you are clearly renowned. a female spawns, intrigued in the lifestyle, having run away from her family
+bno_travel_events.0008 = {
+}
+
+#come across a female getting shared. ask to join
+bno_travel_events.0009 = {
+}
+
+#white male spawns, asks for alms. you can run him over, or if you have a black master of the horse, kill him.
+bno_travel_events.0010 = {
+}
+
+#black master of the horse -> fills you
+bno_travel_events.0011 = {
+}
+
+#The White Killer
+bno_travel_events.0012 = {
+}
+
+

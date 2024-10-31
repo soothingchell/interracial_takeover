@@ -1,0 +1,203 @@
+#
+bbc_camp_01 = {
+
+	construction_time = slow_construction_time 
+
+	cost_gold =expensive_building_tier_2_cost
+	can_construct_potential = { 
+		scope:holder ={
+			OR = {
+				has_trait = bno_bbc
+				has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 75
+				}
+			}
+		}
+	}
+	
+	is_enabled = {
+		county.holder = { has_title = prev.duchy }
+	}
+	show_disabled = yes
+
+	province_modifier = { # add province modifiers here
+		monthly_income = 0.3
+   }
+
+   character_modifier = {
+		knight_limit = 2
+		knight_effectiveness_mult = 0.1
+		men_at_arms_limit = 1
+   }
+
+   type_icon = "icon_building_warcamps.dds"
+
+   type = duchy_capital
+
+   next_building = bbc_camp_02
+
+   ai_value = { # The priority to build the building
+	   base = 100
+   }
+}
+
+bbc_camp_02 = {
+
+	construction_time = slow_construction_time 
+
+	cost_gold =expensive_building_tier_3_cost
+
+	can_construct_potential = { 
+		scope:holder ={
+			OR = {
+				has_trait = bno_bbc
+				has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 75
+				}
+			}
+		}
+	}
+
+	is_enabled = {
+		county.holder = { has_title = prev.duchy }
+	}
+
+	province_modifier = { # add province modifiers here
+		monthly_income = 0.6
+   }
+
+   character_modifier = {
+		knight_limit = 4
+		knight_effectiveness_mult = 0.2
+		men_at_arms_limit = 1
+   }
+
+   type_icon = "icon_building_warcamps.dds"
+
+   type = duchy_capital
+
+   next_building = bbc_camp_03
+
+   ai_value = { # The priority to build the building
+	   base = 100
+   }
+}
+
+bbc_camp_03 = {
+
+	construction_time = slow_construction_time 
+
+	cost_gold =expensive_building_tier_4_cost
+
+	can_construct_potential = { 
+		scope:holder ={
+			OR = {
+				has_trait = bno_bbc
+				has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 75
+				}
+			}
+		}
+	}
+
+	province_modifier = { # add province modifiers here
+		monthly_income = 1
+   }
+
+   character_modifier = {
+		knight_limit = 6
+		knight_effectiveness_mult = 0.3
+		men_at_arms_limit = 1
+   }
+
+   type_icon = "icon_building_warcamps.dds"
+
+   type = duchy_capital
+
+   next_building = bbc_camp_04
+
+   ai_value = { # The priority to build the building
+	   base = 100
+   }
+}
+
+bbc_camp_04 = {
+
+	construction_time = slow_construction_time 
+
+	cost_gold =expensive_building_tier_5_cost
+
+	can_construct_potential = { 
+		scope:holder ={
+			OR = {
+				has_trait = bno_bbc
+				has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 75
+				}
+			}
+		}
+	}
+
+	province_modifier = { # add province modifiers here
+		monthly_income = 1.3
+   }
+
+   character_modifier = {
+		knight_limit = 8
+		knight_effectiveness_mult = 0.4
+		men_at_arms_limit = 1
+   }
+
+   type_icon = "icon_building_warcamps.dds"
+
+   type = duchy_capital
+
+   next_building = bbc_camp_05
+
+   ai_value = { # The priority to build the building
+	   base = 100
+   }
+}
+
+bbc_camp_05 = {
+
+	construction_time = slow_construction_time 
+
+	cost_gold =expensive_building_tier_6_cost
+
+	can_construct_potential = { 
+		scope:holder ={
+			OR = {
+				has_trait = bno_bbc
+				has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 75
+				}
+			}
+		}
+	}
+
+	province_modifier = { # add province modifiers here
+		monthly_income = 1.6
+   }
+
+   character_modifier = {
+		knight_limit = 10
+		knight_effectiveness_mult = 0.5
+		men_at_arms_limit = 2
+   }
+
+   type_icon = "icon_building_warcamps.dds"
+
+   type = duchy_capital
+
+   next_building = bbc_camp_06
+
+   ai_value = { # The priority to build the building
+	   base = 100
+   }
+}

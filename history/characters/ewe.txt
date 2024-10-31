@@ -1,0 +1,455 @@
+﻿#Ewe characters
+
+#placeholders for c_ewe
+
+ewe0001 = {
+	name = "Ewale" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	trait = bno_bbc
+    trait = bno_full_black
+	835.1.1 = {
+		birth = yes
+	}
+	890.1.1 = {
+		death = yes
+	}
+}
+ewe0002 = {
+	name = "Kginginfra" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0001
+	trait = bno_bbc
+    trait = bno_full_black
+	870.1.1 = {
+		birth = yes
+	}
+	933.1.1 = {
+		death = yes
+	}
+}
+ewe0003 = {
+	name = "Sha_moye" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0002
+	trait = bno_bbc
+    trait = bno_full_black
+	915.1.1 = {
+		birth = yes
+	}
+	990.1.1 = {
+		death = yes
+	}
+}
+ewe0004 = {
+	name = "Ewale" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0003
+	trait = bno_bbc
+    trait = bno_full_black
+	973.1.1 = {
+		birth = yes
+	}
+	1050.1.1 = {
+		death = yes
+	}
+}
+ewe0005 = {
+	name = "Sha_moye" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0004
+	trait = bno_bbc
+    trait = bno_full_black
+	1022.1.1 = {
+		birth = yes
+	}
+	1081.1.1 = {
+		death = yes
+	}
+}
+ewe0006 = {
+	name = "Aso_wura" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0005
+	trait = bno_bbc
+    trait = bno_full_black
+	1062.1.1 = {
+		birth = yes
+	}
+	1120.1.1 = {
+		death = yes
+	}
+}
+ewe0007 = {
+	name = "Ewale" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0006
+	trait = bno_bbc
+    trait = bno_full_black
+	1100.1.1 = {
+		birth = yes
+	}
+	1159.1.1 = {
+		death = yes
+	}
+}
+ewe0008 = {
+	name = "Yomba" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0007
+	trait = bno_bbc
+    trait = bno_full_black
+	1142.1.1 = {
+		birth = yes
+	}
+	1199.1.1 = {
+		death = yes
+	}
+}
+ewe0009 = {
+	name = "Boreginkpr" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0008
+	trait = bno_bbc
+    trait = bno_full_black
+	1180.1.1 = {
+		birth = yes
+	}
+	1235.1.1 = {
+		death = yes
+	}
+}
+ewe0010 = {
+	name = "Aso_wura" #fictional
+	dynasty = ewedyn001
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0009
+	trait = bno_bbc
+    trait = bno_full_black
+	1215.1.1 = {
+		birth = yes
+	}
+	1270.1.1 = {
+		death = yes
+	}
+}
+
+#rulers in c_todo
+ewe0011 = {
+	name = "Obosu" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	trait = bno_bbc
+    trait = bno_full_black
+	830.1.1 = {
+		birth = yes
+	}
+	880.1.1 = {
+		death = yes
+	}
+}
+ewe0012 = {
+	name = "Nefa" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0011
+	trait = bno_bbc
+    trait = bno_full_black
+	865.1.1 = {
+		birth = yes
+	}
+	930.1.1 = {
+		death = yes
+	}
+}
+ewe0013 = {
+	name = "Lomashie" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0012
+	trait = bno_bbc
+    trait = bno_full_black
+	910.1.1 = {
+		birth = yes
+	}
+	983.1.1 = {
+		death = yes
+	}
+}
+ewe0014 = {
+	name = "Amankwa" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0013
+	trait = bno_bbc
+    trait = bno_full_black
+	960.1.1 = {
+		birth = yes
+	}
+	1035.1.1 = {
+		death = yes
+	}
+}
+ewe0015 = {
+	name = "Lomashie" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0014
+	trait = bno_bbc
+    trait = bno_full_black
+	1018.1.1 = {
+		birth = yes
+	}
+	1075.1.1 = {
+		death = yes
+	}
+}
+ewe0016 = {
+	name = "Nefa" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0015
+	trait = bno_bbc
+    trait = bno_full_black
+	1058.1.1 = {
+		birth = yes
+	}
+	1115.1.1 = {
+		death = yes
+	}
+}
+ewe0017 = {
+	name = "Obosu" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0016
+	trait = bno_bbc
+    trait = bno_full_black
+	1095.1.1 = {
+		birth = yes
+	}
+	1149.1.1 = {
+		death = yes
+	}
+}
+ewe0018 = {
+	name = "Mankre" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0017
+	trait = bno_bbc
+    trait = bno_full_black
+	1132.1.1 = {
+		birth = yes
+	}
+	1195.1.1 = {
+		death = yes
+	}
+}
+ewe0019 = {
+	name = "Aso_wura" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0018
+	trait = bno_bbc
+    trait = bno_full_black
+	1177.1.1 = {
+		birth = yes
+	}
+	1230.1.1 = {
+		death = yes
+	}
+}
+ewe0020 = {
+	name = "Nefa" #fictional
+	dynasty = ewedyn002
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0019
+	trait = bno_bbc
+    trait = bno_full_black
+	1210.1.1 = {
+		birth = yes
+	}
+	1264.1.1 = {
+		death = yes
+	}
+}
+
+#fictional rulers for c_sokode and c_savalu
+ewe0021 = {
+	name = "Samafon" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	trait = bno_bbc
+    trait = bno_full_black
+	835.1.1 = {
+		birth = yes
+	}
+	890.1.1 = {
+		death = yes
+	}
+}
+ewe0022 = {
+	name = "Ataawa" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0021
+	trait = bno_bbc
+    trait = bno_full_black
+	870.1.1 = {
+		birth = yes
+	}
+	933.1.1 = {
+		death = yes
+	}
+}
+ewe0023 = {
+	name = "Sorkowule" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0022
+	trait = bno_bbc
+    trait = bno_full_black
+	915.1.1 = {
+		birth = yes
+	}
+	990.1.1 = {
+		death = yes
+	}
+}
+ewe0024 = {
+	name = "Awale" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0023
+	trait = bno_bbc
+    trait = bno_full_black
+	973.1.1 = {
+		birth = yes
+	}
+	1050.1.1 = {
+		death = yes
+	}
+}
+ewe0025 = {
+	name = "Afiso" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0024
+	trait = bno_bbc
+    trait = bno_full_black
+	1022.1.1 = {
+		birth = yes
+	}
+	1081.1.1 = {
+		death = yes
+	}
+}
+ewe0026 = {
+	name = "Dambatu" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0025
+	trait = bno_bbc
+    trait = bno_full_black
+	1062.1.1 = {
+		birth = yes
+	}
+	1120.1.1 = {
+		death = yes
+	}
+}
+ewe0027 = {
+	name = "Dambatu" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0026
+	trait = bno_bbc
+    trait = bno_full_black
+	1100.1.1 = {
+		birth = yes
+	}
+	1159.1.1 = {
+		death = yes
+	}
+}
+ewe0028 = {
+	name = "Afiso" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0027
+	trait = bno_bbc
+    trait = bno_full_black
+	1142.1.1 = {
+		birth = yes
+	}
+	1199.1.1 = {
+		death = yes
+	}
+}
+ewe0029 = {
+	name = "Mantenso" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0028
+	trait = bno_bbc
+    trait = bno_full_black
+	1180.1.1 = {
+		birth = yes
+	}
+	1235.1.1 = {
+		death = yes
+	}
+}
+ewe0030 = {
+	name = "Afiso" #fictional
+	dynasty = ewedyn003
+	religion = west_african_orisha_pagan
+	culture = ewe
+	father = ewe0029
+	trait = bno_bbc
+    trait = bno_full_black
+	1215.1.1 = {
+		birth = yes
+	}
+	1270.1.1 = {
+		death = yes
+	}
+}

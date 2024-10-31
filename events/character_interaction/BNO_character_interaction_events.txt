@@ -1,0 +1,92 @@
+#influence child event
+#test
+
+namespace = bno_character_interaction
+
+bno_character_interaction.0001 = { #child influence success
+	type = character_event
+	title = bno_character_interaction_0001.title
+	desc = bno_character_interaction_0001.desc
+	theme = family
+	override_background = {
+		reference = garden
+	}
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = admiration
+	}
+
+	immediate = {
+#		scope:recipient = {
+#			set_favorite_toy_effect = yes
+#		}
+	}
+
+	option = { 
+		name = bno_character_interaction_0001.a
+		add_opinion = {
+			target = scope:recipient
+			modifier = pleased_opinion
+			opinion = 20
+		}
+		scope:recipient = {
+			add_opinion = {
+				target = root
+				modifier = admiration_opinion
+				opinion = 20
+			}
+		}
+		stress_impact = {
+			base = minor_stress_impact_gain
+		}
+	}
+}
+
+bno_character_interaction.0002 = { #child influence fail
+	type = character_event
+	title = bno_character_interaction_0001.title
+	desc = bno_character_interaction_0002.desc
+	theme = family
+	override_background = {
+		reference = garden
+	}
+	
+	left_portrait = {
+		character = root
+		animation = stress
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = clutching_toy
+	}
+
+	immediate = {
+#		scope:recipient = {
+#			set_favorite_toy_effect = yes
+#		}
+	}
+
+	option = { 
+		name = bno_character_interaction_0001.a
+		scope:recipient = {
+			add_opinion = {
+				target = root
+				modifier = confused_opinion
+				opinion = -20
+			}
+		}
+		add_opinion = {
+			target = scope:recipient
+			modifier = disappointed_opinion
+			opinion = -20
+		}
+		stress_impact = {
+			base = medium_stress_impact_gain
+		}
+	}
+}

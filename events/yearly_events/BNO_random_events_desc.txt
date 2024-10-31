@@ -1,0 +1,9106 @@
+# RANDOM events description file
+
+namespace = bno_random
+
+#Random Curious Courtier Sex or Threesome CBS
+bno_random.0001 = {
+	type = character_event
+	title = bno_random_0001.title
+	desc = bno_random_0001.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = eavesdrop
+	}
+	
+	cooldown = { months = 6 }
+	trigger = {
+		root = {
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			any_courtier_or_guest = {
+				is_adult = yes
+				is_female = yes
+				is_ruler = no
+				is_ai = yes
+			}
+			
+			is_female = yes
+			is_adult = yes
+			
+		}
+	}
+	
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		
+		random_courtier_or_guest = {
+			limit = {
+				is_adult = yes
+				is_female = yes
+				is_ruler = no
+				is_ai = yes
+			}
+			save_scope_as = target2
+		}
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = scope:target2
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		scope:target2 = {
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 20
+			}
+		}
+		
+		scope:target1 = {
+			hidden_effect = {
+				set_relation_lover = {
+					target = scope:target2
+					reason = "BBC is too good to resist"
+					province = $LOCATION$
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				scope:target2 = {
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			scope:target2 = {
+				primary_spouse = {
+					become_more_cuck_effect = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_0001.a
+		trigger_event = bno_random.1001
+	}
+	
+	option = {
+		name = bno_random_0001.b
+		trigger_event = bno_random.2001
+
+	}
+	
+	option = {
+		name = bno_random_0001.c
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -2
+		}
+		imprison = {
+			target = scope:target1
+		}
+		imprison = {
+			target = scope:target2
+		}
+	}
+}
+
+#0001 followup A
+bno_random.1001 = {
+	type = character_event
+	title = bno_random_1001.title
+	desc = bno_random_1001.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	
+	right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = root
+		animation = eavesdrop
+	}
+	
+	option = { 
+		name =  bno_random_1001.a
+		
+		trigger = {
+			NOT = { has_trait = bno_lifestyle_whitegirl }
+		}
+		add_trait = bno_lifestyle_whitegirl
+	}
+	option = { 
+		name =  bno_random_1001.b
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+		}
+		add_stress = -15
+	}
+	option = { #denial
+		name =  bno_random_1001.c
+		add_stress = 10
+	}
+}
+
+#0001 followup B
+bno_random.2001 = {
+	type = character_event
+	title = bno_random_2001.title
+	desc = bno_random_2001.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	
+	lower_left_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { #taking the plunge
+		name =  bno_random_2001.a
+		
+		if = {
+			NOT = {
+				has_trait = bno_lifestyle_whitegirl
+			}
+			add_trait = bno_lifestyle_whitegirl
+		}
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		if = {
+			limit = {
+				has_trait = bno_lifestyle_whitegirl
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 25
+				}
+			}
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 20
+			}
+		}
+		
+		add_stress = -25
+	}
+}
+
+#Random Curious Mother Sex or Threesome CBS
+bno_random.0002 = {
+	type = character_event
+	title = bno_random_0002.title
+	desc = bno_random_0002.desc
+	theme = realm
+	override_background = {
+		reference = bedchamber
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = disbelief
+	}
+	
+	cooldown = { months = 6 }
+	
+	trigger = {
+		root = {
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			any_close_family_member = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+				is_adult = yes
+				is_female = yes
+				is_parent_of = root
+				is_ai = yes
+			}
+			is_female = yes
+			is_adult = yes
+		}
+	}
+	
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		random_close_family_member = {
+			limit = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+				is_adult = yes
+				is_female = yes
+				is_ai = yes
+				is_parent_of = root
+			}
+			save_scope_as = target2
+		}
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = scope:target2
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		scope:target2 = {
+			add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 20
+			}
+		}
+		
+		scope:target1 = {
+			hidden_effect = {
+				set_relation_lover = {
+					target = scope:target2
+					reason = "BBC is too good to resist"
+					province = $LOCATION$
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				scope:target2 = {
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			scope:target2 = {
+				primary_spouse = {
+					become_more_cuck_effect = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_0002.a
+		
+		if = {
+			limit = {
+				NOT = {
+					has_trait = bno_lifestyle_whitegirl
+				}
+			}
+			add_trait = bno_lifestyle_whitegirl
+		}
+		
+		trigger_event = bno_random.1002
+	}
+	
+	option = {
+		name = bno_random_0002.b
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+		
+		trigger_event = bno_random.2002
+	}
+	
+	option = {
+		name = bno_random_0002.c
+		stress_impact = {   
+			bno_lifestyle_whitegirl = medium_stress_impact_gain
+		}
+	}
+}
+
+bno_random.1002 = {
+	type = character_event
+	title = bno_random_1002.title
+	desc = bno_random_1002.desc
+	theme = realm
+	override_background = {
+		reference = bedchamber
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = disbelief
+	}
+	
+	option = {
+		name = bno_random_1002.a
+	}
+}
+
+bno_random.2002 = { 
+	type = character_event
+	title = bno_random_2002.title
+	desc = {
+		triggered_desc = {
+			trigger = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+			}
+			desc = bno_random_2002.desc1
+		}
+		triggered_desc = {
+			trigger = {
+				has_trait = bno_lifestyle_whitegirl
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 75
+				}
+			}
+			desc = bno_random_2002.desc2
+		}
+	}
+	theme = realm
+	override_background = {
+		reference = bedchamber
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2002.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 10
+				}
+		add_stress = -25
+	}
+}
+
+#Random Curious Sister Sex or Threesome CBS
+bno_random.0003 = {
+	type = character_event
+	title = bno_random_0003.title
+	desc = bno_random_0003.desc
+	theme = realm
+	override_background = {
+		reference = garden
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = shock
+	}
+	
+	cooldown = { months = 6 }
+	
+	trigger = {
+		root = {
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			any_close_family_member = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+				is_adult = yes
+				is_female = yes
+				is_sibling_of = root
+				is_ai = yes
+			}
+			is_female = yes
+			is_adult = yes
+		}
+	}
+	
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		random_close_family_member = {
+			limit = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+				is_adult = yes
+				is_female = yes
+				is_ai = yes
+				is_sibling_of = root
+			}
+			save_scope_as = target2
+		}
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = scope:target2
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		scope:target2 = {
+			add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 20
+				}
+		}
+		
+		scope:target1 = {
+			hidden_effect = {
+				set_relation_lover = {
+					target = scope:target2
+					reason = "BBC is too good to resist"
+					province = $LOCATION$
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				scope:target2 = {
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			scope:target2 = {
+				primary_spouse = {
+					become_more_cuck_effect = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_0003.a
+		if = {
+			limit = {
+				NOT = {
+					has_trait = bno_lifestyle_whitegirl
+				}
+			}
+			add_trait = bno_lifestyle_whitegirl
+		}
+	}
+	
+	option = {
+		name = bno_random_0003.b
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 10
+		}
+		
+		trigger_event = bno_random.2003
+	}
+	option = {
+		name = bno_random_0003.c
+		stress_impact = {   
+			bno_lifestyle_whitegirl = medium_stress_impact_gain
+		}
+		
+		scope:target1 = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -20
+			}
+		}
+		
+		scope:target2 = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -20
+			}
+		}
+	}
+}
+
+bno_random.2003 = {
+	type = character_event
+	title = bno_random_2003.title
+	desc = bno_random_2003.desc
+	theme = realm
+	
+	override_background = {
+		reference = garden
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = shock
+	}
+	
+	option = {
+		name = bno_random_2003.a
+		add_stress = -25
+	}
+}
+
+#Random Curious Liege Mindless
+bno_random.0004 = {
+	type = character_event
+	title = bno_random_0004.title
+	desc = bno_random_0004.desc
+	theme = realm
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = throne_room_kneel_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 6 }
+	
+	trigger = {
+		root = {
+			any_liege_or_above = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+				is_adult = yes
+				is_female = yes
+				is_ai = yes
+				is_married = yes
+				primary_spouse = {
+					has_trait = bno_bbc
+				}
+			}
+			NOT = {
+				has_trait = bno_lifestyle_whitegirl
+			}
+			is_female = yes
+			is_adult = yes
+		}
+	}
+	
+	immediate = {
+		random_liege_or_above = {
+			limit = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+				is_adult = yes
+				is_female = yes
+				is_ai = yes
+				is_married = yes
+				primary_spouse = {
+					has_trait = bno_bbc
+				}
+			}
+			save_scope_as = target2
+		}
+		scope:target2 = {
+			primary_spouse = {
+				save_scope_as = target1
+			}
+		}
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = scope:target2
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		scope:target2 = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -20
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_0004.a
+		
+		if = {
+			limit = {
+				NOT = {
+					has_trait = bno_lifestyle_whitegirl
+				}
+			}
+			add_trait = bno_lifestyle_whitegirl
+		}
+		
+		trigger_event = bno_random.1004
+	}
+	
+	option = {
+		name = bno_random_0004.b
+		
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+		
+		trigger_event = bno_random.2004
+	}
+}
+
+bno_random.1004 = {
+	type = character_event
+	title = bno_random_1004.title
+	desc = bno_random_1004.desc
+	theme = realm
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = throne_room_kneel_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1004.a
+		add_stress = -15
+	}
+}
+
+bno_random.2004 = {
+	type = character_event
+	title = bno_random_2004.title
+	desc = bno_random_2004.desc
+	theme = realm
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = throne_room_kneel_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2004.a
+		if = {
+			limit = {
+				NOT = {
+					has_trait = bno_lifestyle_whitegirl
+				}
+			}
+			add_trait = bno_lifestyle_whitegirl
+		}
+	}
+}
+
+#Random Fuck C Bathroom
+bno_random.0005 = {
+	type = character_event
+	title = bno_random_0005.title
+	desc = bno_random_0005.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_day
+	}
+	left_portrait = {
+		character = root
+		animation = boredom
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 25
+				}
+			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			random_courtier_or_guest = {
+				limit = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+		}
+	}
+	option = {
+		name = bno_random_0005.a
+		
+		if = {
+			limit = {
+				primary_spouse = {
+					NOT = {
+						has_trait = bno_bbc
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		
+		add_courtier = scope:target1
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 10
+				}
+		
+		trigger_event = bno_random.1005
+	}
+	
+	option = {
+		name = bno_random_0005.b
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = -5
+		}
+		imprison = {
+			target = scope:target1
+		}
+	}
+}
+
+bno_random.1005 = {
+	type = character_event
+	title = bno_random_1005.title
+	desc = bno_random_1005.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_day
+	}
+	left_portrait = {
+		character = root
+		animation = boredom
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1005.a
+		
+	}
+}
+
+#Random Fuck C Bedroom
+bno_random.0006 = {
+	type = character_event
+	title = bno_random_0006.title
+	desc = bno_random_0006.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content	
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = { 
+				no_clothes
+				nightgown
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 25
+			}
+			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	option = {
+		name = bno_random_0006.a
+		
+		if = {
+			limit = {
+				root = {
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 10
+				}
+		
+		trigger_event = bno_random.1006
+	}
+	option = {
+		name = bno_random_0006.b
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = -5
+				}
+		imprison = {
+			target = scope:target1
+		}
+	}
+}
+
+bno_random.1006 = {
+type = character_event
+	title = bno_random_1006.title
+	desc = bno_random_1006.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content	
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = { 
+				no_clothes
+				nightgown
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1006.a
+	}
+}
+
+#Random Fuck B Bedroom
+bno_random.0007 = {
+	type = character_event
+	title = bno_random_0007.title
+	desc = bno_random_0007.desc
+	theme = realm
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_conversation_4
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+					value < 50
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	option = {
+		name = bno_random_0007.a
+		if = {
+			limit = {
+				root = {
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		
+#		add_courtier = scope:target1
+#		carn_had_sex_with_effect = {
+#			CHARACTER_1 = root
+#			CHARACTER_2 = scope:target1
+#			C1_PREGNANCY_CHANCE = pregnancy_chance
+#			C2_PREGNANCY_CHANCE = pregnancy_chance
+#			STRESS_EFFECTS = scope:carn_sex_stress_effects
+#			DRAMA = scope:carn_sex_drama
+#		}
+		
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		trigger_event = bno_random.1007
+	}
+	
+	option = {
+		name = bno_random_0007.b
+		if = {
+			limit = {
+				root = {
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		
+		add_courtier = scope:target1
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 10
+				}
+		
+		trigger_event = bno_random.2007
+	}
+	
+	option = {
+		name = bno_random_0007.c
+		stress_impact = {   
+			bno_lifestyle_whitegirl = medium_stress_impact_gain
+		}
+	}
+}
+
+bno_random.1007 = {
+	type = character_event
+	title = bno_random_1007.title
+	desc = bno_random_1007.desc
+	theme = realm
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_conversation_4
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1007.a
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 5
+				}
+	}
+}
+
+bno_random.2007 = {
+	type = character_event
+	title = bno_random_2007.title
+	desc = bno_random_2007.desc
+	theme = realm
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_conversation_4
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2007.a
+		add_stress = -25
+	}
+}
+
+#Random Fuck B Garden 
+bno_random.0008 = {
+	type = character_event
+	title = bno_random_0008.title
+	desc = bno_random_0008.desc
+	theme = realm
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = love
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 50
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	option = {
+		name = bno_random_0008.a
+		if = {
+			limit = {
+				root = {
+				primary_spouse = {
+					NOT = {
+						has_trait = bno_bbc
+					}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		trigger_event = bno_random.1008
+	}
+	
+	option = {
+		name = bno_random_0008.b
+		if = {
+			limit = {
+				root = {
+				primary_spouse = {
+					NOT = {
+						has_trait = bno_bbc
+					}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 10
+				}
+		
+		trigger_event = bno_random.2008
+	}
+	
+	option = {
+		name = bno_random_0008.c
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+		imprison = {
+			target = scope:target1
+		}
+	}
+}
+
+bno_random.1008 = {
+	type = character_event
+	title = bno_random_1008.title
+	desc = bno_random_1008.desc
+	theme = realm
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = love
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1008.a
+	}
+}
+
+bno_random.2008 = {
+	type = character_event
+	title = bno_random_2008.title
+	desc = bno_random_2008.desc
+	theme = realm
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = love
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2008.a
+	}
+}
+
+#Random Fuck S Throneroom
+bno_random.0009 = {
+	type = character_event
+	title = bno_random_0009.title
+	desc = bno_random_0009.desc
+	theme = realm
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			highest_held_title_tier >= tier_kingdom
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 50
+					value < 75
+				}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 75
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	option = {
+		name = bno_random_0009.a
+		if = {
+			limit = {
+				root = { 
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+	
+		add_courtier = scope:target1
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 20
+				}
+		
+		root = { give_nickname = bno_qos }
+		
+		trigger_event = bno_random.1009
+	}
+	
+	option = {
+		name = bno_random_0009.b
+		if = {
+			limit = {
+				root = { 
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+	
+		add_courtier = scope:target1
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		root = { give_nickname = bno_qos }
+		
+		trigger_event = bno_random.2009
+	}
+	
+	option = {
+		name = bno_random_0009.c
+		stress_impact = {   
+			bno_lifestyle_whitegirl = major_stress_impact_gain
+		}
+		imprison = {
+			target = scope:target1
+		}
+	}
+}
+
+bno_random.1009 = {
+	type = character_event
+	title = bno_random_1009.title
+	desc = bno_random_1009.desc
+	theme = realm
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1009.a
+		
+		every_courtier_or_guest = {
+			limit = {
+				is_female = yes
+			}
+			hidden_effect = {
+				add_trait = bno_lifestyle_whitegirl
+			}
+		}
+		random_vassal = {
+			limit = {
+				is_female = yes
+				is_adult = yes
+			}
+			hidden_effect = {
+				add_trait = bno_lifestyle_whitegirl
+			}
+		}
+	}
+}
+
+bno_random.2009 = {
+	type = character_event
+	title = bno_random_2009.title
+	desc = bno_random_2009.desc
+	theme = realm
+	override_background = {
+		event_background = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2009.a
+	}
+}
+
+#Random Fuck S Market
+bno_random.0010 = {
+	type = character_event
+	title = bno_random_0010.title
+	desc = bno_random_0010.desc
+	theme = realm
+	
+	override_background = {
+		reference = market
+	}
+	left_portrait = {
+		character = root
+		animation = pain
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 50
+				}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 75
+			}
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		create_character = {
+			gender = male
+			save_scope_as = target1
+			age = 22
+				location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+			prowess = {
+				min_template_decent_skill
+				max_template_decent_skill
+			}
+			intrigue = {
+				min_template_decent_skill
+				max_template_decent_skill
+			}
+		}
+		root = {
+			save_scope_as = target2
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+                    flag = no_headgear
+                     years = 1
+               	}
+			}
+		}
+		
+		}
+	}
+	option = {
+		name = bno_random_0010.a
+		if = {
+			limit = {
+				root = { 
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		add_courtier = scope:target1
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 10
+				}
+		
+		trigger_event = bno_random.1010
+	}
+	
+	option = {
+		name = bno_random_0010.b
+		
+		if = {
+			limit = {
+				root = { 
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		add_courtier = scope:target1
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_relation_lover = {
+				target = root
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+		}
+		
+		trigger_event = bno_random.2010
+	}
+	
+	option = {
+		name = bno_random_0010.c
+		stress_impact = {   
+			bno_lifestyle_whitegirl = major_stress_impact_gain
+		}
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+bno_random.1010 = {
+	type = character_event
+	title = bno_random_1010.title
+	desc = bno_random_1010.desc
+	theme = realm
+	
+	override_background = {
+		reference = market
+	}
+	left_portrait = {
+		character = root
+		animation = pain
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1010.a
+	}
+}
+
+bno_random.2010 = {
+	type = character_event
+	title = bno_random_2010.title
+	desc = bno_random_2010.desc
+	theme = realm
+	
+	override_background = {
+		reference = market
+	}
+	left_portrait = {
+		character = root
+		animation = pain
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2010.a
+	}
+}
+
+#Random Fuck Q Full Submission No resist
+bno_random.0011 = {
+	type = character_event
+	title = bno_random_0011.title
+	desc = bno_random_0011.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 100
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	option = {
+		name = bno_random_0011.a
+		
+			carn_had_sex_with_effect = {
+				CHARACTER_1 = root
+				CHARACTER_2 = scope:target1
+				C1_PREGNANCY_CHANCE = pregnancy_chance
+				C2_PREGNANCY_CHANCE = pregnancy_chance
+				STRESS_EFFECTS = scope:carn_sex_stress_effects
+				DRAMA = scope:carn_sex_drama
+			}
+			
+			hidden_effect = {
+				if = {
+					limit = {
+						root = {
+							primary_spouse = {
+								NOT = { has_trait = bno_bbc }
+							}
+						}
+					}
+					root = {
+					primary_spouse = {
+							change_trait_rank = {
+								trait = bno_whiteboi
+								rank = 2
+							}
+						}
+					}
+				}
+				root = {
+					divorce = primary_spouse
+				}
+			}
+	}
+	
+	option = {
+		name = bno_random_0011.b
+		
+			carn_had_sex_with_effect = {
+				CHARACTER_1 = root
+				CHARACTER_2 = scope:target1
+				C1_PREGNANCY_CHANCE = pregnancy_chance
+				C2_PREGNANCY_CHANCE = pregnancy_chance
+				STRESS_EFFECTS = scope:carn_sex_stress_effects
+				DRAMA = scope:carn_sex_drama
+			}
+			
+			hidden_effect = {
+				if = {
+					limit = {
+						root = {
+							primary_spouse = {
+								NOT = { has_trait = bno_bbc }
+							}
+						}
+					}
+					root = {
+					primary_spouse = {
+							change_trait_rank = {
+								trait = bno_whiteboi
+								rank = 2
+							}
+						}
+					}
+				}
+				root = {
+					divorce = primary_spouse
+				}
+			}
+			scope:target1 = {
+				marry = root
+			}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 15
+				}
+		
+		trigger_event = bno_random.2011
+	}
+}
+
+bno_random.2011 = {
+	type = character_event
+	title = bno_random_2011.title
+	desc = bno_random_2011.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2011.a
+	}
+}
+
+
+#Random Fuck Q Camp
+bno_random.0012 = {
+	type = character_event
+	title = bno_random_0012.title
+	desc = bno_random_0012.desc
+	theme = realm
+	
+	override_background = {
+		reference = market_east
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			AND = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 100
+				}
+			}	
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	option = {
+		name = bno_random_0012.a
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					root = {
+						primary_spouse = {
+							NOT = { has_trait = bno_bbc }
+						}
+					}
+				}
+				root = {
+					primary_spouse = {
+						change_trait_rank = {
+							trait = bno_whiteboi
+							rank = 1
+						}
+					}
+				}
+			}
+		}
+		
+		trigger_event = bno_random.1012
+	}
+	
+	option = {
+		name = bno_random_0012.b
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					root = {
+						primary_spouse = {
+							NOT = { has_trait = bno_bbc }
+						}
+					}
+				}
+				root = {
+					primary_spouse = {
+						change_trait_rank = {
+							trait = bno_whiteboi
+							rank = 2
+						}
+					}
+				}
+			}
+		}
+		
+		trigger_event = bno_random.2012
+	}
+	
+	option = {
+		name = bno_random_0012.c
+		stress_impact = {   
+			bno_lifestyle_whitegirl = major_stress_impact_gain
+		}
+	}
+}
+
+bno_random.1012 = {
+	type = character_event
+	title = bno_random_1012.title
+	desc = bno_random_1012.desc
+	theme = realm
+	
+	override_background = {
+		reference = market_east
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1012.a
+	}
+}
+
+bno_random.2012 = {
+	type = character_event
+	title = bno_random_2012.title
+	desc = bno_random_2012.desc
+	theme = realm
+	
+	override_background = {
+		reference = market_east
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			create_character = {
+			gender = male
+			save_scope_as = target2
+			age = 24
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target2 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		}
+	}
+	
+	option = {
+		name = bno_random_2012.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target2
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 15
+				}
+		hidden_effect = {
+			scope:target2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+#Random Fuck Q Orgy No resist
+bno_random.0013 = {
+	type = character_event
+	title = bno_random_0013.title
+	desc = bno_random_0013.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				nightgown
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target3
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target4
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+	
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		
+		create_character = {
+			gender = male
+			save_scope_as = target2
+			age = 38
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target3
+			age = 35
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target4
+			age = 42
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		}
+	}
+	option = {
+		name = bno_random_0013.a
+		if = {
+			limit = {
+				root = {
+					primary_spouse = {
+						NOT = {
+							has_trait = bno_bbc
+						}
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_courtier = scope:target2
+		add_courtier = scope:target3
+		add_courtier = scope:target4
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target2
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target3
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target4
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		hidden_effect = {
+				if = {
+					limit = {
+						root = {
+							primary_spouse = {
+								NOT = { has_trait = bno_bbc }
+							}
+						}
+					}
+					root = {
+					primary_spouse = {
+						change_trait_rank = {
+							trait = bno_whiteboi
+							rank = 2
+						}
+						}
+					}
+				}
+		}
+		trigger_event = bno_random.1013
+	}
+}
+
+bno_random.1013 = {
+	type = character_event
+	title = bno_random_1013.title
+	desc = bno_random_1013.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target3
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target4
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			if = {
+				limit = {
+					has_any_nickname = no
+				}
+				give_nickname = nick_rt
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1013.a
+		add_stress = -50
+	}
+}
+
+#Random Slut Dominated only trigger if spouse is alive
+bno_random.0014 = {
+	type = character_event
+	title = bno_random_0014.title
+	desc = bno_random_0014.desc
+	theme = realm
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 8 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			OR = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				AND = {
+					has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+					is_ai = no
+				}
+			}
+			is_married = yes
+			primary_spouse = {
+				has_trait = bno_bbc
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			primary_spouse = {
+				save_scope_as = target1
+			}
+		}
+		hidden_effect = {
+			every_courtier_or_guest = {
+				limit = {
+					is_female = yes
+					is_adult = yes
+				}
+				hidden_effect = {
+					add_trait = bno_lifestyle_whitegirl
+				}
+			}
+			random_vassal = {
+				limit = {
+					is_female = yes
+					is_adult = yes
+				}
+				hidden_effect = {
+					add_trait = bno_lifestyle_whitegirl
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_0014.a
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 5
+				}
+		
+		trigger_event = bno_random.1014
+	}
+}
+
+bno_random.1014 = {
+	type = character_event
+	title = bno_random_1014.title
+	desc = bno_random_1014.desc
+	theme = realm
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			if = {
+				limit = {
+					has_any_nickname = no
+				}
+				give_nickname = nick_conq
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1014.a
+	}
+}
+
+#Random Slut Family Dominated only trigger if spouse and mother/sister is alive 
+bno_random.0015 = {
+	type = character_event
+	title = bno_random_0015.title
+	desc = bno_random_0015.desc
+	theme = family
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 6 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			OR = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				AND = {
+					has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+					is_ai = no
+				}
+			}	
+			any_spouse = {
+				has_trait = bno_bbc
+			}
+			is_married = yes
+			any_close_family_member = {
+				is_female = yes
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			primary_spouse = {
+				save_scope_as = target1
+			}
+			save_scope_as = target3
+		}
+		random_close_family_member = {
+			limit = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				is_adult = yes
+				is_female = yes
+				is_ai = yes
+			}
+			save_scope_as = target2
+		}
+		hidden_effect = {
+			every_courtier_or_guest = {
+				limit = {
+					is_female = yes
+					is_adult = yes
+				}
+				hidden_effect = {
+					add_trait = bno_lifestyle_whitegirl
+				}
+			}
+			random_vassal = {
+				limit = {
+					is_female = yes
+					is_adult = yes
+				}
+				hidden_effect = {
+					add_trait = bno_lifestyle_whitegirl
+				}
+			}
+		}
+	}
+	option = {
+		name = bno_random_0015.a
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = scope:target2
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 5
+				}
+		
+		trigger_event = bno_random.1015
+	}
+}
+
+bno_random.1015 = {
+	type = character_event
+	title = bno_random_1015.title
+	desc = bno_random_1015.desc
+	theme = family
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:target1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1015.a
+	}
+}
+
+#event for seeing the wonder of black men - physical prowess. given only to non-traited women
+bno_random.0016 = {
+	type = character_event
+	title = bno_random_0016.title
+	desc = bno_random_0016.desc
+	theme = realm
+	
+	override_background = {
+		reference = armory
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = hero_flex #see if this works!
+#		triggered_outfit = {
+#			trigger = {
+#				exists = scope:target1
+#			}
+#			outfit_tags = {
+#				no_clothes
+#			}
+#		}
+	}
+	right_portrait = {
+		character = root
+		animation = admiration
+	}
+	
+	trigger = {
+		root = {
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			
+			is_female = yes
+			is_adult = yes
+			NOT = { has_trait = bno_lifestyle_whitegirl }
+		}
+	}
+	
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+	}
+	
+	option = {
+		name = bno_random_0016.a
+		trigger_event = bno_random.1016
+	}
+
+	option = {
+		name = bno_random_0016.b
+	}
+}
+
+bno_random.1016 = {
+	type = character_event
+	title = bno_random_1016.title
+	desc = bno_random_1016.desc
+	theme = realm
+	
+	override_background = {
+		reference = armory
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = hero_flex #see if this works!
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = admiration
+	}
+	
+	option = {
+		name = bno_random_1016.a
+		root = {
+			add_trait = bno_lifestyle_whitegirl
+		}
+	}
+}
+
+#event for bodyguard - consensual/initiated. need blacked trait
+bno_random.0017 = {
+	type = character_event
+	title = bno_random_0017.title
+	desc = bno_random_0017.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_conversation_4
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+	}
+	
+	cooldown = { months = 12 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+			employs_court_position = bodyguard_court_position
+			any_court_position_holder = {
+				type = bodyguard_court_position
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			employs_court_position = bodyguard_court_position
+			random_court_position_holder = {
+				limit = {
+					type = bodyguard_court_position
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+			save_scope_as = target1
+			}
+		}
+	}
+	
+	option = { #be careful, I have a meeting later!
+		name = bno_random_0017.a
+		trigger_event = bno_random.1017
+	}
+	
+	option = { #have him take the player brutally
+		name = bno_random_0017.b
+		trigger_event = bno_random.2017
+	}
+	
+	option = { #perhaps another time?
+		name = bno_random_0017.c
+		scope:target1 = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+	}
+}
+
+bno_random.1017 = {
+	type = character_event
+	title = bno_random_1017.title
+	desc = bno_random_1017.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	
+	option = {
+		name = bno_random_1017.a
+	}
+}
+
+bno_random.2017 = {
+	type = character_event
+	title = bno_random_2017.title
+	desc = bno_random_2017.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	
+	option = {
+		name = bno_random_2017.a
+		add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 5
+		}
+	}
+}
+
+
+#event for bodyguard - dubcon
+bno_random.0018 = {
+	type = character_event
+	title = bno_random_0018.title
+	desc = bno_random_0018.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = disbelief
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = anger
+	}
+	
+	cooldown = { months = 12 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 75
+				}
+			employs_court_position = bodyguard_court_position
+			any_court_position_holder = {
+				type = bodyguard_court_position
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			employs_court_position = bodyguard_court_position
+			random_court_position_holder = {
+				limit = {
+					type = bodyguard_court_position
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+			save_scope_as = target1
+			}
+		}
+	}
+	
+	option = { #'oh no!'
+		name = bno_random_0018.a
+		trigger_event = bno_random.1018
+	}
+}
+
+bno_random.1018 = {
+	type = character_event
+	title = bno_random_1018.title
+	desc = bno_random_1018.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	
+	option = {
+		name = bno_random_1018.a
+	}
+}
+
+#event for champion - consensual/initiated. anything, since he's trusted/hotter
+bno_random.0019 = {
+	
+	type = character_event
+	title = bno_random_0019.title
+	desc = bno_random_0019.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_conversation_4
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = flirtation_left
+	}
+	
+	cooldown = { months = 12 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			employs_court_position = champion_court_position
+			any_court_position_holder = {
+				type = champion_court_position
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			employs_court_position = champion_court_position
+			random_court_position_holder = {
+				limit = {
+					type = champion_court_position
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+			save_scope_as = target1
+			}
+		}
+	}
+	
+	option = { #be careful, I have a meeting later!
+		name = bno_random_0019.a
+		trigger_event = bno_random.1019
+	}
+	
+	option = { #perhaps another time?
+		name = bno_random_0019.b
+		scope:target1 = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+	}
+}
+
+bno_random.1019 = {
+	type = character_event
+	title = bno_random_1019.title
+	desc = bno_random_1019.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	
+	option = {
+		name = bno_random_1019.a
+	}
+}
+
+#event for a dinner party with your liege. if they have a black courtier, you can hook up. available to all. if no trait, gives curious. if trait, sex
+bno_random.0020 = {
+	
+	type = character_event
+	title = bno_random_0020.title
+	desc = bno_random_0020.desc
+	theme = realm
+	
+	override_background = {
+		reference = feast_activity
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_conversation_1
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = throne_room_conversation_2
+	}
+	
+	cooldown = { months = 8 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			
+			any_liege_or_above = {
+				any_courtier_or_guest = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+			}
+			
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_liege_or_above = {
+			save_scope_as = target2
+		}
+		scope:target2 = {
+			random_courtier_or_guest = {
+				limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+				}
+			save_scope_as = target1
+			}
+		}
+		}
+	}
+	
+	option = { #arent you persuasive
+		name = bno_random_0020.a
+		add_trait = bno_lifestyle_whitegirl
+	}
+	
+	option = { #smooch!!!
+		name = bno_random_0020.b
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 3
+		}
+	}
+	
+	option = { #downplay his flirtation
+		name = bno_random_0020.c
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -5
+		}
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+	}
+}
+
+#event for if you have a courtier with the chastity trait, cuck him.
+bno_random.0021 = {
+	type = character_event
+	title = bno_random_0021.title
+	desc = bno_random_0021.desc
+	theme = realm
+	
+	override_background = {
+		reference = sitting_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		animation = shock
+	}
+	
+	cooldown = { months = 12 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+			}
+			
+			any_courtier_or_guest = {
+				OR = {
+					has_trait = bno_chastity
+					has_trait = bno_castrated
+				}
+				is_adult = yes
+				is_ai = yes
+				is_male = yes
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				OR = {
+					has_trait = bno_chastity
+					has_trait = bno_castrated
+				}
+				is_adult = yes
+				is_ai = yes
+				is_male = yes
+			}
+			save_scope_as = target2
+		}
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	
+	option = { #let him watch
+		name = bno_random_0021.a
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 10
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		stress_impact = {   
+			bno_lifestyle_whitegirl = major_stress_impact_loss
+		}
+		
+		trigger_event = bno_random.1021
+	}
+	
+	option = { #dont let him watch
+		name = bno_random_0021.b
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_loss
+		}
+		
+		trigger_event = bno_random.2021
+	}
+}
+
+bno_random.1021 = { #let him watch
+	type = character_event
+	title = bno_random_1021.title
+	desc = bno_random_1021.desc
+	theme = realm
+	
+	override_background = {
+		reference = sitting_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		animation = shock
+	}
+	
+	option = {
+		name = bno_random_1021.a
+	}
+}
+
+bno_random.2021 = { #dont let him watch
+	type = character_event
+	title = bno_random_2021.title
+	desc = bno_random_2021.desc
+	theme = realm
+	
+	override_background = {
+		reference = sitting_room
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		animation = shock
+	}
+	
+	option = {
+		name = bno_random_2021.a
+	}
+}
+
+#curious level event. accept or imprison/run. temple_church scene, seeking forgiveness, introduced to an african espousing himself being a black god
+bno_random.0022 = {
+	type = character_event
+	title = bno_random_0022.title
+	desc = bno_random_0022.desc
+	theme = realm
+	
+	override_background = {
+		reference = temple_church
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = paranoia
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 25
+				}
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 0
+				}
+			}
+			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	
+	option = { #encourage the idea of a new god
+		name = bno_random_0022.a
+		
+		remove_short_term_gold = minor_gold_value
+		add_piety = -25
+		
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 3
+		}
+	}
+	 
+	option = { #accept the possibility that god is black. sexual service
+		name = bno_random_0022.b
+		
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.2022
+	}
+	
+	option = { #imprison for heresy
+		name = bno_random_0022.c
+		imprison = { target = scope:target1 }
+	}
+}
+
+bno_random.2022 = {
+	type = character_event
+	title = bno_random_2022.title
+	desc = bno_random_2022.desc
+	theme = realm
+	
+	override_background = {
+		reference = temple_church
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2022.a
+		add_piety = -75
+	}
+}
+
+#curious level event. accept or imprison/run. at the tavern, have one to many drinks and get with the barkeep
+bno_random.0023 = {
+	type = character_event
+	title = bno_random_0023.title
+	desc = bno_random_0023.desc
+	theme = realm
+	
+	override_background = {
+		reference = tavern
+	}
+	left_portrait = {
+		character = root
+		animation = wedding_drunk
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 25
+				}
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 0
+				}
+			}
+			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = {
+		name = bno_random_0023.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		trigger_event = bno_random.1023
+	}
+	
+	option = { #imprison
+		name = bno_random_0023.b
+		imprison = { target = scope:target1 }
+	}
+}
+
+bno_random.1023 = {
+	type = character_event
+	title = bno_random_0023.title
+	desc = bno_random_0023.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = wedding_drunk
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1023.a
+	}
+}
+
+#curious level event. accept or imprison/run. courtyard_night, arranged to exchange info with a foriegner. multiple forms of payment
+bno_random.0024 = {
+	type = character_event
+	title = bno_random_0024.title
+	desc = bno_random_0024.desc
+	theme = realm
+	
+	override_background = {
+		reference = fp3_courtyard_night
+	}
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 25
+				}
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 0
+				}
+			}
+			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #bj
+		name = bno_random_0024.a
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		trigger_event = bno_random.1024
+	}
+	
+	option = { #ew, not sex
+		name = bno_random_0024.b
+		remove_short_term_gold = medium_gold_value
+	}
+	
+	option = { #imprison
+		name = bno_random_0024.c
+		imprison = { target = scope:target1 }
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -5
+		}
+	}
+}
+
+bno_random.1024 = {
+	type = character_event
+	title = bno_random_0024.title
+	desc = bno_random_0024.desc
+	theme = realm
+	
+	override_background = {
+		reference = fp3_courtyard_night
+	}
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	option = {
+		name = bno_random_1024.a
+	}
+}
+
+#curious/blacked level event. noncon. roving streetgang introduces you to black dick in an alleyway
+bno_random.0025 = {
+	type = character_event
+	title = bno_random_0025.title
+	desc = bno_random_0025.desc
+	theme = realm
+	
+	override_background = {
+		reference = alley_night
+	}
+	left_portrait = {
+		character = root
+		animation = fear
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = laugh
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		animation = laugh
+	}
+	lower_left_portrait = {
+		character = scope:target3
+		animation = laugh
+	}
+	
+	cooldown = { months = 36 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 50
+				}
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			create_character = {
+			gender = male
+			save_scope_as = target1
+			age = 19
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target2
+			age = 21
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target3
+			age = 19
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		}
+	}
+	 
+	option = { #accept?
+		name = bno_random_0025.a
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target2
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target3
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 10
+		}
+		
+		trigger_event = bno_random.1025
+	}
+	
+	option = { #attempt to run
+		name = bno_random_0025.b
+		
+		trigger_event = bno_random.2025
+	}
+}
+
+bno_random.1025 = {
+	type = character_event
+	title = bno_random_1025.title
+	desc = bno_random_1025.desc
+	theme = realm
+	
+	override_background = {
+		reference = alley_night
+	}
+	left_portrait = {
+		character = root
+		animation = fear
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = laugh
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		animation = laugh
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target3
+		animation = laugh
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target3
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1025.a
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:target2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:target3 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+	
+}
+
+bno_random.2025 = { #can't run
+	type = character_event
+	title = bno_random_2025.title
+	desc = bno_random_2025.desc
+	theme = realm
+	
+	override_background = {
+		reference = alley_night
+	}
+	left_portrait = {
+		character = root
+		animation = fear
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = laugh
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		animation = laugh
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target3
+		animation = laugh
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target3
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { #only have a turn with one guy
+		name = bno_random_2025.a
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:target2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:target3 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+#event for finding your daugter (adult) getting busy. join or watch
+bno_random.0026 = {
+	type = character_event
+	title = bno_random_0026.title
+	desc = bno_random_0026.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	left_portrait = {
+		character = root
+		animation = eavesdrop
+	}
+	lower_right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 10 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			any_child = {
+				is_female = yes
+				is_adult = yes
+				is_ai = yes
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		random_child = {
+			limit = {
+				is_female = yes
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target2
+		}
+		}
+	}
+	 
+	option = { #good for her!
+		name = bno_random_0026.a
+		scope:target2 = {
+			add_trait = bno_lifestyle_whitegirl
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = bno_lifestyle_whitegirl }
+			}
+			add_trait = bno_lifestyle_whitegirl
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = scope:target2
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	
+	option = { #step in
+		name = bno_random_0026.b
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 75
+			}
+		}
+		scope:target2 = {
+			add_trait = bno_lifestyle_whitegirl
+		}
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = scope:target2
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		trigger_event = bno_random.2026
+	}
+	
+	option = { #imprison + punishment
+		name = bno_random_0026.c
+		imprison = {
+			target = scope:target1
+		}
+	}
+}
+
+bno_random.2026 = {
+	type = character_event
+	title = bno_random_2026.title
+	desc = bno_random_2026.desc
+	theme = realm
+	
+	override_background = {
+		reference = corridor_night
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_left_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2026.a
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 10
+		}
+		scope:target2 = {
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 10
+			}
+		}
+	}
+}
+
+#blacked level event. male bath 'wench' snuck in. invite sensual massage as a wench watches.
+bno_random.0027 = {
+	type = character_event
+	title = bno_random_0027.title
+	desc = bno_random_0027.desc
+	theme = realm
+	
+	override_background = {
+		reference = bath_house
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_bold
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 50
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #if I blow you, can you give me a massage?
+		name = bno_random_0027.a
+		
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.1027
+	}
+	
+	option = { #let me get readjusted...
+		name = bno_random_0027.b
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.2027
+	}
+	
+	option = { #are you kidding me? where's target2?
+		name = bno_random_0027.c
+		
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -5
+		}
+	}
+}
+
+bno_random.1027 = {
+	type = character_event
+	title = bno_random_1027.title
+	desc = bno_random_1027.desc
+	theme = realm
+	
+	override_background = {
+		reference = bath_house
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_bold
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { #is there someone at the tent door?
+		name = bno_random_1027.a
+	}
+}
+
+bno_random.2027 = {
+	type = character_event
+	title = bno_random_2027.title
+	desc = bno_random_2027.desc
+	theme = realm
+	
+	override_background = {
+		reference = bath_house
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_bold
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { #is there someone at the tent door?
+		name = bno_random_2027.a
+		
+	}
+}
+
+#blacked level event. garden. ask for a courtier to serve you at the pools
+bno_random.0028 = {
+	type = character_event
+	title = bno_random_0028.title
+	desc = bno_random_0028.desc
+	theme = realm
+	
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 50
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #reciprocate his flirting
+		name = bno_random_0028.a
+		
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.1028
+	}
+	
+	option = { #you know i'm not interested in you, right?
+		name = bno_random_0028.b
+	}
+}
+
+bno_random.1028 = {
+	type = character_event
+	title = bno_random_1028.title
+	desc = bno_random_1028.desc
+	theme = realm
+	
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { #just a little oral won't hurt
+		name = bno_random_1028.a
+	}
+}
+
+#baby fever while pregnant. blacked+ event
+bno_random.0029 = {
+	type = character_event
+	title = bno_random_0029.title
+	desc = bno_random_0029.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = throne_room_conversation_1
+	}
+	
+	cooldown = { months = 10 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = pregnant
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #please, be ginger
+		name = bno_random_0029.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		trigger_event = bno_random.1029
+	}
+	
+	option = { #I NEED IT
+		name = bno_random_0029.b
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 3
+		}
+		
+		trigger_event = bno_random.2029
+	}
+}
+
+bno_random.1029 = {
+	type = character_event
+	title = bno_random_1029.title
+	desc = bno_random_1029.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1029.a
+	}
+}
+
+bno_random.2029 = {
+	type = character_event
+	title = bno_random_2029.title
+	desc = bno_random_2029.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2029.a
+	}
+}
+
+#event for black physician check you out and giving you a 'medical exam'. if snowbunny+, your 'use' is recognized, and given ability to lead on the phys.
+bno_random.0030 = {
+	type = character_event
+	title = bno_random_0030.title
+	desc = {
+		triggered_desc = {
+			trigger = {
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 50
+				}
+			}
+			desc = bno_random_0030.desc1 #abuse noticed
+		}
+		triggered_desc = {
+			trigger = {
+				has_trait = bno_lifestyle_whitegirl
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 50
+				}
+			}
+			desc = bno_random_0030.desc2 #no abuse
+		}
+	}
+	theme = realm
+	
+	override_background = {
+		reference = physicians_study
+	}
+	left_portrait = {
+		character = root
+		animation = throne_room_conversation_4
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = throne_room_conversation_1
+	}
+	
+	cooldown = { months = 12 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			
+			employs_court_position = court_physician_court_position
+			any_court_position_holder = {
+				type = court_physician_court_position
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		employs_court_position = court_physician_court_position
+		random_court_position_holder = {
+			limit = {
+				type = court_physician_court_position
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #not experienced. offered anatomical lesson
+		name = bno_random_0030.a
+		trigger = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 50
+			}
+		}
+		
+		trigger_event = bno_random.1030
+	}
+	
+	option = { #notices your bodily abuse and leftovers
+		name = bno_random_0030.b
+		trigger = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+			}
+		}
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		trigger_event = bno_random.2030
+	}
+	
+	option = { #thanks for the checkup doctor!
+		name = bno_random_0030.c
+		remove_short_term_gold = tiny_gold_value
+	}
+}
+
+bno_random.1030 = {
+	type = character_event
+	title = bno_random_1030.title
+	desc = bno_random_1030.desc
+	theme = realm
+	
+	override_background = {
+		reference = physicians_study
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1030.a
+	}
+}
+
+bno_random.2030 = {
+	type = character_event
+	title = bno_random_2030.title
+	desc = bno_random_2030.desc
+	theme = realm
+	
+	override_background = {
+		reference = physicians_study
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2030.a
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+	}
+}
+
+#blacked level event. out to buy bread, and accompanied by a courtier, find serenity in the sunset, or whatever
+bno_random.0031 = {
+	type = character_event
+	title = bno_random_0031.title
+	desc = bno_random_0031.desc
+	theme = realm
+	
+	override_background = {
+		reference = market_west
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 50
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #would you mind breaking bread with me?
+		name = bno_random_0031.a
+		
+		trigger_event = bno_random.1031
+	}
+	
+	option = { #let us continue home
+		name = bno_random_0031.b
+	}
+}
+
+bno_random.1031 = {
+	type = character_event
+	title = bno_random_1031.title
+	desc = bno_random_1031.desc
+	theme = realm
+	
+	override_background = {
+		reference = market_west
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1031.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+}
+
+#snowbunny level event. dungeon, getting into bdsm, options
+bno_random.0032 = {
+	type = character_event
+	title = bno_random_0032.title
+	desc = bno_random_0032.desc
+	theme = realm
+	
+	override_background = {
+		reference = dungeon
+	}
+	left_portrait = {
+		character = root
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+			}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 75
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #i think your cock is the key
+		name = bno_random_0032.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		trigger_event = bno_random.1032
+	}
+	
+#	option = { #use me as you wish... as long as noone's watching
+#		name = bno_random_0032.b
+#		
+#		carn_had_sex_with_effect = {
+#			CHARACTER_1 = root
+#			CHARACTER_2 = scope:target1
+#			C1_PREGNANCY_CHANCE = pregnancy_chance
+#			C2_PREGNANCY_CHANCE = pregnancy_chance
+#			STRESS_EFFECTS = scope:carn_sex_stress_effects
+#			DRAMA = scope:carn_sex_drama
+#		}
+#		
+#		trigger_event = bno_random.2032
+#	}
+	
+	option = { #it was an accident! I dont know how i got here!
+		name = bno_random_0032.c
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -10
+		}
+	}
+}
+
+bno_random.1032 = {
+	type = character_event
+	title = bno_random_0032.title
+	desc = bno_random_0032.desc
+	theme = realm
+	
+	override_background = {
+		reference = dungeon
+	}
+	left_portrait = {
+		character = root
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1032.a
+	}
+}
+
+bno_random.2032 = {
+	type = character_event
+	title = bno_random_0032.title
+	desc = bno_random_0032.desc
+	theme = realm
+	
+	override_background = {
+		reference = dungeon
+	}
+	left_portrait = {
+		character = root
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2032.a
+	}
+}
+
+#snowbunny level event. courtier in the library, invite another for a spitroast?
+bno_random.0033 = {
+	type = character_event
+	title = bno_random_0033.title
+	desc = bno_random_0033.desc
+	theme = realm
+	
+	override_background = {
+		reference = study
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+			}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 75
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #a handjob will suffice, i say!
+		name = bno_random_0033.a
+		
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 3
+		}
+		
+		trigger_event = bno_random.1033
+	}
+	
+	option = { #behind those bookcases. just in case
+		name = bno_random_0033.b
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 3
+		}
+		
+		trigger_event = bno_random.2033
+	}
+	
+	option = { #get away from me
+		name = bno_random_0033.c
+		imprison = {
+			target = scope:target1
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -10
+		}
+	}
+}
+
+bno_random.1033 = {
+	type = character_event
+	title = bno_random_1033.title
+	desc = bno_random_1033.desc
+	theme = realm
+	
+	override_background = {
+		reference = study
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1033.a
+	}
+}
+
+bno_random.2033 = {
+	type = character_event
+	title = bno_random_2033.title
+	desc = bno_random_2033.desc
+	theme = realm
+	
+	override_background = {
+		reference = study
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2033.a
+	}
+}
+
+#snowbunny level event. getting frisky in the private garden (vaginal or anal option?
+bno_random.0034 = {
+	type = character_event
+	title = bno_random_0034.title
+	desc = bno_random_0034.desc
+	theme = realm
+	
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			AND = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+			}
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 75
+			}
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #no anal pretty plz
+		name = bno_random_0034.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		trigger_event = bno_random.1034
+	}
+	
+	option = { #anal
+		name = bno_random_0034.b
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+#			C1_PREGNANCY_CHANCE = pregnancy_chance
+#			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.2034
+	}
+}
+
+bno_random.1034 = {
+	type = character_event
+	title = bno_random_1034.title
+	desc = bno_random_1034.desc
+	theme = realm
+	
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { 
+		name = bno_random_1034.a
+	}
+}
+
+bno_random.2034 = {
+	type = character_event
+	title = bno_random_2034.title
+	desc = bno_random_2034.desc
+	theme = realm
+	
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { 
+		name = bno_random_2034.a
+	}
+}
+
+#snowbunny+ event. black spymaster threatens to reveal a fake secret on you.
+bno_random.0035 = {
+	type = character_event
+	title = bno_random_0035.title
+	desc = bno_random_0035.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 16 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+			}
+			any_councillor = {
+				position = councillor_spymaster
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_councillor = {
+			limit = {
+				position = councillor_spymaster
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #render yourself as his
+		name = bno_random_0035.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.1035
+	}
+	
+	option = { #yes yes yes i did it!
+		name = bno_random_0035.b
+		
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -10
+		}
+		
+		random_secret = {
+			reveal_to = scope:target1
+		}
+	}
+}
+
+bno_random.1035 = {
+	type = character_event
+	title = bno_random_1035.title
+	desc = bno_random_1035.desc
+	theme = realm
+	
+	override_background = {
+		reference = garden
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1035.a
+	}
+}
+
+#qos event. brutal night out after a feast
+bno_random.0036 = {
+	type = character_event
+	title = bno_random_0036.title
+	desc = bno_random_0036.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 12 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 75
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		}
+	}
+	 
+	option = { #ouch!
+		name = bno_random_0036.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		trigger_event = bno_random.1036
+	}
+	
+	option = { #abuse me!
+		name = bno_random_0036.b
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.2036
+	}
+}
+
+bno_random.1036 = {
+	type = character_event
+	title = bno_random_1036.title
+	desc = bno_random_1036.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1036.a
+	}
+}
+
+bno_random.2036 = {
+	type = character_event
+	title = bno_random_2036.title
+	desc = bno_random_2036.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2036.a
+		increase_wounds_no_death_effect = { REASON = fight }
+	}
+}
+
+#qos event. body writing of some sort after being rawdogged in the wilderness outside of your castle
+bno_random.0037 = {
+	type = character_event
+	title = bno_random_0037.title
+	desc = bno_random_0037.desc
+	theme = realm
+	
+	override_background = {
+		reference = wilderness
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	lower_right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 12 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 75
+			}
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			save_scope_as = target1
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target2
+			age = 34
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		}
+	}
+	 
+	option = { #on my forehead!
+		name = bno_random_0037.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.1037
+	}
+	
+	option = { #keep it under my dress!
+		name = bno_random_0037.b
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		
+		trigger_event = bno_random.2037
+	}
+}
+
+bno_random.1037 = {
+	type = character_event
+	title = bno_random_1037.title
+	desc = bno_random_1037.desc
+	theme = realm
+	
+	override_background = {
+		reference = wilderness
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	lower_right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			if = {
+				limit = {
+					has_any_nickname = no
+				}
+				give_nickname = nick_blacked
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_1037.a
+		hidden_effect = {
+			scope:target2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+bno_random.2037 = {
+	type = character_event
+	title = bno_random_2037.title
+	desc = bno_random_2037.desc
+	theme = realm
+	
+	override_background = {
+		reference = wilderness
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	lower_right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2037.a
+		hidden_effect = {
+			scope:target2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+#qos event. purposefully walking around a seedy district of your capitol, 'masquerading' as a lady of the night. 
+bno_random.0038 = {
+	type = character_event
+	title = bno_random_0038.title
+	desc = bno_random_0038.desc
+	theme = realm
+	
+	override_background = {
+		reference = alley_night
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	cooldown = { months = 12 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 75
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+		create_character = {
+			gender = male
+			save_scope_as = target1
+			age = 34
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target1 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		}
+	}
+	 
+	option = { #for you? it's free
+		name = bno_random_0038.a
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.1038
+	}
+	
+	option = { #for a lady of my status? you better pay!
+		name = bno_random_0038.b
+		
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		
+		add_gold = 125
+		
+		trigger_event = bno_random.1038
+	}
+}
+
+bno_random.1038 = {
+	type = character_event
+	title = bno_random_1038.title
+	desc = bno_random_1038.desc
+	theme = realm
+	
+	override_background = {
+		reference = alley_night
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			if = {
+				limit = {
+					has_any_nickname = no
+				}
+				give_nickname = nick_bos
+			}
+		}
+	}
+	
+	option = { #come to court
+		name = bno_random_1038.a
+		
+		add_courtier = scope:target1
+	}
+	
+	option = {
+		name = bno_random_1038.b
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+#witnessing the pride of your knights defame another (non black) knight in the courtyard
+bno_random.0039 = {
+	type = character_event
+	title = bno_random_0039.title
+	desc = bno_random_0039.desc
+	theme = realm
+	
+	override_background = {
+		reference = army_camp
+	}
+	lower_left_portrait = {
+		character = root
+		animation = admiration
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = rage
+	}
+	left_portrait = {
+		character = scope:target2
+		animation = rage
+	}
+	
+	cooldown = { months = 22 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			any_knight = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			any_knight = {
+				NOT = { has_trait = bno_bbc }
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			random_knight = {
+				limit = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+			random_knight = {
+				limit = {
+					NOT = { has_trait = bno_bbc }
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target2
+			}
+		}
+		
+		scope:target2 = {
+			increase_wounds_no_death_effect = { REASON = fight }
+			
+			add_opinion = {
+				target = target1
+				modifier = disappointed_opinion
+				opinion = -20
+			}
+			add_stress = 35
+		}
+		
+		scope:target1 = {
+			add_opinion = {
+				target = target2
+				modifier = disappointed_opinion
+				opinion = -20
+			}
+			add_stress = -10
+		}
+	}
+	
+	#ooh, stronk
+	option = {
+		name = bno_random_0039.a
+		add_trait = bno_lifestyle_whitegirl
+	}
+	
+	#he deserves a reward!!
+	option = {
+		name = bno_random_0039.b
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+		trigger_event = bno_random.2039
+	}
+	
+	#break it up!
+	option = {
+		name = bno_random_0039.c
+		increase_wounds_no_death_effect = { REASON = fight }
+		
+		add_opinion = {
+			target = target1
+			modifier = disappointed_opinion
+			opinion = -20
+		}
+		add_stress = 35
+		imprison = {
+			target = scope:target1
+		}
+		imprison = {
+			target = scope:target2
+		}
+	}
+}
+
+bno_random.2039 = {
+	type = character_event
+	title = bno_random_2039.title
+	desc = bno_random_2039.desc
+	theme = realm
+	
+	override_background = {
+		reference = army_camp
+	}
+	left_portrait = {
+		character = root
+		animation = admiration
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+
+	#yay
+	option = {
+		name = bno_random_2039.a
+	}
+	#ill punish him for you!
+	option = {
+		name = bno_random_2039.b
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 75
+			}
+		}
+		imprison = {
+			target = scope:target2
+		}
+	}
+}
+
+#one of your courtiers has died. spymaster consoles you
+bno_random.0040 = {
+	type = character_event
+	title = bno_random_0040.title
+	desc = bno_random_0040.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	left_portrait = {
+		character = root
+		animation = grief
+	}
+	lower_center_portrait = {
+		character = scope:target2
+		animation = fear
+	}
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			any_councillor = {
+				position = councillor_spymaster
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			any_courtier_or_guest = {
+				NOT = { has_trait = bno_bbc }
+				is_adult = yes
+				is_ai = yes
+				is_male = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			random_courtier_or_guest = {
+				limit = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+			
+			random_courtier_or_guest = {
+				limit = {
+					NOT = { has_trait = bno_bbc }
+					is_adult = yes
+					is_ai = yes
+					is_male = yes
+				}
+				save_scope_as = target2
+			}
+		}
+		
+		scope:target2 = {
+			death = {
+				death_reason = death_contest_melee_accident
+				killer = scope:target1
+			}
+		}
+	}
+	
+	#wail
+	option = {
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 50
+			}
+		}
+		name = bno_random_0040.a
+		add_stress = -10
+	}
+	
+	#please, comfort me
+	option = {
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+		}
+		name = bno_random_0040.b
+		trigger_event = bno_random.2040
+	}
+	
+	#I know you did it.
+	option = {
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+			}
+		}
+		name = bno_random_0040.c
+	}
+	
+	#him? about time :3
+	option = {
+		trigger = {
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 75
+			}
+		}
+		scope:target1 = {
+			add_trait = bno_camp_leader
+			if = {
+				limit = {
+					has_any_nickname = no
+				}
+				give_nickname = nick_we
+			}
+		}
+		name = bno_random_0040.d
+		trigger_event = bno_random.4040
+	}
+}
+
+bno_random.2040 = {
+	type = character_event
+	title = bno_random_2040.title
+	desc = bno_random_2040.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	option = {
+		name = bno_random_2040.a
+	}
+}
+
+bno_random.4040 = {
+	type = character_event
+	title = bno_random_4040.title
+	desc = bno_random_4040.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	left_portrait = {
+		character = root
+		animation = admiration
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	
+	option = {
+		name = bno_random_4040.a
+	}
+}
+
+#cupbearer aphrodisiacs
+bno_random.0041 = {
+	type = character_event
+	title = bno_random_0041.title
+	desc = bno_random_0041.desc
+	theme = realm
+	
+	override_background = {
+		reference = council_chamber
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	left_portrait = {
+		character = root
+		animation = admiration
+	}
+	
+	cooldown = { months = 16}
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 25
+			}
+			employs_court_position = cupbearer_court_position
+			any_court_position_holder = {
+				type = cupbearer_court_position
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			random_court_position_holder = {
+				limit = {
+					type = cupbearer_court_position
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+		}
+	}
+	
+	#this feels a little funny on my lips
+	option = {
+		name = bno_random_0041.a
+		
+		trigger_event = bno_random.1041
+	}
+	
+	#more!
+	option = {
+		name = bno_random_0041.b
+		
+		random_list = {
+			70 = {
+				add_stress = minor_stress_loss
+			}
+			25 = {
+				contract_disease_effect = { DISEASE = ill TREATMENT_EVENT = yes }
+			}
+			5 = {
+				divorce = primary_spouse
+			}
+		}
+		
+		trigger_event = bno_random.2041
+	}
+}
+
+bno_random.1041 = {	
+	type = character_event
+	title = bno_random_1041.title
+	desc = bno_random_1041.desc
+	theme = realm
+	
+	override_background = {
+		reference = council_chamber
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	left_portrait = {
+		character = root
+		animation = wedding_drunk
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	option = {
+		name = bno_random_1041.a
+	}
+}
+
+bno_random.2041 = {
+	type = character_event
+	title = bno_random_2041.title
+	desc = bno_random_2041.desc
+	theme = realm
+	
+	override_background = {
+		reference = council_chamber
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	left_portrait = {
+		character = root
+		animation = wedding_drunk
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+	}
+	option = {
+		name = bno_random_2041.a
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+	}
+}
+
+
+#one of your courtiers goes mad for bbc - give them fecund + lunatic if they have bnwo trait.
+bno_random.0042 = {
+	type = character_event
+	title = bno_random_0042.title
+	desc = bno_random_0042.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = debating
+	}
+	left_portrait = {
+		character = root
+		animation = admiration
+	}
+	
+	cooldown = { months = 16}
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			
+			any_courtier_or_guest = {
+				is_female = yes
+				has_trait = bno_lifestyle_whitegirl
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			random_courtier_or_guest = {
+				limit = {
+					is_female = yes
+					has_trait = bno_lifestyle_whitegirl
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+		}
+	}
+	
+	#gossiping/debating
+	option = {
+		name = bno_random_0042.a
+		
+		random_list = {
+			60 = {
+				send_interface_toast = {
+					title = bno_random_0042.fail.title
+					left_icon = root
+					add_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value = 2
+					}
+				}
+				scope:target1 = {
+					add_trait = lustful
+					add_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value = 5
+					}
+				}
+			}
+			40 = {
+				send_interface_toast = {
+					title = bno_random_0042.success.title
+					left_icon = root
+					add_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value = 5
+					}
+				}
+				scope:target1 = {
+					add_trait = lunatic_1
+					add_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value = 15
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+#vision of paradise. if you have zealous or cynical, imagine an after-death life where black men rule. replace cynical with content.
+scripted_modifier bno_random_0043_kingdom_of_heaven_modifier = {
+	icon = travel_positive
+	stress_gain_mult = -0.5
+}
+
+bno_random.0043 = {
+	type = character_event
+	title = bno_random_0043.title
+	desc = bno_random_0043.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 36}
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+		}
+	}
+	
+	#wet dream
+	option = {
+		name = bno_random_0043.a
+		if = {
+			limit = {
+				has_trait = cynical
+			}
+			remove_trait = cynical
+			add_trait = content
+		}
+		add_stress = -10
+		add_character_modifier = {
+			modifier = bno_random_0043_kingdom_of_heaven_modifier
+			years = 10
+		}
+	}
+}
+
+#poetess. can't stop writing sonnets that pertain to bbc. gain poet trait, give random femlae courtiers curious
+bno_random.0044 = {
+	type = character_event
+	title = bno_random_0044.title
+	desc = bno_random_0044.desc
+	theme = realm
+	
+	override_background = {
+		reference = study
+	}
+	left_portrait = {
+		character = root
+		animation = admiration
+	}
+	
+	cooldown = { months = 16}
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 75
+			}
+			any_courtier = {
+				is_female = yes
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			every_courtier = {
+				limit = {
+					is_female = yes
+					is_adult = yes
+					is_ai = yes
+				}
+				add_trait = bno_lifestyle_whitegirl
+			}
+		}
+	}
+	
+	#gossiping/debating
+	option = {
+		name = bno_random_0044.a
+		if = {
+			limit = {
+				NOT = { has_trait = poet }
+			}
+			add_trait = poet
+		}
+	}
+}
+
+#'out of hand.' if character is married, and have a white husband, cuck him. in the event, something goes 'terribly wrong.' grant husband castrated
+bno_random.0045 = {
+	type = character_event
+	title = bno_random_0045.title
+	desc = bno_random_0045.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target1
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	cooldown = { months = 24 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			is_married = yes
+			primary_spouse = {
+				NOT = { has_trait = bno_bbc }
+			}
+			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			primary_spouse = {
+				save_scope_as = target2
+			}
+			random_courtier_or_guest = {
+				limit = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+			
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		}
+		
+		scope:target2 = {
+			add_trait = bno_castrated
+		}
+	}
+	
+	option = { #oh my god
+		name = bno_random_0045.a
+		
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_gain
+		}
+		
+		trigger_event = bno_random.1045
+	}
+	
+	option = { #this makes it better
+		name = bno_random_0045.b
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 10
+		}
+		
+		stress_impact = {   
+			bno_lifestyle_whitegirl = medium_stress_impact_loss
+		}
+		
+		trigger_event = bno_random.2045
+	}
+}
+
+bno_random.1045 = {
+	type = character_event
+	title = bno_random_1045.title
+	desc = bno_random_1045.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target1
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { #oh my god
+		name = bno_random_1045.a
+	}
+}
+
+bno_random.2045 = {
+	bno_random.1045 = {
+	type = character_event
+	title = bno_random_2045.title
+	desc = bno_random_2045.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = root
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target2
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_right_portrait = {
+		character = scope:target1
+		animation = shock
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = { #oh my god
+		name = bno_random_2045.a
+	}
+}
+}
+
+#'bringing their friends.' randomly add two more bbc courtiers if you have one. rarer.
+bno_random.0046 = {
+	type = character_event
+	title = bno_random_0046.title
+	desc = bno_random_0046.desc
+	theme = realm
+	
+	override_background = {
+		reference = market
+	}
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	lower_right_portrait = {
+		character = scope:target2
+		animation = personality_content
+	}
+	lower_left_portrait = {
+		character = scope:target3
+		animation = personality_content
+	}
+	
+	cooldown = { months = 72 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			random_courtier_or_guest = {
+				limit = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target2
+			age = 33
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target2 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		create_character = {
+			gender = male
+			save_scope_as = target3
+			age = 37
+			location = root.location
+
+			dynasty = none
+			trait = bno_bbc
+			trait = bno_full_black
+			trait = dick_big_good_3
+			trait = lustful
+			random_traits = yes
+			faith = faith:bbcs
+			culture = culture:bnoc
+		}
+		hidden_effect = {
+			scope:target3 = {
+				remove_trait = scaly
+				remove_trait = clubfooted
+				remove_trait = dwarf
+				remove_trait = hunchbacked
+				remove_trait = spindly
+				remove_trait = albino
+				remove_trait = infertile
+				remove_trait = wheezing
+				remove_trait = bleeder
+				remove_trait = depressed_genetic
+				remove_trait = depressed_1
+				remove_trait = lunatic_genetic
+				remove_trait = lunatic_1
+				remove_trait = possessed_genetic
+				remove_trait = possessed_1
+				remove_trait = lisping
+				remove_trait = stuttering
+				remove_trait = beauty_bad_1
+				remove_trait = beauty_bad_2
+				remove_trait = beauty_bad_3
+				remove_trait = intellect_bad_1
+				remove_trait = intellect_bad_2
+				remove_trait = intellect_bad_3
+				remove_trait = physique_bad_1
+				remove_trait = physique_bad_2
+				remove_trait = physique_bad_3
+				
+				add_character_flag = {
+					flag = no_headgear
+					 years = 1
+				}
+			}
+		}
+		
+	}
+	
+	option = { #open the floodgates
+		name = bno_random_0046.a
+		
+		add_gold = -25
+		
+		add_courtier = scope:target2
+		add_courtier = scope:target3
+	}
+}
+
+#arrogrant white male is given the humble trait by a black courtier. 
+bno_random.0047 = {
+	type = character_event
+	title = bno_random_0047.title
+	desc = bno_random_0047.desc
+	theme = realm
+	
+	override_background = {
+		reference = courtyard
+	}
+	lower_left_portrait = {
+		character = root
+		animation = admiration
+	}
+	right_portrait = {
+		character = scope:target2
+		animation = shock
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = anger
+	}
+	
+	cooldown = { months = 24 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+			any_courtier_or_guest = {
+				NOT = { has_trait = bno_bbc }
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			random_courtier_or_guest = {
+				limit = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+			random_courtier_or_guest = {
+				limit = {
+					NOT = { has_trait = bno_bbc }
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target2
+			}
+		}
+		
+		scope:target1 = {
+			add_opinion = {
+				target = scope:target2
+				modifier = disappointed_opinion
+				opinion = -35
+			}
+		}
+		scope:target2 = {
+			if = {
+				limit = {
+					has_trait = arrogant
+				}
+				remove_trait = arrogant
+				add_trait = humble
+			}
+			add_stress = 30
+			add_opinion = {
+				target = scope:target1
+				modifier = disappointed_opinion
+				opinion = -35
+			}
+		}
+	}
+	
+	option = { #good for him
+		name = bno_random_0047.a
+		
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_loss
+		}
+		
+	}
+	
+	option = { #join in
+		name = bno_random_0047.b
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 3
+		}
+		
+		scope:target2 = {
+			add_stress = 10
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -20
+			}
+		}
+		
+		stress_impact = {   
+			bno_lifestyle_whitegirl = minor_stress_impact_loss
+		}
+	}
+}
+
+#court musician teaches you culture
+bno_random.0048 = {
+	type = character_event
+	title = bno_random_0048.title
+	desc = bno_random_0048.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = admiration
+	}
+	right_portrait = {
+		character = root
+		animation = dancing
+	}
+	
+	cooldown = { months = 24 }
+	
+	trigger = {
+		root = {
+			is_female = yes
+			is_adult = yes
+			has_trait = bno_lifestyle_whitegirl
+			
+			employs_court_position = court_musician_court_position
+			any_court_position_holder = {
+				type = court_musician_court_position
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+			}
+		}
+	}
+	
+	immediate = {
+		root = {
+			random_court_position_holder = {
+				limit = {
+					type = court_musician_court_position
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+				}
+				save_scope_as = target1
+			}
+		}
+	}
+	
+	option = { #like this?
+		name = bno_random_0048.a
+		
+	}
+	
+	option = { #let me arch my back some more
+		name = bno_random_0048.b
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 5
+		}
+		
+		trigger_event = bno_random.2048
+	}
+}
+
+bno_random.2048 = {
+	type = character_event
+	title = bno_random_2048.title
+	desc = bno_random_2048.desc
+	theme = realm
+	
+	override_background = {
+		reference = bedchamber
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = admiration
+	}
+	right_portrait = {
+		character = root
+		animation = dancing
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	
+	option = {
+		name = bno_random_2048.a
+	}
+}
+
+bno_random.0049 = {
+}
+
+bno_random.0050 = {
+}
+
+bno_random.9001 = {
+	type = character_event
+	title = bno_random_9001.title
+	desc = bno_random_9001.desc
+	theme = realm
+	override_background = {
+		reference = courtyard
+	}
+	
+	trigger = {
+		root = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 50
+				value < 75
+			}
+		}
+	}
+	
+	immediate = {
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = 50
+		}
+	}
+	
+	option = {
+		name = bno_random_9001.a
+		add_gold = 1
+	}
+}
+
+bno_random.9002 = {
+	type = character_event
+	title = bno_random_9001.title
+	desc = bno_random_9001.desc
+	theme = realm
+	override_background = {
+		reference = courtyard
+	}
+	
+	trigger = {
+		root = {
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value <= 50
+			}
+		}
+	}
+	
+	immediate = {
+		add_trait_xp = {
+			trait = bno_lifestyle_whitegirl
+			value = -10
+		}
+	}
+	
+	option = {
+		name = bno_random_9001.a
+		add_gold = 1
+	}
+}
+
+
+#test event
+#bno_random.1001 = {
+#	type = character_event
+#	title = bno_random_1001.title
+#	desc = bno_random_1001.desc
+#	theme = realm
+#	override_background = {
+#		reference = courtyard
+#	}
+#	
+#	trigger = {
+#		root = {
+#			has_trait = diligent
+#		}
+#	}
+#	
+#	option = {
+#		name = bno_random_1001.a
+#		add_gold = 1
+#	}
+#}
+#
+#bno_random.1002 = {
+#	type = character_event
+#	title = bno_random_1001.title
+#	desc = bno_random_1001.desc
+#	theme = realm
+#	override_background = {
+#		reference = courtyard
+#	}
+#	
+#	trigger = {
+#		root = {
+#			has_trait = rakish
+#		}
+#	}
+#	
+#	option = {
+#		name = bno_random_1001.a
+#		add_gold = 2
+#	}
+#}
+#
+#bno_random.1003 = {
+#	type = character_event
+#	title = bno_random_1001.title
+#	desc = bno_random_1001.desc
+#	theme = realm
+#	override_background = {
+#		reference = courtyard
+#	}
+#	
+#	trigger = {
+#		root = {
+#			has_trait = lustful
+#		}
+#	}
+#	
+#	option = {
+#		name = bno_random_1001.a
+#		add_gold = 3
+#	}
+#}
+#
+#bno_random.1004 = {
+#	type = character_event
+#	title = bno_random_1001.title
+#	desc = bno_random_1001.desc
+#	theme = realm
+#	override_background = {
+#		reference = courtyard
+#	}
+#	
+#	trigger = {
+#		root = {
+#			has_trait = lazy
+#		}
+#	}
+#	
+#	option = {
+#		name = bno_random_1001.a
+#		add_gold = 4
+#	}
+#}
+#
+#bno_random.1005 = {
+#	type = character_event
+#	title = bno_random_1001.title
+#	desc = bno_random_1001.desc
+#	theme = realm
+#	override_background = {
+#		reference = courtyard
+#	}
+#	
+#	trigger = {
+#		root = {
+#			has_trait = shy
+#		}
+#	}
+#	
+#	option = {
+#		name = bno_random_1001.a
+#		add_gold = 5
+#	}
+#}

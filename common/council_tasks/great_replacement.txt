@@ -1,0 +1,168 @@
+# councillor task for 'Great Replacement' action file
+
+great_replacement = {
+	position = councillor_marshal
+
+	task_type = task_type_county
+	county_target = realm
+	task_progress = task_progress_percentage
+	restart_on_finish = yes
+	highlight_own_realm = yes
+	
+	is_shown = {
+		scope:councillor = {
+			OR = {
+				has_trait = bno_bbc
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 25
+				}
+			}
+		}
+	}
+
+	effect_desc = {
+		desc = {
+			desc = great_replacement_effect_desc
+			triggered_desc = {
+				trigger = {
+					trigger_if = {
+						limit = { exists = scope:county }
+						scope:county = {
+							NOT = { culture = scope:councillor_liege.culture }
+						}
+					}
+					trigger_else = { always = no }
+				}
+				desc = great_replacement_acceptance_effect_desc
+			}
+		}
+	}
+
+	progress = {
+		value = 5
+		add = {
+			value = {
+				add = scope:councillor.martial
+				divide = 5
+			}
+			desc = SCALED_COUNCILLOR_MARTIAL_VALUE
+		}
+		
+		if = {
+			limit = {
+				exists = scope:county
+				scope:county = {
+					development_level > 0
+				}
+			}
+			subtract = {
+				value = {
+					add = scope:county.development_level
+					divide = 3
+				}
+				desc = STEWARD_PROMOTE_CULTURE_DEVELOPMENT_PENALTY
+			}
+		}
+		min = 1
+	}
+
+	potential_county = {
+		scope:county = {
+			NOT = { culture = scope:councillor_liege.culture }
+			trigger_if = {
+				limit = {
+					scope:councillor_liege = { has_variable = hold_court_8130_culture_block }
+				}
+				custom_tooltip = {
+					text = hold_court_8130_conversion_tt
+					NOT = { culture = scope:councillor_liege.var:hold_court_8130_culture_block }
+				}
+			}
+		}
+	}
+
+	on_finish_task_county = {
+		scope:councillor_liege = {
+			if = {
+				limit = {	
+					NOT = {
+						culture = {
+							is_hybrid_culture = yes
+							any_parent_culture = {
+								this = scope:county.culture
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						is_independent_ruler = no
+					}
+					add_character_flag = {
+						flag = no_ai_culture_convert
+						years = 60
+					}
+				}
+				else = {
+					add_character_flag = {
+						flag = no_ai_culture_convert
+						years = 30
+					}
+				}
+			}
+			add_tyranny = scope:county.development_level
+			
+			stress_impact = {
+				compassionate = 60
+				just = 40
+				forgiving = 20
+			}
+		}
+		scope:county = {
+			if = {
+				limit = {
+					NOT = {
+						scope:councillor_liege.culture = {
+							is_hybrid_culture = yes
+							any_parent_culture = {
+								this = scope:county.culture
+							}
+						}
+					}
+				}
+				culture = {
+					change_cultural_acceptance = {
+						target = scope:councillor_liege.culture
+						value = culture_replacement_acceptance_impact
+						desc = cultural_acceptance_loss_replacement_culture
+					}
+				}
+			}
+			change_development_level = {
+				subtract = 10
+			}
+			change_county_control = {
+				subtract = 100
+			}
+			set_county_culture = scope:councillor_liege.culture
+			set_county_faith = scope:councillor.faith
+		}
+		scope:councillor = {
+			if = {
+				limit = {
+					AND = {
+						NOT = { has_trait = bno_camp_leader }
+						has_trait = bno_blood
+					}
+				}
+				add_trait = bno_camp_leader
+			}
+			start_default_task = yes
+		}
+	}
+
+	ai_will_do = {
+		value = -100
+	}
+}

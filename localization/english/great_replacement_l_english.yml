@@ -1,0 +1,5 @@
+﻿l_english:
+ great_replacement:0 "Replacement"
+ great_replacement_effect_desc:0 "#S At #V 100%#!#!:\n$TAB$The [county|E] changes [culture|E] to [councillor.GetCulture.GetName] \n$TAB$The [county|E] will change [faith|E] to [councillor.GetFaith.GetName] \n$TAB$Decrease in [development|E] by #N 10#! \n$TAB$Decrease in [county_control|E] to #N 0#! \n$TAB$Increase in [tyranny|E] equal to existing [development|E]\n$TAB$The [cultural_acceptance|E] between the [county.GetProvince.GetCounty.GetCulture.GetCollectiveNoun] and the [councillor_liege.GetCulture.GetCollectiveNoun] decreases by [SCOPE.ScriptValue('culture_replacement_acceptance_impact')|N^/%] due to their size \n$TAB$[SCOPE.ScriptValue('extermination_stress')|N^/%] [stress|E] increase due to personality"
+ cultural_acceptance_loss_replacement_culture:0 "Invaded"
+ great_replacement_acceptance_effect_desc:0 "\nLocal towns and villages will be violently invaded by superior men and forced into re-education camps. Most won't survive..."

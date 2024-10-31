@@ -1,0 +1,578 @@
+namespace = bno_ep3_laamp_flavour
+
+##################################################
+# 0000-4000 - Male Events
+# 5000-9000 Female Events
+##################################################
+
+
+#girl runs from home, seeks to join your band of merry knights
+bno_ep3_laamp_flavour.0001 = {
+	type = character_event
+	title = bno_ep3_laamp_flavour_0001.title
+	desc = bno_ep3_laamp_flavour_0001.desc
+	theme = laamp
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	override_background = { reference = wilderness }
+	
+	
+	cooldown = { months = 72 }
+
+	trigger = {
+		has_ep3_dlc_trigger = yes
+		# Standard checks.
+		is_adult = yes
+		is_available_allow_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		# Laamps use title cooldowns, to help trim down repeats when succession happens.
+		primary_title = {
+			NOT = { has_variable = had_bno_ep3_laamp_flavour_0001 }
+			# And check that we've had this title for a decent amount of time, so that we don't get this immediately every time.
+			title_held_years >= 1
+		}
+		
+		is_ai = no
+		has_trait = bno_bbc
+		is_landless_adventurer = yes
+	}
+
+	immediate = {
+		if = {
+			limit = { enable_debug_laamp_event_logging_toggle_trigger = yes }
+			increment_global_variable_effect = {
+				VAR = tally_lfe_0001
+				VAL = 1
+			}
+		}
+		# Set our cooldown.
+		primary_title = {
+			set_variable = {
+				name = had_bno_ep3_laamp_flavour_0001
+				value = yes
+				years = @ep3_laamp_flavour_ewan_event_cooldown_short
+			}
+		}
+		# Grab our terrain.
+		ep3_laamp_flavour_ewan_register_terrain_effect = yes
+		
+		create_character = {
+			template = beauitful_peasant_character
+			location = root.location
+			culture = root.location.culture
+			faith = root.location.faith
+			gender_female_chance = 100
+			save_scope_as = target1
+		}
+		
+		
+	}
+
+	#i'll take you!
+	option = {
+		name = bno_ep3_laamp_flavour_0001.a
+		
+#		add_character_modifier = {
+#			modifier = ep3_laamp_flavour_ewan_0001_the_little_things_modifier
+#			years = 10
+#		}
+
+		pay_short_term_gold = {
+			target = scope:target1
+			gold = minor_gold_laamps_value
+		}
+
+		stress_impact = {
+			generous = tiny_stress_loss
+		}
+		
+		add_courtier = scope:target1
+	}
+	
+	#perhaps I can sway you instead?
+	option = {
+		name = bno_ep3_laamp_flavour_0001.b
+		random_list = {
+			75 = {
+				send_interface_toast = {
+					title = bno_ep3_laamp_flavour_0001.success
+					left_icon = scope:root
+					right_icon = scope:target1
+					scope:target1 = {
+						set_relation_friend = {
+							target = root
+						}
+						add_opinion = {
+							target = root
+							modifier = friendliness_opinion
+							opinion = 25
+						}
+					}
+				}
+				add_courtier = scope:target1
+				scope:target1 = {
+					add_trait = bno_lifestyle_whitegirl
+				}
+				carn_had_sex_with_effect = {
+				CHARACTER_1 = root
+				CHARACTER_2 = scope:target1
+				C1_PREGNANCY_CHANCE = pregnancy_chance
+				C2_PREGNANCY_CHANCE = pregnancy_chance
+				STRESS_EFFECTS = scope:carn_sex_stress_effects
+				DRAMA = scope:carn_sex_drama
+				}
+				trigger_event = bno_ep3_laamp_flavour.2001
+			}
+			25 = {
+				send_interface_toast = {
+					title = bno_ep3_laamp_flavour_0001.failure
+					left_icon = root
+					right_icon = scope:target1
+					scope:target1 = {
+						add_opinion = {
+							target = root
+							opinion = -25
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	#no, i dont think ill use you
+	option = {
+		name = bno_ep3_laamp_flavour_0001.c
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+
+bno_ep3_laamp_flavour.2001 = {
+	type = character_event
+	title = bno_ep3_laamp_flavour_2001.title
+	desc = bno_ep3_laamp_flavour_2001.desc
+	theme = laamp
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_contents
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	override_background = { reference = tavern }
+	
+	option = {
+		name = bno_ep3_laamp_flavour_2001.a
+	}
+}
+
+# flirt with a local at the tavern
+bno_ep3_laamp_flavour.0002 = {
+	type = character_event
+	title = bno_ep3_laamp_flavour_0002.title
+	desc = bno_ep3_laamp_flavour_0002.desc
+	theme = laamp
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	override_background = { reference = tavern }
+	
+	cooldown = { months = 72 }
+
+	trigger = {
+		has_ep3_dlc_trigger = yes
+		# Standard checks.
+		is_adult = yes
+		is_available_allow_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		# Laamps use title cooldowns, to help trim down repeats when succession happens.
+		primary_title = {
+			NOT = { has_variable = had_bno_ep3_laamp_flavour_0002 }
+			# And check that we've had this title for a decent amount of time, so that we don't get this immediately every time.
+			title_held_years >= 1
+		}
+		
+		location = {
+			has_holding = yes
+			county = {
+				holder = {
+					any_courtier_or_guest = {
+						is_female = yes
+						is_adult = yes
+						is_ai = yes
+					}
+				}
+			}
+		}
+		
+		is_ai = no
+		has_trait = bno_bbc
+		is_landless_adventurer = yes
+	}
+	
+	immediate = {
+		if = {
+			limit = { enable_debug_laamp_event_logging_toggle_trigger = yes }
+			increment_global_variable_effect = {
+				VAR = tally_lfe_0001
+				VAL = 1
+			}
+		}
+		# Set our cooldown.
+		primary_title = {
+			set_variable = {
+				name = had_bno_ep3_laamp_flavour_0002
+				value = yes
+				years = @ep3_laamp_flavour_ewan_event_cooldown_short
+			}
+		}
+		# Grab our terrain.
+		ep3_laamp_flavour_ewan_register_terrain_effect = yes
+		
+		location = {
+			has_holding = yes
+			county = {
+				holder = {
+					save_scope_as = ruler
+				}
+			}
+		}
+		scope:ruler = {
+			random_courtier_or_guest = {
+				limit = {
+					is_female = yes
+					is_adult = yes
+				}
+				save_scope_as = target1
+			}
+		}
+		
+	}
+
+	# flirt with her
+	option = {
+		name = bno_ep3_laamp_flavour_0002.a
+		random_list = {
+			100 = { #success
+				modifier = {
+					add = 100
+					OR = {
+						has_trait = lustful
+						has_trait = diligent
+						has_trait = patient
+					}
+				}
+				send_interface_toast = {
+					title = bno_ep3_laamp_flavour_0002.success
+					left_icon = scope:root
+					right_icon = scope:target1
+					scope:target1 = {
+						add_opinion = {
+							target = root
+							modifier = friendliness_opinion
+							opinion = 50
+						}
+					}
+				}
+				scope:target1 = {
+					add_trait = bno_lifestyle_whitegirl	#curiosity
+				}
+			}
+			100 = { #failure
+				modifier = {
+					add = 100
+					has_trait = shy
+					has_trait = impatient
+				}
+				send_interface_toast = {
+					title = bno_ep3_laamp_flavour_0002.failure
+					left_icon = scope:root
+					right_icon = scope:target1
+					scope:target1 = {
+						add_opinion = {
+							target = root
+							modifier = friendliness_opinion
+							opinion = -10
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	# buy her a drink
+	option = {
+		name = bno_ep3_laamp_flavour_0002.b
+		add_piety = -25
+		pay_short_term_gold = {
+			target = scope:target1
+			gold = minor_gold_laamps_value
+		}
+		
+		random_list = {
+			100 = { #success
+				modifier = {
+					add = 100
+					OR = {
+						has_trait = lustful
+						has_trait = diligent
+						has_trait = patient
+					}
+				}
+				send_interface_toast = {
+					title = bno_ep3_laamp_flavour_0002.success
+					left_icon = scope:root
+					right_icon = scope:target1
+					scope:target1 = {
+						add_opinion = {
+							target = root
+							modifier = friendliness_opinion
+							opinion = 50
+						}
+					}
+				}
+				trigger_event = bno_ep3_laamp_flavour.2002
+			}
+			25 = { #failure
+				modifier = {
+					add = 100
+					has_trait = shy
+				}
+				send_interface_toast = {
+					title = bno_ep3_laamp_flavour_0002.failure
+					left_icon = scope:root
+					right_icon = scope:target1
+					scope:target1 = {
+						add_opinion = {
+							target = root
+							modifier = friendliness_opinion
+							opinion = -30
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	# seduce her
+	option = {
+		name = bno_ep3_laamp_flavour_0003.c
+		
+		random_list = {
+			50 = { #success
+				modifier = {
+					add = 25
+					OR = {
+						has_trait = lustful
+						has_trait = diligent
+						has_trait = patient
+					}
+				}
+				modifier = {
+					add = 200
+					scope:target1 = {
+						has_trait = bno_lifestyle_whitegirl
+					}
+				}
+				send_interface_toast = {
+					title = bno_ep3_laamp_flavour_0002.success
+					left_icon = scope:root
+					right_icon = scope:target1
+					scope:target1 = {
+						add_opinion = {
+							target = root
+							modifier = friendliness_opinion
+							opinion = 50
+						}
+					}
+				}
+				trigger_event = bno_ep3_laamp_flavour.3002
+			}
+			100 = { #failure
+				modifier = {
+					add = 100
+					has_trait = shy
+				}
+				send_interface_toast = {
+					title = bno_ep3_laamp_flavour_0002.failure
+					left_icon = scope:root
+					right_icon = scope:target1
+					scope:target1 = {
+						add_opinion = {
+							target = root
+							modifier = friendliness_opinion
+							opinion = -50
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# smoochie
+bno_ep3_laamp_flavour.2002 = {
+	type = character_event
+	title = bno_ep3_laamp_flavour_2002.title
+	desc = bno_ep3_laamp_flavour_2002.desc
+	theme = laamp
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	override_background = { reference = alley_night }
+	
+	# send her on her way with a spank
+	option = {
+		name = bno_ep3_laamp_flavour_2002.a
+		
+		scope:target1 = {
+			add_trait = bno_lifestyle_whitegirl
+			add_piety = -25
+		}
+	}
+}
+
+#sex
+bno_ep3_laamp_flavour.3002 = {
+	type = character_event
+	title = bno_ep3_laamp_flavour_3002.title
+	desc = bno_ep3_laamp_flavour_3002.desc
+	theme = laamp
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	override_background = { reference = bedchamber }
+	
+	immediate = {
+		scope:target1 = {
+			add_trait = bno_lifestyle_whitegirl
+		}
+	}
+	
+	# pull out
+	option = {
+		name = bno_ep3_laamp_flavour_3002.a
+		
+		scope:target1 = {
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 5
+			}
+		}
+	}
+	
+	# dont pull out
+	option = {
+		name = bno_ep3_laamp_flavour_3002.b
+		
+		hidden_effect = {
+			carn_had_sex_with_effect = {
+				CHARACTER_1 = root
+				CHARACTER_2 = scope:target1
+				C1_PREGNANCY_CHANCE = pregnancy_chance
+				C2_PREGNANCY_CHANCE = pregnancy_chance
+				STRESS_EFFECTS = scope:carn_sex_stress_effects
+				DRAMA = scope:carn_sex_drama
+			}
+		}
+				
+		scope:target1 = {
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 5
+			}
+		}
+	}
+}
+
+# unwitting campgirl catches PC masturbating
+bno_ep3_laamp_flavour.0003 = {
+
+}
+
+# washing with a campgirl who is bnwo
+bno_ep3_laamp_flavour.0004 = {
+}
+
+# a mother thanks you for the refuge (must have a child? or over a certain age?)
+bno_ep3_laamp_flavour.0005 = {
+}
+
+# hooking up with a wellknown camp slut
+bno_ep3_laamp_flavour.0006 = {
+}
+
+# sleeping with a whore at the brothel, taking her home
+bno_ep3_laamp_flavour.0007 = {
+}
+
+# cuck event within the camp
+bno_ep3_laamp_flavour.0008 = {
+}
+
+# if there are multiple black guys in camp, spitroast a girl
+bno_ep3_laamp_flavour.0009 = {
+}
+
+# event that randomly introduces a new refugee to camp?
+bno_ep3_laamp_flavour.0010 = {
+}
