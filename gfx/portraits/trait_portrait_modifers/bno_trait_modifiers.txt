@@ -1,0 +1,33 @@
+slut3 = {
+	slut3 = {
+		traits = {
+			bno_qos
+		}
+		dna_modifiers = {
+			color = { #changes hair color
+				gene = hair_color
+				mode = replace
+					
+				x = 0.1
+				y = 0
+			}
+			accessory = { #high heels from cbo
+				mode = add
+				gene = shoes
+				template = ankle_boot_heels_03
+				value = 1.0
+			}
+			morph = { #pink lipstick
+				mode = add
+				gene = lipstick
+				template = pink_matte
+				value = 1.0
+			}
+			morph = {
+				mode = add
+				gene = cosmetics_bno_body_tattoo
+				template = bno_body_tattoo_6
+			}			
+		}
+	}
+}

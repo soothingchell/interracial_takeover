@@ -1,0 +1,435 @@
+bno_slave = { #changes for any female slave with bbc owner
+usage = game
+	bbc_slave = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.1
+			}
+			accessory = {
+				mode = add
+				gene = dressed
+				template = undressed
+				value = 1
+			}			
+			accessory = {
+				mode = replace
+				gene = legwear
+				template = no_legwear
+				value = 0
+			}			
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_trait = slave
+				is_female = yes
+				is_adult = yes
+				liege = {
+					has_trait = bno_bbc
+				}
+			}
+		}
+	}
+}
+
+slut = {
+usage = game
+	slut1 = {
+
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.2
+			}			
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 900
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+			}
+			modifier = {
+				add = 900
+				AND = {
+					is_female = yes
+					has_faith = faith:bbcs
+				}
+			}
+		}
+	}
+	slut2 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.4
+			}				
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				any_spouse = {
+					has_trait = bno_bbc
+				}
+			}
+		}
+	}
+}
+bimbo = {
+usage = game
+	bimbo = {
+
+		dna_modifiers = {
+			color = { #changes hair color
+				gene = hair_color
+				mode = replace
+					
+				x = 0.1
+				y = 0
+			}
+			accessory = {
+				mode = add
+				gene = dressed
+				template = undressed
+				value = 1
+			}			
+			accessory = {
+				mode = replace
+				gene = legwear
+				template = no_legwear
+				value = 0
+			}
+			morph = { #pink lipstick
+				mode = add
+				gene = lipstick
+				template = pink_matte
+				value = 1.0
+			}
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.2
+			}
+			morph = {
+				mode = add
+				gene = gene_cumshots_oral
+				value = 1.0
+				template = cumshots_oral_1
+			}		
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				has_character_flag = bimbo
+			}
+		}
+	}
+}
+
+pregnancy_tattoo = {
+usage = game
+
+	bno_pregnancy_1 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_1
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 1
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}
+			}
+		}
+	}
+	bno_pregnancy_2 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_2
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 2
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+	bno_pregnancy_3 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_3
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 3
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+	bno_pregnancy_4 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_4
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 4
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+	bno_pregnancy_5 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_5
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 5
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+	bno_pregnancy_6 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_6
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 6
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+	bno_pregnancy_7 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_7
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 7
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+	bno_pregnancy_8 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_8
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 8
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+	bno_pregnancy_9 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_9
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 9
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+	bno_pregnancy_10 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_pregnancy_tattoo
+				template = bno_pregnancy_10
+				value = 1
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 1000
+				is_female = yes
+				bno_num_mixed_children_plus_dead = 10
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+				OR = {
+					primary_spouse = { has_trait = bno_bbc }
+					AND = {
+						has_trait = slave
+						liege = { has_trait = bno_bbc }
+					}
+				}				
+			}
+		}
+	}
+}
