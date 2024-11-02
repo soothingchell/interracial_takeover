@@ -19,7 +19,7 @@ bno_influence_child = {
 			is_ai = yes
 			is_adult = no
 			is_female = yes
-			age >= 14
+			age >= 13
 			OR = {
 				scope:actor = { has_relation_ward = scope:recipient }
 				is_hostage_of = scope:actor
@@ -36,7 +36,7 @@ bno_influence_child = {
 		}
 	}
 	
-	cooldown_against_recipient = { years = 3 }
+	cooldown_against_recipient = { years = 2 }
 	
 	on_accept = {
 		scope:recipient = {
@@ -212,7 +212,7 @@ bno_influence_child = {
 		ai_recipients = courtiers
 	}
 	ai_will_do = {
-		base = -100
+		base = -50
 		modifier = { # If the recipient is a player, do not bother sending
 			factor = 0
 			scope:recipient = {

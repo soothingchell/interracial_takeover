@@ -1,0 +1,62 @@
+taken_by_new_bull_master = {
+    opinion = 30
+    decaying = no
+}
+
+stolen_by_new_bull_master = {
+	opinion = 50
+	decaying = no
+}
+
+previous_cuck_husband = {
+	opinion = -30
+	decaying = no
+}
+
+bull_husband_takes_me = {
+	opinion = 25
+	decaying = yes
+	years = 1
+}
+
+bno_spymaster_guarded_me = {
+	opinion = 30
+	decaying = yes
+	years = 1
+}
+
+bno_pathetic_cuck_husband = {
+	opinion = -30
+	decaying = yes
+	years = 2
+}
+
+bno_bull_fucks_me = {
+	opinion = 25
+	decaying = yes
+	years = 1
+}
+
+bno_bull_takes_care_of_my_wife = {
+	opinion = 20
+	decaying = yes
+	years = 1
+}
+
+bno_good_slut = {
+	opinion = 15
+	decaying = yes
+	years = 1
+}
+
+bno_fed_me_cum = {
+	opinion = 30
+	decaying = yes
+	years = 10
+}
+
+bno_travel_delayed_for_fucking = {
+	opinion = -5
+	decaying = yes
+	months = 6
+}

@@ -1,0 +1,42 @@
+﻿l_english:
+
+ #BBC courtier force buys county title
+ bno_title_change_0001.title:0 "BBC Demands Titles"
+ bno_title_change_0001.desc:0 "Test"
+ bno_title_change_0001.a:0 "test"
+ 
+ #bbc courtier pays for AI vassal's title, cuck player informed
+ bno_title_change_0002.title:0 "Test"
+ bno_title_change_0002.desc:0 "Test"
+ bno_title_change_0002.a:0 "Test"
+ 
+ #bbc uses prestige to force vassal to give up title
+ bno_title_change_0003.title:0 "Test"
+ bno_title_change_0003.desc:0 "Test"
+ bno_title_change_0003.a:0 "Test"
+ 
+ #high intrigue BBC courtier + AI vassal's slut wife kill vassal, take all title for themself, get married. cuck player informed
+ bno_title_change_0004.title:0 "Test"
+ bno_title_change_0004.desc:0 "Test"
+ bno_title_change_0004.a:0 "Test"
+ 
+ #fully blacked wife takes all cuck players titles
+ bno_title_change_0005.title:0 "Wife takes titles"
+ bno_title_change_0005.desc:0 "Test"
+ bno_title_change_0005.a:0 "test"
+
+ #ruler bbc takes slut liege's titles , don't know if i've tested this yet?
+ bno_title_change_0006.title:0 "Restoring the natural order"
+ bno_title_change_0006.desc:0 "Write event desc about how player takes all titles from a white slut"
+ bno_title_change_0006.a:0 "She will be a good slave"
+ bno_title_change_0006.b:0 "Keep her as a wife"
+ 
+ bno_title_change_1006 "Parading a fallen ruler"
+ bno_title_change_1006:0 "Description of parading former female ruler in front of the realm. Neighbors hear about it as well"
+ bno_title_change_1006.a:0 "All the realm sees my dominance
+
+ 
+#
+# bno_random_1001.title:0 "Test title"
+# bno_random_1001.desc:0 "Hi!"
+# bno_random_1001.a:0 "OK"

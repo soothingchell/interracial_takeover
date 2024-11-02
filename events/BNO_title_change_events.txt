@@ -1,0 +1,848 @@
+namespace = bno_title_change
+
+bno_title_change.0001 = { #BBC demands title from cuck player, pays 200
+	type = character_event
+	title = bno_title_change_0001.title
+	desc = bno_title_change_0001.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content 
+	}
+	cooldown = { months = 24 }	
+	trigger = {
+		root = {
+			is_adult = yes
+			has_trait = bno_jos
+			is_male = yes
+			is_ruler = yes
+			any_held_title = { #make sure we have at least one non-capital county level title to lose.
+				tier = tier_county
+				NOT = { this = root.capital_county }
+			}			
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+				is_ai = yes
+				is_imprisoned = no
+				gold > 200
+			}
+		}
+	}
+	immediate = {
+		root = {
+			random_courtier_or_guest = {
+				limit = {
+					has_trait = bno_bbc
+					is_adult = yes
+					is_ai = yes
+					is_imprisoned = no
+					gold > 200
+				}
+				save_scope_as = target1
+			}
+			random_held_title = { #here we chose the random county title
+				limit = {
+					tier = tier_county
+					NOT = { this = root.capital_county }
+				}
+				save_scope_as = title_to_grant
+			}
+		}
+	}
+	option = {
+		name = bno_title_change_0001.a
+		create_title_and_vassal_change = {
+			type = granted
+			save_scope_as = change
+		}
+		scope:title_to_grant = {
+			change_title_holder = {
+				holder = scope:target1
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+		stress_impact = {
+			generous = major_stress_impact_loss
+			arrogant = medium_stress_impact_gain
+		}
+		scope:target1 = {
+			remove_short_term_gold = 200
+			add_trait = bno_camp_leader
+		}
+		root = {
+			add_gold = 200
+		}		
+	}
+}
+#bbc courtier pays for AI vassal's title, cuck player informed
+bno_title_change.0002 = {
+	type = character_event
+	title = bno_title_change_0002.title
+	desc = bno_title_change_0002.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = scope:vassal_losing_title
+		animation = grief
+	}
+	right_portrait = {
+		character = scope:bbc_getting_title
+		animation = anger
+	}
+	trigger = {
+		root = {
+			is_ruler = yes
+			is_male = yes
+			NOT = { has_trait = bno_bbc }
+			is_adult = yes
+			any_vassal = {
+				is_male = yes
+				NOT = { has_trait = bno_bbc }
+				any_held_title = { #don't want barons to be targeted
+					tier = tier_county
+				}
+			}
+			any_courtier_or_guest = {
+				is_adult = yes
+				has_trait = bno_bbc
+				gold > 200
+			}
+		}
+	}
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				is_adult = yes
+				has_trait = bno_bbc
+				gold > 200
+			}
+			save_scope_as = bbc_getting_title
+		}
+		random_vassal = {
+			limit = {
+				NOT = { has_trait = bno_bbc }
+				is_male = yes
+				random_held_title = { #don't want barons to be targeted
+					limit = {
+						tier = tier_county
+					}
+				}				
+			}
+			save_scope_as = vassal_losing_title
+		}
+		scope:vassal_losing_title = {
+			random_held_title = { #here we chose the random county title
+				limit = {
+					tier = tier_county
+				}
+				save_scope_as = title_to_grant
+			}
+		}
+	}
+	option = {
+		name = bno_title_change_0002.a
+		scope:vassal_losing_title = {
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = change
+			}
+			scope:title_to_grant = {
+				change_title_holder = {
+					holder = scope:bbc_getting_title
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+			stress_impact = {
+				generous = major_stress_impact_loss
+				bno_whiteboi = major_stress_impact_loss
+				arrogant = major_stress_impact_gain
+				stubborn = major_stress_impact_gain
+				ambitious = major_stress_impact_gain
+				content = medium_stress_impact_loss
+			}
+			scope:bbc_getting_title = {
+				remove_short_term_gold = 200
+				add_trait = bno_camp_leader
+			}
+			add_gold = 200
+		}
+	}
+}
+
+#bbc uses prestige to force vassal to give up title
+bno_title_change.0003 = {
+	type = character_event
+	title = bno_title_change_0003.title
+	desc = bno_title_change_0003.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = scope:vassal_losing_title
+		animation = grief
+	}
+	right_portrait = {
+		character = scope:bbc_getting_title
+		animation = anger
+	}
+	trigger = {
+		root = {
+			is_ruler = yes
+			is_male = yes
+			NOT = { has_trait = bno_bbc }
+			any_vassal = {
+				is_male = yes
+				NOT = { has_trait = bno_bbc }
+				any_held_title = { #don't want barons to be targeted
+					tier = tier_county
+				}				
+			}
+			any_courtier_or_guest = {
+				is_adult = yes
+				has_trait = bno_bbc
+				prestige > 750
+			}
+		}
+	}
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				is_adult = yes
+				has_trait = bno_bbc
+				prestige > 750
+			}
+			save_scope_as = bbc_getting_title
+		}
+		random_vassal = {
+			limit = {
+				NOT = { has_trait = bno_bbc }
+				is_male = yes
+				random_held_title = { #don't want barons to be targeted
+					limit = {
+						tier = tier_county
+					}
+				}				
+			}
+			save_scope_as = vassal_losing_title
+		}
+		scope:vassal_losing_title = { #here we chose the random county title
+			random_held_title = {
+				limit = {
+					tier = tier_county
+				}
+				save_scope_as = title_to_grant
+			}
+		}
+	}
+	option = {
+		name = bno_title_change_0003.a
+		scope:vassal_losing_title = {
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = change
+			}
+			scope:title_to_grant = {
+				change_title_holder = {
+					holder = scope:bbc_getting_title
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+			stress_impact = {
+				bno_whiteboi = major_stress_impact_loss
+				arrogant = major_stress_impact_gain
+				stubborn = major_stress_impact_gain
+				ambitious = major_stress_impact_gain
+				content = medium_stress_impact_loss
+			}
+			scope:bbc_getting_title = {
+				add_prestige = -750
+				add_trait = bno_camp_leader
+			}
+		}
+	}
+}
+
+#high intrigue BBC courtier + AI vassal's slut wife take all title for themself, get married. cuck player informed
+bno_title_change.0004 = {
+	type = character_event
+	title = bno_title_change_0004.title
+	desc = bno_title_change_0004.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = scope:vassal_losing_title
+		animation = fear
+	}
+	right_portrait = {
+		character = scope:killer_slut
+		animation = scheme
+	}
+	lower_center_portrait = {
+		character = scope:bbc_getting_title
+	}
+	trigger = {
+		root = {
+			is_ruler = yes
+			is_male = yes
+			NOT = { has_trait = bno_bbc }
+			any_courtier_or_guest = {
+				is_adult = yes
+				has_trait = bno_bbc
+				intrigue > 18
+			}
+			any_vassal = {
+				is_male = yes
+				is_adult = yes
+				NOT = { has_trait = bno_bbc }
+				is_married = yes
+				any_held_title = { #don't want barons to be targeted
+					tier = tier_county
+				}				
+				primary_spouse = {
+					has_trait = bno_lifestyle_whitegirl
+					is_visibly_fertile = yes
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value = 100
+					}
+				}
+			}
+		}
+	}
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				is_adult = yes
+				has_trait = bno_bbc
+				intrigue > 18
+			}
+			save_scope_as = bbc_getting_title
+		}
+		random_vassal = {
+			limit = {
+				NOT = { has_trait = bno_bbc }
+				is_male = yes
+				is_married = yes
+				is_adult = yes
+				random_held_title = { #don't want barons to be targeted
+					limit = {
+						tier = tier_county
+					}
+				}				
+			}
+			save_scope_as = vassal_losing_title
+		}
+		scope:vassal_losing_title = {
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = change
+			}
+			every_held_title = {
+				change_title_holder_include_vassals = {
+					holder = scope:bbc_getting_title
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+			if = {
+				limit = { gold > 0 }
+				pay_short_term_gold = {
+					target = scope:bbc_getting_title
+					gold = scope:vassal_losing_title.gold
+				}
+			}			
+			primary_spouse = {
+				save_scope_as = killer_slut
+			}
+		}
+	}
+	option = {
+		name = bno_title_change_0004.a
+		scope:vassal_losing_title = {
+			death = {
+				killer = scope:killer_slut
+				death_reason = death_disappearance
+			}
+		}
+		scope:bbc_getting_title = {
+			carn_had_sex_with_effect = {
+				CHARACTER_1 = scope:bbc_getting_title
+				CHARACTER_2 = scope:killer_slut
+				C1_PREGNANCY_CHANCE = pregnancy_chance
+				C2_PREGNANCY_CHANCE = pregnancy_chance
+				STRESS_EFFECTS = scope:carn_sex_stress_effects
+				DRAMA = scope:carn_sex_drama
+			}
+			add_trait = bno_camp_leader
+			marry = scope:killer_slut
+			set_relation_lover = {
+					target = scope:killer_slut
+					reason = "BBC is too good to resist"
+					province = $LOCATION$
+			}
+		}
+		scope:killer_slut = {
+			give_nickname = nick_rt
+			add_character_modifier = {
+				modifier = bno_killed_husband_for_bbc
+			}
+			add_character_modifier = {
+				modifier = bno_taken_as_bbc_wife
+				years = 15
+			}
+			add_opinion = {
+				modifier = taken_by_new_bull_master
+				target = scope:bbc_getting_title
+			}
+			add_opinion = {
+				modifier = bno_bull_fucks_me
+				target = scope:bbc_getting_title
+			}
+		}
+	}
+}
+
+bno_title_change.0005 = { #Wife takes cucks titles
+	type = character_event
+	title = bno_title_change_0005.title
+	desc = bno_title_change_0005.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = council_chamber
+	}
+	left_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+		}
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content 
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+		}
+	}
+	trigger = {
+		root = {
+			any_courtier_or_guest = {
+				is_adult = yes
+				is_female = yes
+				is_imprisoned = no
+				is_spouse_of = root
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100	}			
+			}			
+			is_married = yes
+			is_ai = yes
+			is_male = yes
+			is_ruler = yes
+			NOT = { has_trait = bno_bbc }
+		}
+	}
+	immediate = {
+		root = {
+			random_courtier_or_guest = {
+				limit = { 
+					is_adult = yes
+					is_female = yes
+					is_imprisoned = no
+					is_spouse_of = root
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 100	}			
+				}
+				save_scope_as = target1
+			}
+		}
+	}
+	option = {
+		name = bno_title_change_0005.a
+		root = {
+			create_title_and_vassal_change = {
+				type = usurped
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			every_held_title = {
+				limit = {
+					is_capital_barony = no
+				}
+
+				change_title_holder_include_vassals = {
+					holder = scope:target1
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+			if = {
+				limit = { gold > 0 }
+				pay_short_term_gold = {
+					target = scope:target1
+					gold = root.gold
+				}
+			}
+		}
+
+		root = {
+			add_opinion = {
+				modifier = demanded_taking_vows
+				target = scope:target1
+			}
+			add_trait = devoted
+			add_trait = bno_jos
+			add_trait = bno_castrated
+			add_trait = eunuch_1
+			add_trait = celibate
+			add_trait = chaste
+			add_trait = blind
+			add_trait = craven
+			remove_trait = lustful
+			remove_trait = wrathful
+			remove_trait = arrogant
+			remove_trait = deceitful
+			remove_trait = ambitious
+			remove_trait = stubborn
+			remove_trait = vengeful
+			remove_trait = brave
+			remove_trait = diligent
+			remove_trait = gregarious
+			remove_trait = sadistic
+			remove_trait = callous
+			remove_trait = strong
+			remove_trait = fecund
+			remove_trait = gluttonous
+			set_character_faith = faith:bbcs
+			add_piety_level = 1
+			if = {
+				limit = { is_ruler = yes }
+				depose = yes
+			}
+			if = {
+				limit = {
+					is_married = yes
+				}
+				every_spouse = {
+					divorce = root
+				}
+			}
+			if = {
+				limit = {
+					exists = betrothed
+				}
+				break_betrothal = betrothed
+			}
+			if = {
+				limit = {
+					is_concubine = yes
+				}
+				this.concubinist = {
+					remove_concubine = root
+				}
+			}
+			if = {
+				limit = {
+					number_of_concubines > 0
+				}
+				every_concubine = {
+					scope:target1 = {
+						remove_concubine = prev
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					exists = scope:recipient.capital_province
+				}
+				move_to_pool_at = scope:recipient.capital_province
+			}
+			kick_from_court_interaction_warning_tooltip_effect = yes
+		}
+	}
+}
+
+#ruler bbc takes slut liege's titles , don't know if i've tested this yet?
+bno_title_change.0006 = {
+	type = character_event
+	title = bno_title_change_0006.title
+	desc = bno_title_change_0006.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = throne_room_curtsey_1
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	trigger = {
+		root = {
+			has_trait = bno_bbc
+			is_ruler = yes
+			is_adult = yes
+			liege = {
+				is_female = yes
+				is_adult = yes
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value >= 100
+				}
+			}
+		}
+	}
+	immediate = {
+		root = {
+			liege = {
+				limit = { 
+					is_adult = yes
+					is_female = yes
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value >= 100	}			
+				}
+				save_scope_as = target1
+			}
+		}
+		scope:target1 = {
+			if = {
+				limit = {
+					is_married = yes
+				}
+				every_spouse = {
+					divorce = scope:target1
+				}
+			}
+		}
+	}
+	option = {
+		name = bno_title_change_0006.a
+		scope:target1 = {
+			create_title_and_vassal_change = {
+				type = usurped
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			every_held_title = {
+				limit = {
+					is_capital_barony = no
+				}
+
+				change_title_holder_include_vassals = {
+					holder = root
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+			if = {
+				limit = { gold > 0 }
+				pay_short_term_gold = {
+					target = root
+					gold = scope:target1.gold
+				}
+			}
+			add_trait = slave
+		}
+		root = {
+			set_relation_slave = {
+				target = scope:target1
+				reason = "BBC is too good to resist"
+				province = $LOCATION$
+			}
+			add_trait = bno_camp_leader
+			add_courtier = scope:target1
+		}
+		trigger_event = {
+			id = bno_title_change.1006
+			days = 3
+		}
+	}
+	option = {
+		name = bno_title_change_0006.b
+		scope:target1 = {
+			create_title_and_vassal_change = {
+				type = usurped
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			every_held_title = {
+				limit = {
+					is_capital_barony = no
+				}
+
+				change_title_holder_include_vassals = {
+					holder = root
+					change = scope:change
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+			if = {
+				limit = { gold > 0 }
+				pay_short_term_gold = {
+					target = root
+					gold = scope:target1.gold
+				}
+			}
+		}
+		root = {
+			marry = scope:target1
+			add_trait = bno_camp_leader
+			add_courtier = scope:target1
+		}
+		trigger_event = {
+			id = bno_title_change.1006
+			days = 3
+		}		
+	}
+}
+
+bno_title_change.1006 = { #follow up event 3 days later, parade former liege, get dread, all female courtiers, female vassals, wives of vassals, neighboring female rulers, and wives of neighboring rulers get small amount of blacked XP from witnessing or hearing about the display.
+	type = character_event
+	title = bno_title_change_1006.title
+	desc = bno_title_change_1006.desc
+	theme = realm
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = prisonhouse
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = flirtation_left
+		triggered_outfit = {
+			trigger = {
+				exists = root
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	immediate = {
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		add_dread = 50
+		add_prestige = 250
+		add_piety = 250
+	}
+	option = {
+		name = bno_title_change_1001.a
+		every_vassal = {
+			every_consort = {
+				limit = {
+					is_female = yes
+				}
+				add_trait = bno_lifestyle_whitegirl
+				add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 5
+				}
+			}
+		}
+		every_courtier_or_guest = {
+			limit = {
+				is_female = yes
+			}
+			add_trait = bno_lifestyle_whitegirl
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 5
+			}
+		}
+		every_vassal = {
+			limit = {
+				is_female = yes
+			}
+			add_trait = bno_lifestyle_whitegirl
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 5
+			}
+		}
+		every_neighboring_top_liege_realm_owner = {
+			limit = {
+				is_female = yes
+			}
+			add_trait = bno_lifestyle_whitegirl
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 5
+			}
+		}
+		every_neighboring_top_liege_realm_owner = {
+			every_consort = {
+				limit = {
+					is_female = yes
+				}
+				add_trait = bno_lifestyle_whitegirl
+				add_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value = 5
+				}
+			}
+		}
+	}
+}

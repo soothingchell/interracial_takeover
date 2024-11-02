@@ -1,0 +1,109 @@
+namespace = bno_bull_travel
+
+
+bno_bull_travel.0001 = {
+	type = character_event
+	title = bno_bull_travel_0001.title
+	desc = bno_bull_travel_0001.desc
+	theme = travel
+	
+	right_portrait = {
+		character = scope:target1
+		animation = personality_content
+	}
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	cooldown = { years = 1 }
+	trigger = {
+		is_travelling = yes
+		is_location_valid_for_travel_event_on_land = yes
+		is_ruler = yes
+		has_trait = bno_bbc
+		is_adult = yes
+		current_travel_plan = {
+			any_entourage_character = {
+				is_adult = yes
+				is_female = yes
+				has_trait = bno_lifestyle_whitegirl
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value > 20
+				}
+				NOT = { is_close_or_extended_family_of = root }
+			}
+		}
+	}
+	immediate = {
+		root = {
+			current_travel_plan = {
+				random_entourage_character = {
+					limit = {
+						is_adult = yes
+						is_female = yes
+						has_trait = bno_lifestyle_whitegirl
+						has_trait_xp = {
+							trait = bno_lifestyle_whitegirl
+							value > 20
+						}
+						NOT = { is_close_or_extended_family_of = root }	
+					}
+					save_scope_as = target1
+				}
+			}
+		}
+	}
+	option = { #delays travel to fuck girl
+		name = bno_bull_travel_0001.a
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 5
+			}
+			add_opinion = {
+				modifier = bno_bull_fucks_me
+				target = root
+			}
+			stress_impact = {
+			bno_lifestyle_whitegirl = minor_stress_impact_loss
+			}
+		}
+		current_travel_plan = {
+			every_entourage_character = {
+				limit = {
+					NOT = { has_trait = lustful }
+					NOT = { this = scope:target1 }
+				}
+				add_opinion = {
+					modifier = bno_travel_delayed_for_fucking
+					target = root
+				}
+			}
+			delay_travel_plan = {
+				days = 5
+			}
+		}
+	}
+	option = { #don't get distracted
+		name = bno_bull_travel_0001.b
+		stress_impact = {
+			lustful = minor_stress_impact_gain
+			diligent = minor_stress_impact_loss
+		}
+		current_travel_plan = {
+			add_destination_progress = {
+				days = 5
+			}
+		}
+	}
+}

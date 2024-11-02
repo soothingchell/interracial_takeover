@@ -36,6 +36,7 @@ bno_events.0001 = {
 			trait = bno_full_black
 			trait = dick_big_good_3
 			trait = lustful
+			sexuality : heterosexual
 			random_traits = yes
 			faith = faith:bbcs
 			culture = culture:bnoc
@@ -61,6 +62,7 @@ bno_events.0001 = {
 			trait = lustful
 			random_traits = yes
 			faith = faith:bbcs
+			sexuality : heterosexual
 			culture = culture:bnoc
 			prowess = {
 				min_template_decent_skill
@@ -81,6 +83,7 @@ bno_events.0001 = {
 			trait = bno_bbc
 			trait = bno_full_black
 			trait = dick_big_good_3
+			sexuality : heterosexual
 			trait = lustful
 			random_traits = yes
 			faith = faith:bbcs

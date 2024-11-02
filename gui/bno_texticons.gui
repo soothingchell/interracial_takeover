@@ -1,0 +1,9 @@
+﻿texticon = {
+	icon = bnobbc
+	iconsize = {
+		texture = "gfx/interface/icons/message_feed/bnobbc.dds"
+		size = { 25 25 }
+		offset = { 0 6 }
+		fontsize = 16
+	}
+}

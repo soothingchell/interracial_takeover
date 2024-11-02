@@ -7,7 +7,11 @@ bno_cuckish = {
 	group = bno_whiteboi
 	level = 1
 	
-	prowess = -2
+	attraction_opinion = -5
+	general_opinion = -5
+	spouse_opinion = -10
+	monthly_prestige = -0.2
+	prowess = -3
 
 	ruler_designer_cost = 0
 
@@ -37,8 +41,13 @@ bno_cuck = {
 	group = bno_whiteboi
 	level = 2
 	
-	martial = -2
-	prowess = -3
+	attraction_opinion = -10
+	general_opinion = -5
+	spouse_opinion = -20
+	monthly_prestige = -0.5
+	
+	martial = -3
+	prowess = -5
 	#max_personal_schemes_add = -1
 
 	ruler_designer_cost = -10
@@ -68,16 +77,21 @@ bno_beta = {
 	group = bno_whiteboi
 	level = 3
 	
+	attraction_opinion = -15
+	general_opinion = -10
+	spouse_opinion = -50	
+	
+	monthly_prestige = -0.7
 	martial = -4
-	prowess = -4
-	intrigue = -1
-	seduce_scheme_power_mult = -0.20
+	prowess = -7
+	intrigue = -3
+	seduce_scheme_phase_duration_add = moderate_scheme_phase_duration_malus_value
 	#max_personal_schemes_add = -1
 
 	ruler_designer_cost = -30
 
 	# child_inheritance_sex = male
-	fertility = -0.20
+	fertility = -0.80
 	valid_sex = male
 	
 	#flag = can_not_marry
@@ -102,17 +116,22 @@ bno_jos = {
 	group = bno_whiteboi
 	level = 4
 	
-	martial = -5
-	prowess = -5
-	intrigue = -3
+	attraction_opinion = -25
+	general_opinion = -15
+	spouse_opinion = -100
+
+	monthly_prestige = -1
+	martial = -6
+	prowess = -10
+	intrigue = -5
 	stewardship = 2
 	diplomacy = 2
-	seduce_scheme_power_mult = -0.40
+	seduce_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
 	#max_personal_schemes_add = -1
 
 	ruler_designer_cost = -40
 
-	fertility = -0.20
+	fertility = -1
 	valid_sex = male
 	
 	#flag = can_not_marry
@@ -140,12 +159,16 @@ bno_caged = {
 	physical = yes
 	attraction_opinion = -5
 	
-	martial = -2
-	prowess = -5
-	intrigue = -2
+	same_opinion = 25
+	attraction_opinion = -25
+	spouse_opinion = -50	
+	
+	martial = -3
+	prowess = -8
+	intrigue = -3
 	diplomacy = 3
 	
-	fertility = -0.30
+	fertility = -0.60
 	
 	valid_sex = male
 	
@@ -202,19 +225,24 @@ bno_castrated = {
 bno_camp_leader = {
 
 	category = fame
+
+	same_opinion = 25
+	spouse_opinion = 15
+	attraction_opinion = 15
 	
 	martial = 3
-	prowess = 3
+	prowess = 15
 	diplomacy = 3
 	intrigue = 3
 	stewardship = 3
-	#monthly_martial_lifestyle_xp_gain_mult = 0.2
-	dread_baseline_add = 10
-	dread_decay_mult = -0.2
-	owned_personal_scheme_success_chance_max_add = 10
+	#monthly_martial_lifestyle_xp_gain_mult = 0.3
+	dread_baseline_add = 50
+	dread_decay_mult = -0.5
+	owned_personal_scheme_success_chance_max_add = 50
 	owned_hostile_scheme_success_chance_max_add = 10
 	#seduce_scheme_power_add = 50
 	max_hostile_schemes_add = 2
+	max_seduce_schemes_add = 2
 	#owned_personal_scheme_success_chance_add = 50
 	ruler_designer_cost = 30
 	good = yes
@@ -255,23 +283,24 @@ bno_bbc = {
 	same_opinion = 25
 	opposite_opinion = 15
 	attraction_opinion = 15
+	spouse_opinion = 15
 
 	ignore_negative_culture_opinion = yes
 	ignore_negative_opinion_of_culture = yes
 	different_culture_opinion = 10
 	
-	martial = 3
-	prowess = 5
-	intrigue = 3
-	monthly_martial_lifestyle_xp_gain_mult = 0.1
-	dread_baseline_add = 15
-	dread_decay_mult = -0.2
+	martial = 5
+	prowess = 15
+	intrigue = 5
+	monthly_martial_lifestyle_xp_gain_mult = 0.3
+	dread_baseline_add = 35
+	dread_decay_mult = -0.3
 	owned_personal_scheme_success_chance_max_add = 10
 	owned_hostile_scheme_success_chance_max_add = 10
 	max_personal_schemes_add = 1
 	max_murder_schemes_add = 1
 	#owned_personal_scheme_success_chance_add = 125
-	diplomatic_range_mult = 1.5
+	diplomatic_range_mult = 1.3
 
 	ruler_designer_cost = 30
 
@@ -281,7 +310,7 @@ bno_bbc = {
 	inherit_from_real_father = yes
 	valid_sex = male
 	
-	fertility = .5
+	fertility = .7
 	number_of_spouses = 1
 	number_of_consorts = 3
 	
@@ -534,6 +563,8 @@ bno_full_black = {
 	physical = yes
 	good = yes
 	
+	prowess = 2
+	
 	group = bno_blood
 	level = 4
 	
@@ -586,8 +617,8 @@ bno_lifestyle_whitegirl = {
 	ignore_negative_opinion_of_culture = yes
 	flag = carn_no_consequences_for_extramarital_sex_with_others
 	
-	same_opinion = 20
-	opposite_opinion = 20
+	same_opinion = 25
+	opposite_opinion = 30
 	
 	seduce_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
 	
@@ -608,6 +639,8 @@ bno_lifestyle_whitegirl = {
 			dread_baseline_add = -5
 			dread_decay_mult = 0.2
 			seduce_scheme_resistance_add = -5
+			stress_gain_mult = -0.05
+			stress_loss_mult = 0.05
 		}
 		50 = {
 			opposite_opinion = 60
@@ -619,6 +652,8 @@ bno_lifestyle_whitegirl = {
 			monthly_intrigue_lifestyle_xp_gain_mult = 0.1
 			dread_baseline_add = -10
 			seduce_scheme_resistance_add = -5
+			stress_gain_mult = -0.1
+			stress_loss_mult = 0.1			
 		}
 		75 = {
 			opposite_opinion = 80
@@ -631,6 +666,8 @@ bno_lifestyle_whitegirl = {
 			dread_baseline_add = -10
 			dread_decay_mult = 0.3
 			seduce_scheme_resistance_add = -10
+			stress_gain_mult = -0.15
+			stress_loss_mult = 0.15	
 		}
 		100 = {
 			opposite_opinion = 100
@@ -645,6 +682,8 @@ bno_lifestyle_whitegirl = {
 			dread_baseline_add = -10
 			dread_decay_mult = 0.5
 			seduce_scheme_resistance_add = -20
+			stress_gain_mult = -0.2
+			stress_loss_mult = 0.2		
 		}
 	}
 

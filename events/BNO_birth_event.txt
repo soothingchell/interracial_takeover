@@ -1,0 +1,114 @@
+
+namespace = bno_birth
+
+bno_birth.0001 = { # White Breeder
+	type = character_event
+	hidden = yes
+
+	trigger = { 
+		bno_num_mixed_children_plus_dead >= 4			#this script found in common\script_values\children_count_script if there's a need to edit
+		has_trait_xp = {						#want to check mother is properly blacked, probably needlessly redundant since every black child currently should add 10xp to lifestyle trait.
+			trait = bno_lifestyle_whitegirl
+			value > 50
+		}
+		NOR = { 
+			has_trait = bno_blood							#check she doesn't have any mixed/quarter mixed trait since it seems weird to refer to those characters as full white, can be removed if needed
+			has_character_flag = bno_white_breeder_flag		#test for character flag so player isn't constantly spammed by notifications everytime wife/lover gives birth, this should be a one time thing per woman
+		}
+		
+	}
+
+	immediate = {
+		add_character_modifier = {
+			modifier = bno_white_breeder
+		}
+		add_character_flag = bno_white_breeder_flag			#add character flag so player isn't constantly spammed by notifications everytime wife/lover gives birth, this should be a one time thing per woman
+		send_interface_message = { # Tell the character
+			type = bno_white_breeder
+			title = bno_birth.0001.t
+			right_icon = root
+			desc = bno_birth.0001.personal_desc
+		}
+
+		every_spouse = { #Inform relevant parties.
+			if = {
+				limit = {
+					has_trait = bno_bbc
+				}
+				send_interface_message = {			#if white breeder's husband is a BBC char, send this good message with prestige
+					type = bno_white_breeder
+					title = bno_birth.0001.wife.t
+					right_icon = root
+					desc = bno_birth.0001.wife.desc
+					scope:root = {
+						add_character_modifier = {
+							modifier = bno_white_breeder
+						}
+					}				
+					add_prestige = 50
+					add_character_modifier = {
+						modifier = bno_white_breeder_bbc_husband
+					}
+				}
+			}
+			else = {							#if white breeder's husband is not a BBC char, send this other notification
+				send_interface_message = {
+					type = bno_white_breeder
+					title = bno_birth.0001.cuck.wife.t
+					right_icon = root
+					desc = bno_birth.0001.cuck.wife.desc
+					scope:root = {
+						add_character_modifier = {
+							modifier = bno_white_breeder
+						}
+					}
+				}
+				add_character_modifier = {
+					modifier = bno_white_breeder_cuck_husband
+				}
+			}
+		}
+		every_relation = { #Inform relevant parties.
+			type = lover
+			send_interface_message = {
+				type = bno_white_breeder
+				title = bno_birth.0001.lover.t
+				right_icon = root
+				desc = bno_birth.0001.lover.desc
+				scope:root = {
+					add_character_modifier = {
+						modifier = bno_white_breeder
+					}
+				}					
+			}		
+		}
+	}
+}
+
+bno_birth.0002 = {
+	type = character_event
+	hidden = yes
+	
+	trigger = {
+		has_trait = bno_bbc
+		bno_num_mixed_children_plus_dead >= 7
+		NOT = { has_character_flag = bno_bull_breeder_flag }
+	}
+	immediate = {
+		add_character_modifier = {
+			modifier = bno_bull_breeder
+		}
+		add_character_flag = bno_bull_breeder_flag
+		send_interface_message = { # Tell the character
+			type = bno_white_breeder
+			title = bno_birth.0002.t
+			right_icon = root
+			desc = bno_birth.0002.personal_desc
+			scope:root = {
+				add_character_modifier = {
+					modifier = bno_bull_breeder
+				}
+			}
+		}
+	}
+}

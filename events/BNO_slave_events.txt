@@ -1,0 +1,81 @@
+namespace = bno_slave
+
+bno_slave.0001 = {
+	type = character_event
+	title = bno_slave_0001.title
+	desc = bno_slave_0001.desc
+	theme = realm
+	
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = personality_content
+		triggered_outfit = {
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	trigger = {
+		has_trait = bno_bbc
+		is_adult = yes
+		is_ruler = yes
+		any_courtier_or_guest = {
+			is_female = yes
+			is_adult = yes
+			has_trait = slave
+			is_visibly_fertile = yes
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value < 30
+			}
+		}
+	}
+	immediate = {
+		random_courtier_or_guest = {
+			limit = {
+				is_female = yes
+				is_adult = yes
+				has_trait = slave
+				is_visibly_fertile = yes
+				has_trait_xp = {
+					trait = bno_lifestyle_whitegirl
+					value < 30
+				}
+			}
+			save_scope_as = target1
+		}
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = scope:target1
+			CHARACTER_2 = root
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			set_sexuality = heterosexual
+			add_opinion = {
+				modifier = bno_bull_fucks_me
+				target = root
+			}
+		}
+	}
+	option = {
+		name = bno_slave_0001.a
+	}
+}

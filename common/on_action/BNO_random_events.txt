@@ -4,10 +4,26 @@
 random_yearly_everyone_pulse = {
     on_actions = {
         bno_yearly_random_pulse
+		bno_trait_maintenance_pulse
+    }
+}
+#5 year pulse for chance for bbc chars to force title changes
+five_year_everyone_pulse = {
+	on_actions = {
+		bno_title_change_pulse
+	}
+}
+
+#yearly pulse for bno marriage events
+random_yearly_everyone_pulse = {
+    on_actions = {
+		bno_yearly_marry_pulse
+		bno_yearly_divorce_pulse 
     }
 }
 
-# effect trigger_event = { on_action = bno_yearly_random_pulse } use this in console
+
+# effect trigger_event = { on_action = bno_yearly_random_pulse }
 
 bno_yearly_random_pulse = {
     random_events = {
@@ -15,7 +31,7 @@ bno_yearly_random_pulse = {
 		chance_of_no_event = {
 			if = {
 				limit = { is_ai = yes }
-				value = 50
+				value = 20
 			}
 		}
 		25 = 0
@@ -57,7 +73,70 @@ bno_yearly_random_pulse = {
 		150 = bno_random.0036 #Q+ event
 		150 = bno_random.0037 #Q+ event
 		150 = bno_random.0038 #Q+ event
-		50 = bno_random.0039 #guard on guard fight
-		50 = bno_random.0040 #spymaster treachery
+		40 = bno_bull.0001 #bull pov, liege's wife
+		100 = bno_bull.0002 #bbc ruler anti stress event
+		100 = bno_bull.0003 #bbc ruler fix white slut eating habits event
+		150 = bno_bull.0004 #black ruler fucks non blacked courtier
+		50 = bno_bull.0005 #willing pretty white woman appears to black ruler
+		100 = bno_bull.0006 #black ruler puts male courtier in chastity cage
+		200 = bno_bull.0007 #bull gets strong trait
+		100 = bno_bull.0008 #bull pimps out lowborn whitegirl
+		100 = bno_bull.0009 #bull ruler pimps out noble whitegirl
+		100 = bno_bull.0010 #bull collects money from liege's wife
+		100 = bno_bull.0012 #bull learns blacked female's and her spouse's secrets
+		100 = bno_bull.0013 #bull further blacks wife
+		120 = bno_bull.0014 #bbc ruler works on foreign ruler's pretty wife over a few days, 3 options : fuck, love, marry
+		100 = bno_bull.0015 #bbc ruler targets non-bbc fellow vassal's wife, for woman with no blacked xp
+		100 = bno_cuck.0001 #cuck overhears wife(?) getting blacked
+		150 = bno_cuck.0002 #cuck works, gets money
+		100 = bno_cuck.0003 #cuck paying bbc for wifes "damages" to bbc camp
+		40 = bno_cuck.0004 #unaware cuck ruler lets his wife deal with troop moral
+		100 = bno_cuck.0005 #Cuck is convinced to be trusting
+		100 = bno_cuck.0006 #Just cuck bonds with bbc, gives court position
+		100 = bno_cuck.0007 #BBC makes brave cuck a coward
+		80 = bno_cuck.0008 #advanced cuck gives hook to bbc vassal or wife gets fucked
+		100 = bno_cuck.0009 #Cuck player bonding with cuck son
+		100 = bno_cuck.0010 #BBC Spymaster "helps" cuck
+		100 = bno_cuck.0011 #BBC vassal explains he will take cuck's real white daughter as future wife
+		100 = bno_war.0001 #bbc war event, will insta win any offensive war against defender w/blacked wife
+		100 = bno_war.0002 #bbc war defender event. if defending against non bbc religion enemy, can get holy_warrior trait, and become bbc if for some reason you aren't currently. All choices give 500 bbc_maa troops
     }
+}
+
+bno_yearly_marry_pulse = {
+    random_events = {
+        chance_to_happen = 100
+		50 = bno_marriage.0001 #bull takes rando unmarried courtier as wife
+		50 = bno_marriage.0002 #bull takes married slut as wife
+		50 = bno_marriage.0004 #unmarried bbc looks to other realms for single woman
+		50 = bno_marriage.0005 #bull steals foreign slut wife
+	}
+}
+bno_yearly_divorce_pulse = {
+	events = {
+		bno_marriage.0003 #bull divorces old or sick wife
+		delay = { days = { 0 90 } } #delay below events randomly 0-90 days
+		bno_marriage.0006
+	}
+}
+
+bno_title_change_pulse = {
+    random_events = {
+		chance_to_happen = 45
+		80 = bno_title_change.0001 #BBC courtier force buys county title
+		100 = bno_title_change.0002 #bbc courtier pays for AI vassal's title, cuck player informed
+		100 = bno_title_change.0003 #bbc uses prestige to force vassal to give up title
+		50 = bno_title_change.0004 #high intrigue BBC courtier + AI vassal's slut wife kill vassal, take all title for themself, get married. cuck player informed
+		15 = bno_title_change.0005 #fully blacked wife takes all cuck players titles
+		100 = bno_title_change.0006 #ruler bbc takes slut liege's titles , don't know if i've tested this yet?
+	}
+}
+
+bno_trait_maintenance_pulse = {
+	events = {
+		bno_trait_maintenance.0001			#makes sure all bbc chars actually have big dick. event also applied on bbc's 16th bday for redundancy
+		bno_trait_maintenance.0002			#makes all caged characters have tiniest dick
+		bno_trait_maintenance.0003			#castrated characters should obviously not have dick traits
+		bno_trait_maintenance.0004			#make all non bbc male slaves caged if owner is bbc
+	}
 }

@@ -140,3 +140,84 @@ bno_blood_inheritance = {
 		}
 	}
 }
+
+on_birth_mother = {
+	on_actions = {
+		black_bred_bitch
+		white_breeder_on_birth_mother
+	}
+}
+
+black_bred_bitch = {
+	effect = {
+		if = {
+			limit = {
+				scope:real_father = {		#triggers only if child's real father is BBC character
+					has_trait = bno_bbc
+				}
+			}
+			add_trait_xp = {				#give the mother 10xp in blacked trait
+				trait = bno_lifestyle_whitegirl
+				value = 10
+			}
+		}
+		if = {
+			limit = {
+				NOT = { is_spouse_of = scope:real_father }		#don't bother if BBC real father and mother are married
+				scope:real_father = {							#triggers only if child's real father is BBC character
+					has_trait = bno_bbc
+				}
+			}
+			scope:real_father = {				#send notification and prestige to BBC real father, assuming he is not married to the mother in question
+				send_interface_message = {
+						type = bno_blacked_events
+						title = bno_birth_real_father_notification.title		
+						right_icon = scope:mother
+						left_icon = scope:child
+						desc = bno_birth_real_father_notification.desc
+						add_prestige = 75
+				}
+			}
+		}
+			
+		if = {
+			limit = {
+				AND = {
+					scope:real_father = {			#triggers only if real father is BBC char and presumed father is non BBC char
+						has_trait = bno_bbc
+					}
+					scope:father = {
+						NOT = { has_trait = bno_bbc }
+					}
+				}
+			}
+			scope:father = {
+				send_interface_message = {			#send notification to presumed father, finds child's skin color a little off.
+					type = bno_blacked_events
+					title = bno_birth_cuck_father_notification.title		
+					right_icon = scope:mother
+					left_icon = scope:child
+					desc = bno_birth_cuck_father_notification.desc
+				}
+			}
+		}
+	}
+}
+
+white_breeder_on_birth_mother = {
+	events = {
+		bno_birth.0001 		#check if white breeder can be applied to mother
+	}
+}
+
+on_birth_father = {
+	on_actions = {
+		bull_breeder
+	}
+}
+
+bull_breeder = {
+	events = {
+		bno_birth.0002 #check if bull breeder modifer can be applied to father
+	}
+}

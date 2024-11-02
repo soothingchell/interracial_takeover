@@ -1,5 +1,4 @@
 #influence child event
-#test
 
 namespace = bno_character_interaction
 

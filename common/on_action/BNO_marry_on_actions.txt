@@ -1,0 +1,22 @@
+on_marriage = {
+	on_actions = {
+		owning_a_sow
+	}
+}
+
+owning_a_sow = {
+	effect = {
+		if = {
+			limit = {
+				root = { has_trait = bno_bbc }
+			}
+			send_interface_message = { # Tell the character
+				type = bno_blacked_events
+				title = bno_married.title
+				right_icon = root
+				desc = bno_married_desc
+				add_prestige = 150
+			}
+		}
+	}
+}

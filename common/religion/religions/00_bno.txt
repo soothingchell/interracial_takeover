@@ -18,17 +18,18 @@
 	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
 
 	#Crimes
-	doctrine = doctrine_homosexuality_shunned
+	doctrine = doctrine_homosexuality_crime
 	doctrine = doctrine_adultery_men_accepted
 	doctrine = doctrine_adultery_women_accepted
 	doctrine = doctrine_kinslaying_close_kin_accepted
 	doctrine = doctrine_deviancy_crime
 	doctrine = doctrine_witchcraft_accepted
+	doctrine = doctrine_dick_small_bad_crime
 
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_taxation
 	doctrine = doctrine_clerical_gender_male_only
-	doctrine = doctrine_clerical_marriage_disallowed
+	doctrine = doctrine_clerical_marriage_allowed
 	doctrine = doctrine_clerical_succession_temporal_appointment
 
 	#Carnalitas
@@ -43,8 +44,8 @@
 	doctrine = doctrine_pilgrimage_encouraged
 	
 	traits = {
-		virtues = { bno_bbc dick_big_good_1 dick_big_good_2 dick_big_good_3 lustful sadistic}
-		sins = { dick_small_good_1 dick_small_good_2 dick_small_good_3 dick_small_bad_1 dick_small_bad_2 dick_small_bad_3 chaste}
+		virtues = { bno_bbc dick_big_good_1 dick_big_good_2 dick_big_good_3 lustful sadistic bno_camp_leader bno_full_black bno_lifestyle_whitegirl}
+		sins = { dick_small_good_1 dick_small_good_2 dick_small_good_3 dick_small_bad_1 dick_small_bad_2 dick_small_bad_3 chaste bno_cuckish bno_cuck bno_beta bno_jos bno_caged bno_castrated}
 	}
 
 	reserved_male_names = {
@@ -255,6 +256,7 @@
 			#doctrine = tenet_religious_legal_pronouncements #OG tenent
 			doctrine = carnd_tenet_sacred_prostitution
 			doctrine = tenet_struggle_submission
+			doctrine = doctrine_dick_small_bad
 
 		}
 	}

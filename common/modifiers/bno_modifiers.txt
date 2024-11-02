@@ -1,0 +1,241 @@
+#CUCK MODIFERS
+bno_cuck_blissfully_unaware = {
+	icon = stress_positive
+	stress_loss_mult = 0.2
+	monthly_prestige  = -0.1
+	scheme_discovery_chance_mult = -0.3
+	intrigue = -2
+}
+
+#MARTIAL MODIFERS
+bno_troops_lack_bunnies = {
+	icon = martial_negative 
+	martial = -2
+	knight_effectiveness_mult = -0.15
+	monthly_war_income_mult = -0.15
+	men_at_arms_maintenance  = 0.15
+}
+
+bno_troops_like_camp_slut = {
+	icon = martial_positive
+	martial = 2
+	knight_effectiveness_mult = 0.15
+	monthly_war_income_mult = 0.15
+	men_at_arms_maintenance  = -0.15
+}
+
+bno_seeks_new_world_order = {
+	icon = martial_positive
+	martial = 2
+	prowess = 3
+	diplomacy = 1
+	stewardship = 1
+	intrigue = 1
+	attraction_opinion = 15
+}
+
+#WHORING MODIFERS	
+bno_pimping_lowborn_white_whores = {
+	icon = economy_positive
+	monthly_income = 1
+	monthly_prestige = .5
+
+}
+
+bno_pimping_noble_white_whores = {
+	icon = economy_positive
+	monthly_income = 3
+	monthly_income_mult = .1
+	monthly_prestige = 1.5
+	monthly_dread = 1
+}
+
+bno_whore_for_bbc = {
+	icon = economy_positive
+	attraction_opinion = 5
+	monthly_piety = 0.5
+}
+
+bno_pretty_whore_for_bbc = {
+	icon = economy_positive
+	attraction_opinion = 15
+	monthly_piety = 1
+}
+
+bno_whore_for_liege = {
+	icon = economy_positive
+	opinion_of_liege = 50
+	fertility = 0.1
+}
+
+bno_pretty_whore_for_liege = {
+	icon = economy_positive
+	opinion_of_liege = 50
+	fertility = 0.2
+	monthly_prestige = 0.5
+	monthly_piety = 1
+}
+
+#MARRIAGE MODIFERS
+bno_took_unmarried_white_wife = {
+	icon = love_positive
+	prowess = 1
+}
+
+bno_took_foreign_unmarried_white_wife = {
+	icon = love_positive
+	prowess = 1
+	character_travel_safety_mult = 0.1
+	character_travel_speed_mult = 0.1	
+}
+
+bno_stole_married_white_wife = {
+	icon = love_positive
+	prowess = 3
+	martial = 1
+	monthly_prestige = 0.3	
+}
+
+bno_stole_foreign_married_white_wife = {
+	icon = love_positive
+	prowess = 3
+	martial = 1
+	monthly_prestige = 0.3	
+	character_travel_safety_mult = 0.1
+	character_travel_speed_mult = 0.1
+	
+}
+
+bno_wife_stolen_by_bbc = {
+	icon = love_negative
+	martial = -1
+	prowess= -3
+	monthly_prestige = -0.3
+}
+
+bno_taken_as_bbc_wife = {
+	icon = love_positive
+	fertility = 0.2
+	diplomacy = 1
+}
+
+bno_stolen_as_bbc_wife = {
+	icon = love_positive
+	fertility = 0.3
+	diplomacy = 2
+	stewardship = 1
+}
+
+bno_divorced_worthless_wife = {
+	icon = love_positive
+	monthly_piety = 0.5
+	stewardship = 1
+	same_faith_opinion = 30
+	clergy_opinion = 5
+	zealot_opinion = 5
+}
+
+bno_no_longer_black_breedable = {
+	icon = family_negative 
+	attraction_opinion = -10
+	same_faith_opinion = -30
+	clergy_opinion = -5
+	zealot_opinion = -5
+	diplomacy = -1
+}
+
+bno_family_betrothed_me_to_bbc = {
+	icon = love_positive
+	monthly_piety = 0.5
+	spouse_opinion = 10
+	fertility = 0.1
+	opinion_of_parents = -5
+}
+
+#WIFE BETRAYAL MODIFERS
+bno_wife_stealing_cucks_gold = {
+	icon = stewardship_positive 
+	stewardship = 1
+	intrigue = 1
+}
+
+bno_cant_keep_mouth_shut = {
+	icon = intrigue_negative
+	intrigue = -1
+	spouse_opinion = -10
+}
+
+bno_killed_husband_for_bbc = {
+	icon = dread_negative
+	spouse_opinion = 20
+	general_opinion = -5
+}
+
+bno_gave_husband_to_enemy = {
+	icon = prison_negative
+	intrigue = 2
+	spouse_opinion = -5
+	general_opinion = -5
+	bbcs_opinion = 10
+}
+
+
+#MISC MODIFERS
+bno_stress_relieved = {
+	icon = stress_positive
+	stress_loss_mult = 0.1
+	stress_gain_mult = -0.1
+}
+
+bno_cumstuffed = {
+	icon = stress_positive
+	stress_gain_mult = -0.3
+}
+
+bno_cheating_well_hidden = {
+	icon = intrigue_positive
+	general_opinion = 10
+	intrigue = 3
+	owned_scheme_secrecy_add = 0.2
+}
+
+bno_white_breeder = {
+	icon = family_positive
+	general_opinion = 10
+	bbcs_opinion = 30
+	health = 0.5
+	years_of_fertility = 2
+	stress_gain_mult = -0.1
+	child_health = 0.5
+	child_opinion = 5
+}
+
+bno_white_breeder_bbc_husband = {
+	icon = family_positive
+	general_opinion = 10
+	bbcs_opinion = 30
+	health = 0.5
+	spouse_opinion = 15
+	attraction_opinion = 10
+	stress_gain_mult = -0.1
+	child_opinion = 5
+}
+
+bno_white_breeder_cuck_husband = {
+	icon = family_negative
+	general_opinion = -5
+	spouse_opinion = -10
+	attraction_opinion = -5
+	stress_gain_mult = 0.1
+	child_opinion = -5
+}
+
+bno_bull_breeder = {
+	icon = family_positive
+	spouse_opinion = 10
+	general_opinion = 5
+	attraction_opinion = 5
+	child_opinion = 5
+	monthly_prestige = 0.5
+	monthly_piety = 0.5
+}

@@ -1,0 +1,13 @@
+﻿l_english:
+
+bno_war_0001.title:0 "Enemy Betrayed"
+bno_war_0001.desc:0 "I am alerted by one of my generals of an unusual situation. If the reports are to be believed, my pathetic enemy [defender.GetFullName] is currently sitting in my dungeon, which would be news to me since I'm actively waging a war on him. \n\nBut I become less surprised when I find out it was none other than his wife [target1.GetFirstName] that delivered him to my soldiers. It would seem she saw this war as an opportunity to openly bow down to Black cocks. Should you grant her wish? Regardless of your choice, with [defender.GetFirstName] as your captive, victory is yours to claim when you see fit."
+bno_war_0001.a:0 "She has earned her place as a courtier."
+bno_war_0001.b:0 "Good, but she has no place in my court."
+bno_war_0001.c:0 "She's done well, I will take her as my own."
+
+bno_war_0002.title:0 "Defending Black Supremacy"
+bno_war_0002.desc:0 "BBC character as the main defender gets chance to get holy warrior trait and/or rejoin Supremacy religion + army spawn"
+bno_war_0002.a:0 "May my sword strike down all inferior races."
+bno_war_0002.b:0 "I am a born again Black Supremacist."
+bno_war_0002.c:0 "something something third option"

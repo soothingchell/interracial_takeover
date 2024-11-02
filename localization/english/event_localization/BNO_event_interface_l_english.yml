@@ -1,0 +1,40 @@
+﻿l_english:
+
+#BBC's POV if wife is white breeder
+bno_birth.0001.wife.t:0 "Wife's White Fertile Womb"      
+bno_birth.0001.wife.desc:0 "Your wife [ROOT.GetCharacter.GetName] gives birth to a Black baby once again, cementing her reputation as a worthy breeder. She was made to bear Black children."
+#Cuck's POV if wife is white breeder
+bno_birth.0001.cuck.wife.t:0 "Wife Births Many Children"
+bno_birth.0001.cuck.wife.desc:0 "Your wife [ROOT.GetCharacter.GetName] has given birth to several children. Though in the back of your mind, you find it odd most don't look like everyone else."
+
+bno_birth.0001.lover.t:0 "Lover's White Fertile Womb"
+bno_birth.0001.lover.desc:0 "Your lover [ROOT.GetCharacter.GetName] continues to betray her race by bringing another Black child into the world. It is her greatest joy to further Black Superiority."
+
+bno_birth.0001.t:0 "My White Fertile Womb"
+bno_birth.0001.personal_desc:0 "Another Black baby birthed from my fertile womb. The juxtaposition of my child's skin and my own fills me with pride and renews my desire to strengthen the superior race."
+
+bno_birth.0002.t:0 "My Seed Is Spread"
+bno_birth.0002.personal_desc:0 "I have blessed the world with many Black children."
+
+bno_birth_real_father_notification.title:0 "My child"
+bno_birth_real_father_notification.desc:0 "[ROOT.GetCharacter.GetName] has given birth, and you know in your heart her child is yours regardless of if you can prove it."
+bno_birth_cuck_father_notification.title:0 "My child"
+bno_birth_cuck_father_notification.desc:0 "[ROOT.GetCharacter.GetName] has given birth, and you are a little surprised at how sickly it looks. Is it normal for a child to have such a dark skin complextion?"
+
+bno_happy_wife.0001.title:0 "Wife looks happy"
+bno_happy_wife.0001.desc:0 "You're glad to see that [target2.GetFirstName] seems to be in high spirits lately."
+
+bno_married.title:0 "Took Wife"
+bno_married_desc:0 "You are doing your part to further Black Superiority by taking a wife. May she give you many new children."
+
+bno_bull_0004_notification.title:0 "Wife eating well"
+bno_bull_0004_notification.desc:0 "Lately your wife [target1.GetFirstName] seems to have broken her past poor eating habits. She said she switched to a nearly all-liquid diet. She must like it since she occasionally is seen with her liquid food still around her lips."
+
+bno_bull_0008_notification.title:0 "Uncanny Resemblance"
+bno_bull_0008_notification.desc:0 "Rumors swirl of a whore walking amongst the Black refugee camps that looks strangely like your dear wife [target1.GetFirstName].
+
+bno_bull_0010_notification.title:0 "Accounting Error?"
+bno_bull_0010_notification.desc:0 "I'm sure I'm not mistaken, it seems some gold is missing from the treasury. Who could have taken it?"
+
+bno_bull_0012_notification.title:0 "Does he know something?"
+bno_bull_0012_notification.desc:0 "Lately I've noticed [ROOT.GetCharacter.GetName] looking at me differently, as if he knows something he shouldn't."

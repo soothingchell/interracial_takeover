@@ -1,0 +1,24 @@
+
+
+bno_num_mixed_children_plus_dead = {
+	value = 0
+	every_child = {
+		limit = {
+			has_trait = bno_blood
+		}
+			even_if_dead = yes
+			add = 1
+	}
+}
+
+bno_num_mixed_children_plus_dead_halved = { #not currently used for anything
+	value = 0
+	every_child = {
+		limit = {
+			has_trait = bno_blood
+		}
+			even_if_dead = yes
+			add = 1
+	}
+	factor = 0.5
+}

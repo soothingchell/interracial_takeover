@@ -1,0 +1,287 @@
+namespace = bno_war
+
+#blacked wife of cuck defender war enemy give him to you as a prisoner, divorces him, and submits to you. Joins court as single lady, be left to wander, or can be married to player
+bno_war.0001 = {
+	type = character_event
+	title = bno_war_0001.title
+	desc = bno_war_0001.desc
+	theme = war
+	
+	override_background = {
+		reference = dungeon
+	}
+	left_portrait = {
+		character = scope:target1
+		animation = ecstasy
+		triggered_outfit = {
+			trigger = {
+				exists = scope:target1
+			}
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	right_portrait = {
+		character = root
+		animation = celebrate_sword
+		triggered_outfit = {
+			outfit_tags = {
+				no_clothes
+			}
+		}
+	}
+	lower_center_portrait = {
+		character = scope:defender
+	}
+	trigger = {
+		has_trait = bno_bbc
+		exists = scope:war
+		any_character_war = {
+			is_war_leader = root
+			is_attacker = root
+			primary_defender = {
+				is_male = yes
+				is_married = yes
+				NOT = { has_trait = bno_bbc }
+				primary_spouse = {
+					NOT = { is_close_or_extended_family_of = root }
+					has_trait_xp = {
+						trait = bno_lifestyle_whitegirl
+						value > 50
+					}
+				}
+			}
+		}
+		is_adult = yes
+		allowed_more_spouses = yes
+	}
+	immediate = {
+		random_character_war = { #identify correct war that has married non-bbc enemy w/blacked wife
+			limit = {
+				is_war_leader = root
+				is_attacker = root
+				primary_defender = {
+					is_male = yes
+					is_married = yes
+					NOT = { has_trait = bno_bbc }
+					primary_spouse = {
+						NOT = { is_close_or_extended_family_of = root }
+						has_trait_xp = {
+							trait = bno_lifestyle_whitegirl
+							value > 50
+						}
+					}						
+				}
+			}
+			save_scope_as = bbcwar
+		}
+		scope:bbcwar = {
+			primary_defender = { 
+				save_scope_as = defender
+			}
+		}
+		scope:defender = {
+			primary_spouse = {
+				save_scope_as = target1
+			}
+			divorce = scope:target1
+		}
+		root = {
+			imprison = {
+				target = scope:defender
+			}
+			add_opinion = {
+				modifier = bno_good_slut
+				target = scope:target1
+			}			
+		}
+		scope:target1 = {
+			add_character_modifier = {
+				modifier = bno_gave_husband_to_enemy
+			}
+			add_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value = 10
+			}
+			add_opinion = {
+				modifier = bno_pathetic_cuck_husband
+				target = scope:defender
+			}
+			set_character_faith = faith:bbcs
+		}
+	}
+	option = { #simply add betrayer to your court
+		name = bno_war_0001.a
+		add_courtier = scope:target1
+	}
+	option = { #do nothing with wife, she is kicked out of her ex-husband's court
+		name = bno_war_0001.b
+		scope:defender = {
+			remove_courtier_or_guest = {
+				character = scope:target1
+			}
+		}
+	}
+	option = { #fuck and marry her, assuming player is allowed more wives
+		name = bno_war_0001.c
+		trigger = {
+			allowed_more_spouses = yes
+		}
+		marry = scope:target1
+		carn_had_sex_with_effect = {
+			CHARACTER_1 = root
+			CHARACTER_2 = scope:target1
+			C1_PREGNANCY_CHANCE = pregnancy_chance
+			C2_PREGNANCY_CHANCE = pregnancy_chance
+			STRESS_EFFECTS = scope:carn_sex_stress_effects
+			DRAMA = scope:carn_sex_drama
+		}
+		scope:target1 = {
+			add_opinion = {
+				modifier = stolen_by_new_bull_master
+				target = root
+			}
+			add_opinion = {
+				modifier = bull_husband_takes_me
+				target = root
+			}
+		}
+	}
+}
+
+bno_war.0002 = {
+	type = character_event
+	title = bno_war_0002.title
+	desc = bno_war_0002.desc
+	theme = war
+	
+	override_background = {
+		reference = battlefield
+	}
+	left_portrait = {
+		character = scope:attacker
+		animation = war_attacker
+	}
+	right_portrait = {
+		character = root
+		animation = war_defender
+	}
+	trigger = {
+		has_trait = bno_bbc
+		exists = scope:war
+		is_adult = yes
+		any_character_war = {
+			is_war_leader = root
+			is_defender = root
+			primary_attacker = {
+				NOT = { has_faith = faith:bbcs }
+			}
+		}
+	}
+	immediate = {
+		random_character_war = {
+			limit = {
+				is_war_leader = root
+				is_defender = root
+				primary_attacker = {
+					NOT = { has_faith = faith:bbcs }
+				}
+			}
+			save_scope_as = bbcwar
+		}
+		scope:bbcwar = {
+			primary_attacker = {
+				save_scope_as = attacker
+			}
+		}
+	}
+	option = {
+		name = bno_war_0002.a
+		trigger = {
+			root = {
+				NOT = { has_trait = holy_warrior }
+			}
+		}
+		add_trait = holy_warrior
+		spawn_army = {
+			men_at_arms = {
+				type = bno_maa
+				stacks = {
+					value = 2
+				}
+			}
+			inheritable = yes
+			location = root.capital_province
+		}
+	}
+	option = {
+		name = bno_war_0002.b
+		trigger = {
+			root = {
+				NOT = { has_faith = faith:bbcs }
+			}
+		}
+		set_character_faith = faith:bbcs
+		spawn_army = {
+			men_at_arms = {
+				type = bno_maa
+				stacks = {
+					value = 2
+				}
+			}
+			inheritable = yes
+			location = root.capital_province
+		}
+	}
+	option = {
+		name = bno_war_0002.c
+		trigger = {
+			root = {
+				NOR = { 
+					has_trait = holy_warrior
+					has_faith = faith:bbcs
+				}
+			}
+		}
+		set_character_faith = faith:bbcs
+		add_trait = holy_warrior
+		spawn_army = {
+			men_at_arms = {
+				type = bno_maa
+				stacks = {
+					value = 2
+				}
+			}
+			inheritable = yes
+			location = root.capital_province
+		}
+	}
+}
+
+bno_war.0003 = {
+	type = character_event
+	title = bno_war_0003.title
+	desc = bno_war_0003.desc
+	theme = war
+	
+	override_background = {
+		reference = battlefield
+	}
+	left_portrait = {
+		character = root
+		animation = war_attacker
+	}
+	right_portrait = {
+		character = scope:loser
+		animation = war_defender
+	}
+	trigger = {
+
+	}
+	immediate = {
+	}
+	option = {
+		name = bno_war_0003.a
+	}
+}

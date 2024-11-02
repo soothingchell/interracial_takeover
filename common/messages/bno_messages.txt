@@ -1,0 +1,25 @@
+### Descriptions
+# desc = event_message_effect
+# desc = event_message_text
+# desc = event_message_text_and_effect
+# desc = event_message_effect_and_text
+
+######################
+### BNO
+######################
+
+bno_white_breeder = {
+	icon = "bnobbc"
+	title = event_message_title
+	desc = event_message_text_and_effect
+	style = good
+	message_filter_type = bno_breeding_outcomes
+}
+
+bno_blacked_events = {
+	icon = bnobbc
+	title = event_message_title
+	desc = event_message_text_and_effect
+	style = good
+	message_filter_type = bno_blacked_events
+}

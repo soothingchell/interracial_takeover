@@ -43,6 +43,9 @@
  nick_conq:0 "the Conquered"
   nick_conq_desc:1 "The white race never stood a chance, did it? Amongst the warfare, showings of force, pillaging, raids, and rape, [CHARACTER.GetFirstName] found herself in a new role. Submissive to a conquerer."
  
+ nick_bcm:0 "the Blacked Cumslut"
+  nick_bcm_desc:1 "With lips created to be wrapped around black cock, [CHARACTER.GetFirstName] can almost always be found sucking dark dick. Her masters make sure her stomach never lacks their superior seed."
+ 
  nick_bk:0 "the Black King"
   nick_bk_desc:1 "A foriegner at first, [CHARACTER.GetFirstName] proved to truly be the strongest of his liege's men. By violent, subversive, or diplomatic means, he ascended to a historically white throne, ending that terror."
  
@@ -51,6 +54,6 @@
    
  nick_wq:0 "the White Conquerer"
     nick_wq_desc:1 "Only through the seduction of their liege, this man has taken over an entire nation. 'Matrilineality' is just a myth for [CHARACTER.GetFirstName]. Now, he will be revered in history for this monumental victory for the African race."
-    
- nick_we:0 "the White Executor"
-    nick_we_desc:1 ""
+ 
+ nick_bcamps:0 "the Blacked Camp Slut"
+    nick_bcamps_desc:1 "[CHARACTER.GetFirstName] is usually found walking through the black warrior camps, spending countless hours going from tent to tent to be bred by dozens of her Black masters."

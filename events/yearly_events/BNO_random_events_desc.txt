@@ -201,6 +201,18 @@ bno_random.1001 = {
 		trigger = {
 			NOT = { has_trait = bno_lifestyle_whitegirl }
 		}
+		if = {
+			limit = {
+				primary_spouse = {
+					NOT = {
+						has_trait = bno_bbc
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}		
 		add_trait = bno_lifestyle_whitegirl
 	}
 	option = { 
@@ -208,6 +220,18 @@ bno_random.1001 = {
 		trigger = {
 			has_trait = bno_lifestyle_whitegirl
 		}
+		if = {
+			limit = {
+				primary_spouse = {
+					NOT = {
+						has_trait = bno_bbc
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}		
 		add_stress = -15
 	}
 	option = { #denial
@@ -267,6 +291,18 @@ bno_random.2001 = {
 	option = { #taking the plunge
 		name =  bno_random_2001.a
 		
+		if = {
+			limit = {
+				primary_spouse = {
+					NOT = {
+						has_trait = bno_bbc
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}		
 		if = {
 			NOT = {
 				has_trait = bno_lifestyle_whitegirl
@@ -2427,7 +2463,7 @@ bno_random.0011 = {
 				}
 			has_trait_xp = {
 				trait = bno_lifestyle_whitegirl
-				value < 100
+				value <= 100
 			}
 			}
 			any_courtier_or_guest = {
@@ -6817,7 +6853,18 @@ bno_random.0035 = {
 			trait = bno_lifestyle_whitegirl
 			value = 5
 		}
-		
+		if = {
+			limit = {
+				primary_spouse = {
+					NOT = {
+						has_trait = bno_bbc
+					}
+				}
+			}
+			root = {
+				primary_spouse = { become_more_cuck_effect = yes }
+			}
+		}		
 		trigger_event = bno_random.1035
 	}
 	
@@ -7512,7 +7559,26 @@ bno_random.1038 = {
 				limit = {
 					has_any_nickname = no
 				}
-				give_nickname = nick_bos
+				random_list = {
+					10 = {
+						give_nickname = nick_bos
+					}
+					10 = {
+						give_nickname = nick_blacked
+					}
+					10 = {
+						give_nickname = nick_wb
+					}
+					10 = {
+						give_nickname = nick_rt
+					}
+					10 = {
+						give_nickname = nick_ps
+					}
+					10 = {
+						give_nickname = nick_sfa
+					}
+				}
 			}
 		}
 	}
@@ -7558,18 +7624,16 @@ bno_random.0039 = {
 		animation = rage
 	}
 	
-	cooldown = { months = 22 }
-	
 	trigger = {
 		root = {
 			is_female = yes
 			is_adult = yes
-			any_knight = {
+			any_courtier_or_guest = {
 				has_trait = bno_bbc
 				is_adult = yes
 				is_ai = yes
 			}
-			any_knight = {
+			any_courtier_or_guest = {
 				NOT = { has_trait = bno_bbc }
 				is_adult = yes
 				is_ai = yes
@@ -7579,7 +7643,7 @@ bno_random.0039 = {
 	
 	immediate = {
 		root = {
-			random_knight = {
+			random_courtier_or_guest = {
 				limit = {
 					has_trait = bno_bbc
 					is_adult = yes
@@ -7587,7 +7651,7 @@ bno_random.0039 = {
 				}
 				save_scope_as = target1
 			}
-			random_knight = {
+			random_courtier_or_guest = {
 				limit = {
 					NOT = { has_trait = bno_bbc }
 					is_adult = yes
@@ -7669,26 +7733,10 @@ bno_random.2039 = {
 	left_portrait = {
 		character = root
 		animation = admiration
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
 	}
 	right_portrait = {
 		character = scope:target1
 		animation = personality_content
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target1
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
 	}
 
 	immediate = {
@@ -7722,7 +7770,7 @@ bno_random.2039 = {
 	}
 }
 
-#one of your courtiers has died. spymaster consoles you
+#one of your courtiers has died. however, you know who it is.
 bno_random.0040 = {
 	type = character_event
 	title = bno_random_0040.title
@@ -7749,8 +7797,7 @@ bno_random.0040 = {
 		root = {
 			is_female = yes
 			is_adult = yes
-			any_councillor = {
-				position = councillor_spymaster
+			any_courtier_or_guest = {
 				has_trait = bno_bbc
 				is_adult = yes
 				is_ai = yes
@@ -7794,22 +7841,14 @@ bno_random.0040 = {
 		}
 	}
 	
-	#wail
+	#fake wail
 	option = {
-		trigger = {
-			has_trait = bno_lifestyle_whitegirl
-			has_trait_xp = {
-				trait = bno_lifestyle_whitegirl
-				value < 50
-			}
-		}
 		name = bno_random_0040.a
-		add_stress = -10
 	}
 	
 	#please, comfort me
 	option = {
-		trigger = {
+	trigger = {
 			has_trait = bno_lifestyle_whitegirl
 			has_trait_xp = {
 				trait = bno_lifestyle_whitegirl
@@ -7817,12 +7856,11 @@ bno_random.0040 = {
 			}
 		}
 		name = bno_random_0040.b
-		trigger_event = bno_random.2040
 	}
 	
 	#I know you did it.
 	option = {
-		trigger = {
+	trigger = {
 			has_trait = bno_lifestyle_whitegirl
 			has_trait_xp = {
 				trait = bno_lifestyle_whitegirl
@@ -7831,1107 +7869,45 @@ bno_random.0040 = {
 		}
 		name = bno_random_0040.c
 	}
-	
-	#him? about time :3
-	option = {
-		trigger = {
-			has_trait = bno_lifestyle_whitegirl
-			has_trait_xp = {
-				trait = bno_lifestyle_whitegirl
-				value >= 75
-			}
-		}
-		scope:target1 = {
-			add_trait = bno_camp_leader
-			if = {
-				limit = {
-					has_any_nickname = no
-				}
-				give_nickname = nick_we
-			}
-		}
-		name = bno_random_0040.d
-		trigger_event = bno_random.4040
-	}
-}
-
-bno_random.2040 = {
-	type = character_event
-	title = bno_random_2040.title
-	desc = bno_random_2040.desc
-	theme = realm
-	
-	override_background = {
-		reference = bedchamber
-	}
-	right_portrait = {
-		character = scope:target1
-		animation = personality_content
-	}
-	left_portrait = {
-		character = root
-		animation = personality_content
-	}
-	
-	option = {
-		name = bno_random_2040.a
-	}
-}
-
-bno_random.4040 = {
-	type = character_event
-	title = bno_random_4040.title
-	desc = bno_random_4040.desc
-	theme = realm
-	
-	override_background = {
-		reference = bedchamber
-	}
-	right_portrait = {
-		character = scope:target1
-		animation = personality_content
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target1
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	left_portrait = {
-		character = root
-		animation = admiration
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	
-	immediate = {
-		carn_had_sex_with_effect = {
-			CHARACTER_1 = root
-			CHARACTER_2 = scope:target1
-			C1_PREGNANCY_CHANCE = pregnancy_chance
-			C2_PREGNANCY_CHANCE = pregnancy_chance
-			STRESS_EFFECTS = scope:carn_sex_stress_effects
-			DRAMA = scope:carn_sex_drama
-		}
-	}
-	
-	option = {
-		name = bno_random_4040.a
-	}
 }
 
 #cupbearer aphrodisiacs
 bno_random.0041 = {
-	type = character_event
-	title = bno_random_0041.title
-	desc = bno_random_0041.desc
-	theme = realm
-	
-	override_background = {
-		reference = council_chamber
-	}
-	right_portrait = {
-		character = scope:target1
-		animation = personality_content
-	}
-	left_portrait = {
-		character = root
-		animation = admiration
-	}
-	
-	cooldown = { months = 16}
-	
-	trigger = {
-		root = {
-			is_female = yes
-			is_adult = yes
-			has_trait_xp = {
-				trait = bno_lifestyle_whitegirl
-				value >= 25
-			}
-			employs_court_position = cupbearer_court_position
-			any_court_position_holder = {
-				type = cupbearer_court_position
-				has_trait = bno_bbc
-				is_adult = yes
-				is_ai = yes
-			}
-		}
-	}
-	
-	immediate = {
-		root = {
-			random_court_position_holder = {
-				limit = {
-					type = cupbearer_court_position
-					has_trait = bno_bbc
-					is_adult = yes
-					is_ai = yes
-				}
-				save_scope_as = target1
-			}
-		}
-	}
-	
-	#this feels a little funny on my lips
-	option = {
-		name = bno_random_0041.a
-		
-		trigger_event = bno_random.1041
-	}
-	
-	#more!
-	option = {
-		name = bno_random_0041.b
-		
-		random_list = {
-			70 = {
-				add_stress = minor_stress_loss
-			}
-			25 = {
-				contract_disease_effect = { DISEASE = ill TREATMENT_EVENT = yes }
-			}
-			5 = {
-				divorce = primary_spouse
-			}
-		}
-		
-		trigger_event = bno_random.2041
-	}
 }
-
-bno_random.1041 = {	
-	type = character_event
-	title = bno_random_1041.title
-	desc = bno_random_1041.desc
-	theme = realm
-	
-	override_background = {
-		reference = council_chamber
-	}
-	right_portrait = {
-		character = scope:target1
-		animation = personality_content
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target1
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	left_portrait = {
-		character = root
-		animation = wedding_drunk
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	
-	immediate = {
-		carn_had_sex_with_effect = {
-			CHARACTER_1 = root
-			CHARACTER_2 = scope:target1
-			C1_PREGNANCY_CHANCE = pregnancy_chance
-			C2_PREGNANCY_CHANCE = pregnancy_chance
-			STRESS_EFFECTS = scope:carn_sex_stress_effects
-			DRAMA = scope:carn_sex_drama
-		}
-	}
-	option = {
-		name = bno_random_1041.a
-	}
-}
-
-bno_random.2041 = {
-	type = character_event
-	title = bno_random_2041.title
-	desc = bno_random_2041.desc
-	theme = realm
-	
-	override_background = {
-		reference = council_chamber
-	}
-	right_portrait = {
-		character = scope:target1
-		animation = personality_content
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target1
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	left_portrait = {
-		character = root
-		animation = wedding_drunk
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	
-	immediate = {
-		carn_had_sex_with_effect = {
-			CHARACTER_1 = root
-			CHARACTER_2 = scope:target1
-			C1_PREGNANCY_CHANCE = pregnancy_chance
-			C2_PREGNANCY_CHANCE = pregnancy_chance
-			STRESS_EFFECTS = scope:carn_sex_stress_effects
-			DRAMA = scope:carn_sex_drama
-		}
-	}
-	option = {
-		name = bno_random_2041.a
-		add_trait_xp = {
-			trait = bno_lifestyle_whitegirl
-			value = 5
-		}
-	}
-}
-
 
 #one of your courtiers goes mad for bbc - give them fecund + lunatic if they have bnwo trait.
 bno_random.0042 = {
-	type = character_event
-	title = bno_random_0042.title
-	desc = bno_random_0042.desc
-	theme = realm
-	
-	override_background = {
-		reference = throne_room
-	}
-	right_portrait = {
-		character = scope:target1
-		animation = debating
-	}
-	left_portrait = {
-		character = root
-		animation = admiration
-	}
-	
-	cooldown = { months = 16}
-	
-	trigger = {
-		root = {
-			is_female = yes
-			is_adult = yes
-			has_trait = bno_lifestyle_whitegirl
-			
-			any_courtier_or_guest = {
-				is_female = yes
-				has_trait = bno_lifestyle_whitegirl
-				is_adult = yes
-				is_ai = yes
-			}
-		}
-	}
-	
-	immediate = {
-		root = {
-			random_courtier_or_guest = {
-				limit = {
-					is_female = yes
-					has_trait = bno_lifestyle_whitegirl
-					is_adult = yes
-					is_ai = yes
-				}
-				save_scope_as = target1
-			}
-		}
-	}
-	
-	#gossiping/debating
-	option = {
-		name = bno_random_0042.a
-		
-		random_list = {
-			60 = {
-				send_interface_toast = {
-					title = bno_random_0042.fail.title
-					left_icon = root
-					add_trait_xp = {
-						trait = bno_lifestyle_whitegirl
-						value = 2
-					}
-				}
-				scope:target1 = {
-					add_trait = lustful
-					add_trait_xp = {
-						trait = bno_lifestyle_whitegirl
-						value = 5
-					}
-				}
-			}
-			40 = {
-				send_interface_toast = {
-					title = bno_random_0042.success.title
-					left_icon = root
-					add_trait_xp = {
-						trait = bno_lifestyle_whitegirl
-						value = 5
-					}
-				}
-				scope:target1 = {
-					add_trait = lunatic_1
-					add_trait_xp = {
-						trait = bno_lifestyle_whitegirl
-						value = 15
-					}
-				}
-			}
-		}
-	}
 }
-
-
 
 #vision of paradise. if you have zealous or cynical, imagine an after-death life where black men rule. replace cynical with content.
-scripted_modifier bno_random_0043_kingdom_of_heaven_modifier = {
-	icon = travel_positive
-	stress_gain_mult = -0.5
-}
-
 bno_random.0043 = {
-	type = character_event
-	title = bno_random_0043.title
-	desc = bno_random_0043.desc
-	theme = realm
-	
-	override_background = {
-		reference = bedchamber
-	}
-	left_portrait = {
-		character = root
-		animation = ecstasy
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	
-	cooldown = { months = 36}
-	
-	trigger = {
-		root = {
-			is_female = yes
-			is_adult = yes
-			has_trait = bno_lifestyle_whitegirl
-		}
-	}
-	
-	#wet dream
-	option = {
-		name = bno_random_0043.a
-		if = {
-			limit = {
-				has_trait = cynical
-			}
-			remove_trait = cynical
-			add_trait = content
-		}
-		add_stress = -10
-		add_character_modifier = {
-			modifier = bno_random_0043_kingdom_of_heaven_modifier
-			years = 10
-		}
-	}
 }
 
 #poetess. can't stop writing sonnets that pertain to bbc. gain poet trait, give random femlae courtiers curious
 bno_random.0044 = {
-	type = character_event
-	title = bno_random_0044.title
-	desc = bno_random_0044.desc
-	theme = realm
-	
-	override_background = {
-		reference = study
-	}
-	left_portrait = {
-		character = root
-		animation = admiration
-	}
-	
-	cooldown = { months = 16}
-	
-	trigger = {
-		root = {
-			is_female = yes
-			is_adult = yes
-			has_trait = bno_lifestyle_whitegirl
-			has_trait_xp = {
-				trait = bno_lifestyle_whitegirl
-				value >= 75
-			}
-			any_courtier = {
-				is_female = yes
-				is_adult = yes
-				is_ai = yes
-			}
-		}
-	}
-	
-	immediate = {
-		root = {
-			every_courtier = {
-				limit = {
-					is_female = yes
-					is_adult = yes
-					is_ai = yes
-				}
-				add_trait = bno_lifestyle_whitegirl
-			}
-		}
-	}
-	
-	#gossiping/debating
-	option = {
-		name = bno_random_0044.a
-		if = {
-			limit = {
-				NOT = { has_trait = poet }
-			}
-			add_trait = poet
-		}
-	}
 }
 
 #'out of hand.' if character is married, and have a white husband, cuck him. in the event, something goes 'terribly wrong.' grant husband castrated
 bno_random.0045 = {
-	type = character_event
-	title = bno_random_0045.title
-	desc = bno_random_0045.desc
-	theme = realm
-	
-	override_background = {
-		reference = bedchamber
-	}
-	left_portrait = {
-		character = root
-		animation = shock
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	right_portrait = {
-		character = scope:target2
-		animation = personality_content
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target2
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	lower_right_portrait = {
-		character = scope:target1
-		animation = shock
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target1
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	
-	cooldown = { months = 24 }
-	
-	trigger = {
-		root = {
-			is_female = yes
-			is_adult = yes
-			has_trait = bno_lifestyle_whitegirl
-			is_married = yes
-			primary_spouse = {
-				NOT = { has_trait = bno_bbc }
-			}
-			
-			any_courtier_or_guest = {
-				has_trait = bno_bbc
-				is_adult = yes
-				is_ai = yes
-			}
-		}
-	}
-	
-	immediate = {
-		root = {
-			primary_spouse = {
-				save_scope_as = target2
-			}
-			random_courtier_or_guest = {
-				limit = {
-					has_trait = bno_bbc
-					is_adult = yes
-					is_ai = yes
-				}
-				save_scope_as = target1
-			}
-			
-		carn_had_sex_with_effect = {
-			CHARACTER_1 = root
-			CHARACTER_2 = scope:target1
-			C1_PREGNANCY_CHANCE = pregnancy_chance
-			C2_PREGNANCY_CHANCE = pregnancy_chance
-			STRESS_EFFECTS = scope:carn_sex_stress_effects
-			DRAMA = scope:carn_sex_drama
-		}
-		}
-		
-		scope:target2 = {
-			add_trait = bno_castrated
-		}
-	}
-	
-	option = { #oh my god
-		name = bno_random_0045.a
-		
-		stress_impact = {   
-			bno_lifestyle_whitegirl = minor_stress_impact_gain
-		}
-		
-		trigger_event = bno_random.1045
-	}
-	
-	option = { #this makes it better
-		name = bno_random_0045.b
-		add_trait_xp = {
-			trait = bno_lifestyle_whitegirl
-			value = 10
-		}
-		
-		stress_impact = {   
-			bno_lifestyle_whitegirl = medium_stress_impact_loss
-		}
-		
-		trigger_event = bno_random.2045
-	}
-}
-
-bno_random.1045 = {
-	type = character_event
-	title = bno_random_1045.title
-	desc = bno_random_1045.desc
-	theme = realm
-	
-	override_background = {
-		reference = bedchamber
-	}
-	left_portrait = {
-		character = root
-		animation = shock
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	right_portrait = {
-		character = scope:target2
-		animation = personality_content
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target2
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	lower_right_portrait = {
-		character = scope:target1
-		animation = shock
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target1
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	
-	option = { #oh my god
-		name = bno_random_1045.a
-	}
-}
-
-bno_random.2045 = {
-	bno_random.1045 = {
-	type = character_event
-	title = bno_random_2045.title
-	desc = bno_random_2045.desc
-	theme = realm
-	
-	override_background = {
-		reference = bedchamber
-	}
-	left_portrait = {
-		character = root
-		animation = shock
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	right_portrait = {
-		character = scope:target2
-		animation = personality_content
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target2
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	lower_right_portrait = {
-		character = scope:target1
-		animation = shock
-		triggered_outfit = {
-			trigger = {
-				exists = scope:target1
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	
-	option = { #oh my god
-		name = bno_random_2045.a
-	}
-}
 }
 
 #'bringing their friends.' randomly add two more bbc courtiers if you have one. rarer.
 bno_random.0046 = {
-	type = character_event
-	title = bno_random_0046.title
-	desc = bno_random_0046.desc
-	theme = realm
-	
-	override_background = {
-		reference = market
-	}
-	left_portrait = {
-		character = root
-		animation = thinking
-	}
-	right_portrait = {
-		character = scope:target1
-		animation = personality_content
-	}
-	lower_right_portrait = {
-		character = scope:target2
-		animation = personality_content
-	}
-	lower_left_portrait = {
-		character = scope:target3
-		animation = personality_content
-	}
-	
-	cooldown = { months = 72 }
-	
-	trigger = {
-		root = {
-			is_female = yes
-			is_adult = yes
-			has_trait = bno_lifestyle_whitegirl
-			
-			any_courtier_or_guest = {
-				has_trait = bno_bbc
-				is_adult = yes
-				is_ai = yes
-			}
-		}
-	}
-	
-	immediate = {
-		root = {
-			random_courtier_or_guest = {
-				limit = {
-					has_trait = bno_bbc
-					is_adult = yes
-					is_ai = yes
-				}
-				save_scope_as = target1
-			}
-		}
-		create_character = {
-			gender = male
-			save_scope_as = target2
-			age = 33
-			location = root.location
-
-			dynasty = none
-			trait = bno_bbc
-			trait = bno_full_black
-			trait = dick_big_good_3
-			trait = lustful
-			random_traits = yes
-			faith = faith:bbcs
-			culture = culture:bnoc
-		}
-		hidden_effect = {
-			scope:target2 = {
-				remove_trait = scaly
-				remove_trait = clubfooted
-				remove_trait = dwarf
-				remove_trait = hunchbacked
-				remove_trait = spindly
-				remove_trait = albino
-				remove_trait = infertile
-				remove_trait = wheezing
-				remove_trait = bleeder
-				remove_trait = depressed_genetic
-				remove_trait = depressed_1
-				remove_trait = lunatic_genetic
-				remove_trait = lunatic_1
-				remove_trait = possessed_genetic
-				remove_trait = possessed_1
-				remove_trait = lisping
-				remove_trait = stuttering
-				remove_trait = beauty_bad_1
-				remove_trait = beauty_bad_2
-				remove_trait = beauty_bad_3
-				remove_trait = intellect_bad_1
-				remove_trait = intellect_bad_2
-				remove_trait = intellect_bad_3
-				remove_trait = physique_bad_1
-				remove_trait = physique_bad_2
-				remove_trait = physique_bad_3
-				
-				add_character_flag = {
-					flag = no_headgear
-					 years = 1
-				}
-			}
-		}
-		create_character = {
-			gender = male
-			save_scope_as = target3
-			age = 37
-			location = root.location
-
-			dynasty = none
-			trait = bno_bbc
-			trait = bno_full_black
-			trait = dick_big_good_3
-			trait = lustful
-			random_traits = yes
-			faith = faith:bbcs
-			culture = culture:bnoc
-		}
-		hidden_effect = {
-			scope:target3 = {
-				remove_trait = scaly
-				remove_trait = clubfooted
-				remove_trait = dwarf
-				remove_trait = hunchbacked
-				remove_trait = spindly
-				remove_trait = albino
-				remove_trait = infertile
-				remove_trait = wheezing
-				remove_trait = bleeder
-				remove_trait = depressed_genetic
-				remove_trait = depressed_1
-				remove_trait = lunatic_genetic
-				remove_trait = lunatic_1
-				remove_trait = possessed_genetic
-				remove_trait = possessed_1
-				remove_trait = lisping
-				remove_trait = stuttering
-				remove_trait = beauty_bad_1
-				remove_trait = beauty_bad_2
-				remove_trait = beauty_bad_3
-				remove_trait = intellect_bad_1
-				remove_trait = intellect_bad_2
-				remove_trait = intellect_bad_3
-				remove_trait = physique_bad_1
-				remove_trait = physique_bad_2
-				remove_trait = physique_bad_3
-				
-				add_character_flag = {
-					flag = no_headgear
-					 years = 1
-				}
-			}
-		}
-		
-	}
-	
-	option = { #open the floodgates
-		name = bno_random_0046.a
-		
-		add_gold = -25
-		
-		add_courtier = scope:target2
-		add_courtier = scope:target3
-	}
 }
 
 #arrogrant white male is given the humble trait by a black courtier. 
 bno_random.0047 = {
-	type = character_event
-	title = bno_random_0047.title
-	desc = bno_random_0047.desc
-	theme = realm
-	
-	override_background = {
-		reference = courtyard
-	}
-	lower_left_portrait = {
-		character = root
-		animation = admiration
-	}
-	right_portrait = {
-		character = scope:target2
-		animation = shock
-	}
-	left_portrait = {
-		character = scope:target1
-		animation = anger
-	}
-	
-	cooldown = { months = 24 }
-	
-	trigger = {
-		root = {
-			is_female = yes
-			is_adult = yes
-			
-			any_courtier_or_guest = {
-				has_trait = bno_bbc
-				is_adult = yes
-				is_ai = yes
-			}
-			any_courtier_or_guest = {
-				NOT = { has_trait = bno_bbc }
-				is_adult = yes
-				is_ai = yes
-			}
-		}
-	}
-	
-	immediate = {
-		root = {
-			random_courtier_or_guest = {
-				limit = {
-					has_trait = bno_bbc
-					is_adult = yes
-					is_ai = yes
-				}
-				save_scope_as = target1
-			}
-			random_courtier_or_guest = {
-				limit = {
-					NOT = { has_trait = bno_bbc }
-					is_adult = yes
-					is_ai = yes
-				}
-				save_scope_as = target2
-			}
-		}
-		
-		scope:target1 = {
-			add_opinion = {
-				target = scope:target2
-				modifier = disappointed_opinion
-				opinion = -35
-			}
-		}
-		scope:target2 = {
-			if = {
-				limit = {
-					has_trait = arrogant
-				}
-				remove_trait = arrogant
-				add_trait = humble
-			}
-			add_stress = 30
-			add_opinion = {
-				target = scope:target1
-				modifier = disappointed_opinion
-				opinion = -35
-			}
-		}
-	}
-	
-	option = { #good for him
-		name = bno_random_0047.a
-		
-		stress_impact = {   
-			bno_lifestyle_whitegirl = minor_stress_impact_loss
-		}
-		
-	}
-	
-	option = { #join in
-		name = bno_random_0047.b
-		add_trait_xp = {
-			trait = bno_lifestyle_whitegirl
-			value = 3
-		}
-		
-		scope:target2 = {
-			add_stress = 10
-			add_opinion = {
-				target = root
-				modifier = disappointed_opinion
-				opinion = -20
-			}
-		}
-		
-		stress_impact = {   
-			bno_lifestyle_whitegirl = minor_stress_impact_loss
-		}
-	}
 }
 
-#court musician teaches you culture
+#scene with a cuck and bbc. cuck gets kicked out of the room. give cuck 100 stress.
 bno_random.0048 = {
-	type = character_event
-	title = bno_random_0048.title
-	desc = bno_random_0048.desc
-	theme = realm
-	
-	override_background = {
-		reference = bedchamber
-	}
-	left_portrait = {
-		character = scope:target1
-		animation = admiration
-	}
-	right_portrait = {
-		character = root
-		animation = dancing
-	}
-	
-	cooldown = { months = 24 }
-	
-	trigger = {
-		root = {
-			is_female = yes
-			is_adult = yes
-			has_trait = bno_lifestyle_whitegirl
-			
-			employs_court_position = court_musician_court_position
-			any_court_position_holder = {
-				type = court_musician_court_position
-				has_trait = bno_bbc
-				is_adult = yes
-				is_ai = yes
-			}
-		}
-	}
-	
-	immediate = {
-		root = {
-			random_court_position_holder = {
-				limit = {
-					type = court_musician_court_position
-					has_trait = bno_bbc
-					is_adult = yes
-					is_ai = yes
-				}
-				save_scope_as = target1
-			}
-		}
-	}
-	
-	option = { #like this?
-		name = bno_random_0048.a
-		
-	}
-	
-	option = { #let me arch my back some more
-		name = bno_random_0048.b
-		add_trait_xp = {
-			trait = bno_lifestyle_whitegirl
-			value = 5
-		}
-		
-		trigger_event = bno_random.2048
-	}
 }
 
-bno_random.2048 = {
-	type = character_event
-	title = bno_random_2048.title
-	desc = bno_random_2048.desc
-	theme = realm
-	
-	override_background = {
-		reference = bedchamber
-	}
-	left_portrait = {
-		character = scope:target1
-		animation = admiration
-	}
-	right_portrait = {
-		character = root
-		animation = dancing
-		triggered_outfit = {
-			trigger = {
-				exists = root
-			}
-			outfit_tags = {
-				no_clothes
-			}
-		}
-	}
-	
-	option = {
-		name = bno_random_2048.a
-	}
-}
-
+#court musician teaches you how to twerk. lmfao
 bno_random.0049 = {
 }
 
+#
 bno_random.0050 = {
 }
 
