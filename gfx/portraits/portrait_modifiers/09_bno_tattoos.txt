@@ -20,7 +20,20 @@ cosmetics_bno_face_tattoo = {
 			}
 		}
 	}
-	bno_face_tattoo_1 = { 
+	bno_face_tattoo_1 = { #SLAVE TO BBC ON FOREHEAD
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.05
+			}
+		}
+		weight = {
+			base = 0
+		}
+	}	
+	bno_face_tattoo_2 = { #QOS ON CHEEK
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -29,11 +42,18 @@ cosmetics_bno_face_tattoo = {
 				value = 0.1
 			}
 		}
-		weight = {
-			base = 0
+	}
+	bno_face_tattoo_3 = { #BLACK OWNED ON FORHEAD
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.15
+			}
 		}
-	}	
-	bno_face_tattoo_2 = {
+	}
+	bno_face_tattoo_4 = {#BLACK POWER ICON ON CHEEK
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -41,9 +61,25 @@ cosmetics_bno_face_tattoo = {
 				template = bno_face_tattoo
 				value = 0.2
 			}
+		}		
+		weight = {
+			base = 0
 		}
 	}
-	bno_face_tattoo_3 = {
+	bno_face_tattoo_5 = {#WHORE ON NECK
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.25
+			}
+		}		
+		weight = {
+			base = 0
+		}
+	}
+	bno_face_tattoo_6 = { #I WILL OBEY BBC ON SIDES OF MOUTH
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -51,9 +87,25 @@ cosmetics_bno_face_tattoo = {
 				template = bno_face_tattoo
 				value = 0.3
 			}
+		}		
+		weight = {
+			base = 0
 		}
 	}
-	bno_face_tattoo_4 = {
+	bno_face_tattoo_7 = { #DICK MEASUREMENT ON THROAT
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.35
+			}
+		}		
+		weight = {
+			base = 0
+		}
+	}
+	bno_face_tattoo_8 = { #QOS ON CHEEK / SLAVE TO BBC ON FOREHEAD
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -61,12 +113,25 @@ cosmetics_bno_face_tattoo = {
 				template = bno_face_tattoo
 				value = 0.4
 			}
-		}		
+		}	
 		weight = {
 			base = 0
 		}
 	}
-	bno_face_tattoo_5 = {
+	bno_face_tattoo_9 = { #QOS ON CHEEK / BLACK OWNED ON FOREHEAD
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = cosmetics_bno_face_tattoo
+				template = bno_face_tattoo
+				value = 0.45
+			}
+		}	
+		weight = {
+			base = 0
+		}
+	}
+	bno_face_tattoo_10 = { #BLACK POWER ICON ON CHEEK / BLACK OWNED ON FOREHEAD
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -74,37 +139,24 @@ cosmetics_bno_face_tattoo = {
 				template = bno_face_tattoo
 				value = 0.5
 			}
-		}		
+		}	
 		weight = {
 			base = 0
 		}
 	}
-	bno_face_tattoo_6 = {
+	bno_face_tattoo_11 = { #I WILL OBEY BBC ON SIDES OF MOUTH / DICK MEASUREMENT ON THROAT
 		dna_modifiers = {
 			morph = {
 				mode = add
 				gene = cosmetics_bno_face_tattoo
 				template = bno_face_tattoo
-				value = 0.6
+				value = 0.55
 			}
-		}		
+		}	
 		weight = {
 			base = 0
 		}
 	}
-	bno_face_tattoo_7 = {
-		dna_modifiers = {
-			morph = {
-				mode = add
-				gene = cosmetics_bno_face_tattoo
-				template = bno_face_tattoo
-				value = 0.7
-			}
-		}		
-		weight = {
-			base = 0
-		}
-	}	
 }	
 
 
@@ -125,7 +177,7 @@ cosmetics_bno_body_tattoo = {
 		}
 	}
 
-	bno_body_tattoo_1 = {
+	bno_body_tattoo_1 = { #TALLY MARKS ON CHEST
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -138,7 +190,7 @@ cosmetics_bno_body_tattoo = {
 			base = 0
 		}
 	}
-	bno_body_tattoo_2 = {
+	bno_body_tattoo_2 = { #WOMB CREST 1
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -152,7 +204,7 @@ cosmetics_bno_body_tattoo = {
 		}
 	}
 	
-	bno_body_tattoo_3 = {
+	bno_body_tattoo_3 = { #BLACK BABY MAKER ON BELLY
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -166,7 +218,7 @@ cosmetics_bno_body_tattoo = {
 		}
 	}
 	
-	bno_body_tattoo_4 = { # CELTIC1
+	bno_body_tattoo_4 = { #WOMB CREST 2
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -180,7 +232,7 @@ cosmetics_bno_body_tattoo = {
 		}
 	}
 	
-	bno_body_tattoo_5 = { # CELTIC1
+	bno_body_tattoo_5 = { #SLUT ON CHEST
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -194,7 +246,7 @@ cosmetics_bno_body_tattoo = {
 		}
 	}
 	
-	bno_body_tattoo_6 = { # CELTIC1
+	bno_body_tattoo_6 = { #BREED ME ON BELLY
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -207,7 +259,7 @@ cosmetics_bno_body_tattoo = {
 			base = 0
 		}
 	}
-	bno_body_tattoo_7 = { # CELTIC1
+	bno_body_tattoo_7 = { #BLACK CUM DIET ON BELLY
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -220,7 +272,7 @@ cosmetics_bno_body_tattoo = {
 			base = 0
 		}
 	}
-	bno_body_tattoo_8 = {
+	bno_body_tattoo_8 = { #DICK MEASUREMENT ON BELLY
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -233,7 +285,7 @@ cosmetics_bno_body_tattoo = {
 			base = 0
 		}
 	}
-	bno_body_tattoo_9 = {
+	bno_body_tattoo_9 = { #DOUBLE QOS ON BREASTS
 		dna_modifiers = {
 			morph = {
 				mode = add
@@ -246,25 +298,12 @@ cosmetics_bno_body_tattoo = {
 			base = 0
 		}
 	}
-	bno_body_tattoo_10 = {
+	bno_body_tattoo_10 = { #I <3 BBC ON SHOULDER
 		dna_modifiers = {
 			morph = {
 				mode = add
 				gene = cosmetics_bno_body_tattoo
 				template = bno_body_tattoo_10
-				value = 0.5
-			}
-		}
-		weight = {
-			base = 0
-		}
-	}
-	bno_body_tattoo_11 = {
-		dna_modifiers = {
-			morph = {
-				mode = add
-				gene = cosmetics_bno_body_tattoo
-				template = bno_body_tattoo_11
 				value = 0.5
 			}
 		}

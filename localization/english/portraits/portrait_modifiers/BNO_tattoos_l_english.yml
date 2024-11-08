@@ -7,6 +7,7 @@ PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo:0 "@bnobbc! BBC Face Tattoos"
 PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_no_face_tattoo:0 "@bnobbc! No face tattoo"
 PORTRAIT_MODIFIER_cosmetics_bno_body_tattoo_no_body_tattoo:0 "@bnobbc! No body tattoo"
 
+#individual face tattoos
 PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_1:0 "@bnobbc! Slave to BBC"
 PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_2:0 "@bnobbc! QoS"
 PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_3:0 "@bnobbc! Black Owned"
@@ -15,6 +16,13 @@ PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_5:0 "@bnobbc! Whore"
 PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_6:0 "@bnobbc! I will obey BBC"
 PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_7:0 "@bnobbc! Dick measurement"
 
+#multiple face tattoos
+PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_8:0 "@bnobbc! QOS / Slave to BBC"
+PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_9:0 "@bnobbc! QOS / Black Owned"
+PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_10:0 "@bnobbc! Black Power / Black Owned"
+PORTRAIT_MODIFIER_cosmetics_bno_face_tattoo_bno_face_tattoo_11:0 "@bnobbc! I will obey / Dick measurement"
+
+#individual body tattoos
 PORTRAIT_MODIFIER_cosmetics_bno_body_tattoo_bno_body_tattoo_1:0 "@bnobbc! Tally marks"
 PORTRAIT_MODIFIER_cosmetics_bno_body_tattoo_bno_body_tattoo_2:0 "@bnobbc! Womb crest 1"
 PORTRAIT_MODIFIER_cosmetics_bno_body_tattoo_bno_body_tattoo_3:0 "@bnobbc! Black baby maker"
@@ -25,3 +33,5 @@ PORTRAIT_MODIFIER_cosmetics_bno_body_tattoo_bno_body_tattoo_7:0 "@bnobbc! Black 
 PORTRAIT_MODIFIER_cosmetics_bno_body_tattoo_bno_body_tattoo_8:0 "@bnobbc! Dick measurement"
 PORTRAIT_MODIFIER_cosmetics_bno_body_tattoo_bno_body_tattoo_9:0 "@bnobbc! Double QoS"
 PORTRAIT_MODIFIER_cosmetics_bno_body_tattoo_bno_body_tattoo_10:0 "@bnobbc! Upper arm - I <3 BBC"
+
+#multiple body tattoos
