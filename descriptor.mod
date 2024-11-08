@@ -5,4 +5,4 @@ tags={
 	"Events"
 }
 name="Interracial Takeover 2nd Edition"
-supported_version="1.13.*"
+supported_version="1.14.*"
