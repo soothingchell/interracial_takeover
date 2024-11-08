@@ -73,6 +73,8 @@ bno_yearly_random_pulse = {
 		150 = bno_random.0036 #Q+ event
 		150 = bno_random.0037 #Q+ event
 		150 = bno_random.0038 #Q+ event
+
+		# @alberax
 		40 = bno_bull.0001 #bull pov, liege's wife
 		100 = bno_bull.0002 #bbc ruler anti stress event
 		100 = bno_bull.0003 #bbc ruler fix white slut eating habits event
