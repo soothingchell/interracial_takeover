@@ -1,0 +1,70 @@
+namespace = bno_regency
+
+#blacked wife regent gives powers to bbc character
+bno_regency.0001 = {
+	type = character_event
+	title = bno_regency_0001.title
+	desc = bno_regency_0001.desc
+	theme = stewardship
+	
+	override_background = {
+		reference = courtyard
+	}
+	left_portrait = {
+		character = root
+		animation = sadness
+	}
+	right_portrait = {
+		character = scope:target1
+		animation = dismissal
+	}
+	trigger = {
+		is_ruler = yes
+		diarch = {
+			is_diarch_of_target = root
+			is_female = yes
+			has_trait_xp = {
+				trait = bno_lifestyle_whitegirl
+				value >= 80
+			}
+		}
+		OR = {
+			any_courtier_or_guest = {
+				has_trait = bno_bbc
+				is_adult = yes
+			}
+			any_vassal = {
+				has_trait = bno_bbc
+				is_adult = yes
+			}
+		}
+	}
+	immediate = {
+		diarch = {
+			save_scope_as = target1
+		}
+		random_courtier_or_guest = {
+			limit = {
+				has_trait = bno_bbc
+				is_adult = yes
+			}
+			save_scope_as = target2
+		}
+		scope:target1 = {
+			carn_had_sex_with_effect = {
+				CHARACTER_1 = scope:target2
+				CHARACTER_2 = scope:target1
+				C1_PREGNANCY_CHANCE = pregnancy_chance
+				C2_PREGNANCY_CHANCE = pregnancy_chance
+				STRESS_EFFECTS = scope:carn_sex_stress_effects
+				DRAMA = scope:carn_sex_drama
+			}
+		}
+		set_diarch = scope:target2
+	}
+	option = {
+		name = bno_regency_0001.a
+		
+		change_diarchy_swing = 60
+	}
+}

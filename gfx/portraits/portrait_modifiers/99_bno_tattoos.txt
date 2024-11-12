@@ -6,7 +6,7 @@ usage = game
 				mode = add
 				gene = cosmetics_bno_face_tattoo
 				template = bno_face_tattoo
-				value = 0.1
+				value = 0.05
 			}
 			accessory = {
 				mode = add
@@ -45,7 +45,7 @@ usage = game
 				mode = add
 				gene = cosmetics_bno_face_tattoo
 				template = bno_face_tattoo
-				value = 0.2
+				value = 0.1
 			}			
 		}
 		weight = {
@@ -72,13 +72,13 @@ usage = game
 				mode = add
 				gene = cosmetics_bno_face_tattoo
 				template = bno_face_tattoo
-				value = 0.4
+				value = 0.2
 			}				
 		}
 		weight = {
 			base = 0
 			modifier = {
-				add = 1000
+				add = 900
 				any_spouse = {
 					has_trait = bno_bbc
 				}

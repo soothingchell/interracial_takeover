@@ -283,30 +283,46 @@ special_genes = {
 				boy = male
 				girl = male
 			}		
-			bno_body_tattoo_1 = { 
+			bno_body_tattoo = { 
 				index = 1
 				male = {}
 				female = {				
 					decal = { #TALLY MARKS ON CHEST
 						body_part = torso
 						textures = {
-							diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_01.dds"
-							properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_01_properties.dds"
+								diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_01.dds"
+								properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_01_properties.dds"
 						}
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	1.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}						
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}
-			bno_body_tattoo_2 = { 
-				index = 2
-				male = {}
-				female = {				
+					}			
 					decal = { #WOMB CREST 1
 						body_part = torso
 						textures = {
@@ -316,17 +332,33 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  1.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}	
-			bno_body_tattoo_3 = { 
-				index = 3
-				male = {}
-				female = {				
+					}						
 					decal = { #BLACK BABY MAKER ON BELLY
 						body_part = torso
 						textures = {
@@ -336,17 +368,33 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  1.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}	
-			bno_body_tattoo_4 = { 
-				index = 4
-				male = {}
-				female = {				
+					}					
 					decal = { #WOMB CREST 2
 						body_part = torso
 						textures = {
@@ -356,17 +404,33 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  1.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}	
-			bno_body_tattoo_5 = { 
-				index = 5
-				male = {}
-				female = {				
+					}						
 					decal = { #SLUT ON CHEST
 						body_part = torso
 						textures = {
@@ -376,17 +440,33 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  1.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}	
-			bno_body_tattoo_6 = { 
-				index = 6
-				male = {}
-				female = {				
+					}					
 					decal = { #BREED ME ON BELLY
 						body_part = torso
 						textures = {
@@ -396,17 +476,33 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  1.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}
-			bno_body_tattoo_7 = { 
-				index = 7
-				male = {}
-				female = {				
+					}					
 					decal = { #BLACK CUM DIET ON BELLY
 						body_part = torso
 						textures = {
@@ -416,17 +512,33 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  1.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}
-			bno_body_tattoo_8 = { 
-				index = 8
-				male = {}
-				female = {				
+					}					
 					decal = { #DICK MEASUREMENT ON BELLY
 						body_part = torso
 						textures = {
@@ -436,17 +548,33 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  1.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}
-			bno_body_tattoo_9 = { 
-				index = 9
-				male = {}
-				female = {				
+					}					
 					decal = { #DOUBLE QOS ON BREASTS
 						body_part = torso
 						textures = {
@@ -456,17 +584,33 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  1.0 }
+							{ 0.50  0.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
-				}
-				boy = male
-				girl = male
-			}
-			bno_body_tattoo_10 = { 
-				index = 10
-				male = {}
-				female = {				
+					}					
 					decal = { #I <3 BBC ON SHOULDER
 						body_part = torso
 						textures = {
@@ -476,9 +620,69 @@ special_genes = {
 						blend_modes = {
 							diffuse = replace
 						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  1.0 }
+							{ 0.55  0.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
 						priority = 1
 						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
-					}		
+					}
+					decal = { #BUILT FOR BBC
+						body_part = torso
+						textures = {
+							diffuse = "gfx/models/portraits/decals/visual_traits/bno_tattoo_11.dds"
+							properties = "gfx/models/portraits/decals/visual_traits/bno_tattoo_11_properties.dds"
+						}
+						blend_modes = {
+							diffuse = replace
+						}
+						alpha_curve = {              #controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
+							#gene strength%, decal alpha
+							{ 0.0 	0.0 }
+							{ 0.05	0.0 }
+							{ 0.10  0.0 }
+							{ 0.15  0.0 }
+							{ 0.20  0.0 }
+							{ 0.25  0.0 }
+							{ 0.30  0.0 }
+							{ 0.35  0.0 }
+							{ 0.40  0.0 }
+							{ 0.45  0.0 }
+							{ 0.50  0.0 }
+							{ 0.55  1.0 }
+							{ 0.60  0.0 }
+							{ 0.65  0.0 }
+							{ 0.70  0.0 }
+							{ 0.75  0.0 }
+							{ 0.80  0.0 }
+							{ 0.85  0.0 }
+							{ 0.90  0.0 }
+							{ 0.95  0.0 }
+							{ 1.00 	0.0 }
+						}
+						priority = 1
+						decal_apply_order = pre_skin_color # pre_skin_color | post_skin_color
+					}	
 				}
 				boy = male
 				girl = male
